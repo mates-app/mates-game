@@ -1,0 +1,6 @@
+<button
+  md-raised-button class="answer-button "
+  *ngFor="let answer of answers"
+  [MathJax]="'$'+answer+'$'"
+  (click)="sendAnswer(answer)">
+</button>

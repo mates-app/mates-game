@@ -1,3 +1,14 @@
-<h1>
-  {{title}}
-</h1>
+<div class="flex-container">
+
+<loading-level-view
+  *ngIf="viewStatus == 2"
+  (onStart)="playLevel()" >
+</loading-level-view>
+
+<game-view [ngStyle]="{'display': gameDisplay}"
+  [gameProblem]="gameInstance.levels[gameStatus.level].gameProblems[gameStatus.problem]"
+  [gameLevel]="gameInstance.levels[gameStatus.level]"
+  (isCorrect)="gameStatus.onAnswer($event)">
+</game-view>
+
+</div>

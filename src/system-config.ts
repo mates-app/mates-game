@@ -1,13 +1,40 @@
-/***********************************************************************************************
- * User Configuration.
- **********************************************************************************************/
+
 /** Map relative paths to URLs. */
 const map: any = {
+  '@angular2-material': 'vendor/@angular2-material',
+
+
 };
 
 /** User packages configuration. */
 const packages: any = {
+
 };
+
+// put the names of any of your Material components here
+const materialPkgs:string[] = [
+  'core',
+  'button',
+  'card',
+  'checkbox',
+  'icon',
+  'grid-list',
+  'input',
+  'list',
+  'progress-bar',
+  'radio',
+  'sidenav',
+  'slide-toggle',
+  'tabs',
+  'toolbar'
+];
+
+materialPkgs.forEach((pkg) => {
+  packages[`@angular2-material/${pkg}`] = {main: `${pkg}.js`};
+});
+
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 /***********************************************************************************************
@@ -25,12 +52,14 @@ const barrels: string[] = [
 
   // Thirdparty barrels.
   'rxjs',
-
+  'mathjax',
   // App specific barrels.
   'app',
   'app/shared',
   /** @cli-barrel */
 ];
+
+
 
 const cliSystemConfigPackages: any = {};
 barrels.forEach((barrelName: string) => {
@@ -45,6 +74,7 @@ System.config({
   map: {
     '@angular': 'vendor/@angular',
     'rxjs': 'vendor/rxjs',
+    'mathjax': 'vendor/mathjax',
     'main': 'main.js'
   },
   packages: cliSystemConfigPackages
