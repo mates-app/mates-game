@@ -11,6 +11,7 @@ import {LoadingLevelView} from './views/loading-level.view';
 import {TimerService} from './services/timer.service';
 import {GameStatusService} from './services/game-status.service';
 import {MatesServices} from './services/mates.services';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import * as models from './models';
 
@@ -27,7 +28,7 @@ import * as models from './models';
 
 })
 export class GameMatesAppComponent {
-  title = 'game-mates works!';
+  title = 'game-mates';
   gameInstance:models.GameInstance;
   viewStatus:ViewStatus = ViewStatus.LOADING_LEVEL;
   gameDisplay:string = "block";
@@ -43,14 +44,27 @@ export class GameMatesAppComponent {
       .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
       .registerFontClassAlias('fontawesome', 'fa');
 
+    /*
     this.gameStatus.subjectLevel.subscribe(level => {
       console.log("new level", level);
       this.loadingLevel();
     } );
 
     this.startGame();
+    */
   };
 
+
+  loadGame(){
+    this.gameStatus.subjectLevel.subscribe(level => {
+      console.log("new level", level);
+      this.loadingLevel();
+    } );
+
+    this.startGame();
+
+
+  }
 
   startGame(){
     this.gameInstance = this.matesServices.getGameInstance();
