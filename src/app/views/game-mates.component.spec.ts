@@ -5,7 +5,7 @@ import {
   it,
   inject
 } from '@angular/core/testing';
-import { GameMatesAppComponent } from '../app/game-mates.component';
+import { GameMatesAppComponent } from './game-mates.component';
 
 beforeEachProviders(() => [GameMatesAppComponent]);
 

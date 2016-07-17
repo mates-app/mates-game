@@ -1,2 +1,2 @@
 export * from './environment';
-export * from './game-mates.component';
+export * from './app.component';

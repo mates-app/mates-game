@@ -4,22 +4,20 @@ import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_ICON_DIRECTIVES,MdIconRegistry,MdIcon} from '@angular2-material/icon';
 
-import {ToolbarComponent, ToolbarConfig} from './components/toolbar.component';
-import {ToolbarDemoComponent} from './views/toolbar-demo.component';
-import {GameViewComponent} from './views/game-view.component';
-import {LoadingLevelView} from './views/loading-level.view';
-import {TimerService} from './services/timer.service';
-import {GameStatusService} from './services/game-status.service';
-import {MatesServices} from './services/mates.services';
-import { ROUTER_DIRECTIVES } from '@angular/router';
+import {ToolbarComponent, ToolbarConfig} from '../components/toolbar.component';
+import {ToolbarDemoComponent} from './toolbar-demo.component';
+import {GameViewComponent} from './game-view.component';
+import {LoadingLevelView} from './loading-level.view';
+import {TimerService} from '../services/timer.service';
+import {GameStatusService} from '../services/game-status.service';
+import {MatesServices} from '../services/mates.services';
 
-import * as models from './models';
+import * as models from '../models';
 
 @Component({
-  moduleId: module.id,
   selector: 'game-mates-app',
-  templateUrl: 'game-mates.component.html',
-  styleUrls: ['game-mates.component.css'],
+  templateUrl: 'app/views/game-mates.component.html',
+  styleUrls: ['app/views/game-mates.component.css'],
   directives: [MD_CARD_DIRECTIVES, MD_BUTTON_DIRECTIVES, MD_ICON_DIRECTIVES, MD_ICON_DIRECTIVES,
     ToolbarComponent, ToolbarDemoComponent, GameViewComponent,LoadingLevelView],
   providers: [HTTP_PROVIDERS, TimerService, MatesServices, GameStatusService
