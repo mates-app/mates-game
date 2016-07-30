@@ -1,14 +1,12 @@
-import {Component, Input, Output, EventEmitter,OnChanges, SimpleChange} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
-import { MD_ICON_DIRECTIVES,MdIconRegistry,MdIcon} from '@angular2-material/icon';
-
-import {Observable} from 'rxjs/Observable';
-
+import { MD_ICON_DIRECTIVES,MdIconRegistry} from '@angular2-material/icon';
 
 @Component({
-  selector: 'loading-level-view',
+  moduleId: module.id,
+  selector: 'level-load',
   template: `
   <div class="flex-container">
   <header>
@@ -37,7 +35,7 @@ import {Observable} from 'rxjs/Observable';
 
 
   `,
-  styleUrls: ['app/views/game-view.component.css'],
+  styleUrls: ['level-load.component.css'],
   directives: [MD_CARD_DIRECTIVES, MD_BUTTON_DIRECTIVES, MD_ICON_DIRECTIVES, MD_ICON_DIRECTIVES ],
   providers: [HTTP_PROVIDERS],
   viewProviders: [MdIconRegistry]

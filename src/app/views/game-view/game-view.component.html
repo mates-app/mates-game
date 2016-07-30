@@ -1,17 +1,17 @@
 <div class="flex-container" *ngIf="gameInstance != undefined">
 
-  <loading-level-view
+  <level-load
     *ngIf="viewStatus == 2"
     (onStart)="playLevel()" >
-  </loading-level-view>
+  </level-load>
 
-  <game-view [ngStyle]="{'display': gameDisplay}"
+  <level-play
+    [ngStyle]="{'display': gameDisplay}"
     [gameProblem]="gameInstance.levels[gameStatus.level].gameProblems[gameStatus.problem]"
     [gameLevel]="gameInstance.levels[gameStatus.level]"
-    (isCorrect)="gameStatus.onAnswer($event)">
-  </game-view>
+    (isCorrect)="gameStatus.onAnswer($event)"
+    [hidden]="viewStatus == 2">
+  </level-play>
 
 </div>
-
-
 

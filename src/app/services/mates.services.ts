@@ -22,6 +22,10 @@ export class MatesServices{
     return this.gameMock;
   }
 
+  getGameInstances():Array<GameInstance>{
+    return [this.gameMock];
+  }
+
   gameMock:GameInstance = {
   "instanceId": "576322f4af21d21adc4adabf",
   "gameId": "5762d2b63e68b5130b5fcd03",

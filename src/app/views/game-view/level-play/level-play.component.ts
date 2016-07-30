@@ -1,22 +1,23 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
-import {ToolbarComponent, ToolbarConfig} from '../components/toolbar.component';
-import {CounterComponent, CounterConfig} from '../components/counter.component';
-import {AnswerButtonsComponent} from '../components/answer-buttons.component';
-import {MathProblemExpression} from '../components/math-problem-expression.component';
+import {ToolbarComponent, ToolbarConfig} from '../../../components/toolbar.component';
+import {CounterComponent, CounterConfig} from '../../../components/counter.component';
+import {AnswerButtonsComponent} from '../../../components/answer-buttons.component';
+import {MathProblemExpression} from '../../../components/math-problem-expression.component';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
 import { MD_ICON_DIRECTIVES,MdIconRegistry,MdIcon} from '@angular2-material/icon';
 
-import {TimerService} from '../services/timer.service';
-import {GameStatusService} from '../services/game-status.service';
+import {TimerService} from '../../../services/timer.service';
+import {GameStatusService} from '../../../services/game-status.service';
 import {Observable} from 'rxjs/Observable';
-import {GameProblem, GameLevel, GameInstance} from '../models';
-import {MathJaxDirective} from '../directives/mathjax.directive';
+import {GameProblem, GameLevel, GameInstance} from '../../../models';
+import {MathJaxDirective} from '../../../directives/mathjax.directive';
 
 @Component({
-  selector: 'game-view',
-  templateUrl: 'app/views/game-view.component.html',
-  styleUrls: ['app/views/game-view.component.css'],
+  moduleId: module.id,
+  selector: 'level-play',
+  templateUrl: 'level-play.component.html',
+  styleUrls: ['level-play.component.css'],
   directives: [
     MD_CARD_DIRECTIVES,
     MD_BUTTON_DIRECTIVES,

@@ -91,12 +91,14 @@ export class GameStatusService{
 
   private checkGameOver(){
     //console.log("checkGameOver");
-    if(this.lives <= 0){
-      this.subjectGameOver.next(models.GameOverType.LIVES);
-    }else if(this.level == this.gameLevels.length){
-      this.subjectGameOver.next(models.GameOverType.LEVELS);
-    }else if(this.timer.gameTimer.time <= 0){
-      this.subjectGameOver.next(models.GameOverType.TIME);
+    if(this.gameLevels){
+      if(this.lives <= 0){
+        this.subjectGameOver.next(models.GameOverType.LIVES);
+      }else if(this.level == this.gameLevels.length){
+        this.subjectGameOver.next(models.GameOverType.LEVELS);
+      }else if(this.timer.gameTimer.time <= 0){
+        this.subjectGameOver.next(models.GameOverType.TIME);
+      }
     }
   }
 
