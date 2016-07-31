@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit, ApplicationRef} from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import { MD_CARD_DIRECTIVES } from '@angular2-material/card';
 import { MD_BUTTON_DIRECTIVES } from '@angular2-material/button';
@@ -8,6 +8,7 @@ import {ToolbarComponent, ToolbarConfig} from '../../components/toolbar.componen
 import {ToolbarDemoComponent} from '../toolbar-demo.component';
 import {GameViewComponent} from './level-play/level-play.component';
 import {LoadingLevelView} from './level-load/level-load.component';
+import {GameOverComponent} from './game-over/game-over.component'
 import {TimerService} from '../../services/timer.service';
 import {GameStatusService} from '../../services/game-status.service';
 import {MatesServices} from '../../services/mates.services';
@@ -24,7 +25,11 @@ import * as models from '../../models';
     MD_BUTTON_DIRECTIVES,
     MD_ICON_DIRECTIVES,
     MD_ICON_DIRECTIVES,
-    ToolbarComponent, ToolbarDemoComponent, GameViewComponent,LoadingLevelView],
+    ToolbarComponent,
+    ToolbarDemoComponent,
+    GameViewComponent,
+    LoadingLevelView,
+    GameOverComponent],
   providers: [HTTP_PROVIDERS, TimerService, MatesServices, GameStatusService],
   viewProviders: [MdIconRegistry]
 
@@ -34,6 +39,7 @@ export class GameMatesAppComponent {
   gameInstance:models.GameInstance;
   viewStatus:ViewStatus = ViewStatus.LOADING_LEVEL;
   gameDisplay:string = "block";
+  gameOverType:models.GameOverType
 
   ngOnInit(){
     this.gameInstance = this.currentGameInstance.getGameInstance()
@@ -42,23 +48,18 @@ export class GameMatesAppComponent {
       this.loadingLevel();
     } );
 
+    this.gameStatus.subjectGameOver.subscribe(gameOverType => this.gameOver(gameOverType))
+
     this.startGame();
   }
 
   constructor(
-    // private mdIconRegistry:MdIconRegistry,
     private timerService:TimerService,
     private gameStatus:GameStatusService,
     private matesServices:MatesServices,
-    private currentGameInstance:CurrentGameInstance
-    ){
-
-    // mdIconRegistry
-    //   .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
-    //   .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
-    //   .registerFontClassAlias('fontawesome', 'fa');
-
-  };
+    private currentGameInstance:CurrentGameInstance,
+    private appRef:ApplicationRef
+    ){  };
 
 
   loadGame(){
@@ -97,8 +98,14 @@ export class GameMatesAppComponent {
     this.gameDisplay = "block";
   }
 
-  gameOver(){
-
+  gameOver(gameOver:models.GameOverType){
+    console.log(gameOver)
+    this.gameOverType = gameOver;
+    console.log('ViewStatus',this.viewStatus)
+    this.viewStatus = ViewStatus.GAME_OVER
+    console.log('ViewStatus',this.viewStatus)
+    this.gameDisplay = "none";
+    this.appRef.tick()
   }
 
 

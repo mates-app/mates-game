@@ -90,13 +90,15 @@ export class GameStatusService{
   }
 
   private checkGameOver(){
-    //console.log("checkGameOver");
     if(this.gameLevels){
       if(this.lives <= 0){
+        this.pauseGame()
         this.subjectGameOver.next(models.GameOverType.LIVES);
       }else if(this.level == this.gameLevels.length){
+        this.pauseGame()
         this.subjectGameOver.next(models.GameOverType.LEVELS);
       }else if(this.timer.gameTimer.time <= 0){
+        this.pauseGame()
         this.subjectGameOver.next(models.GameOverType.TIME);
       }
     }

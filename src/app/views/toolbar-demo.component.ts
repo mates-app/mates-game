@@ -22,8 +22,6 @@ export class ToolbarDemoComponent {
         .setObservableValue(this.timerService.gameTimer.timeObservable);
     this.toolbarConfig.extraTimeCounter
         .setObservableValue(this.timerService.extraTimer.timeObservable);
-    //[gameTime]="timerService.gameTimer.time"
-    //[extraTime]="timerService.extraTimer.time"
 
     this.timerService.extraTimer.timeObservable.subscribe(value => {
       this.toolbarConfig.showExtras = value > 0;

@@ -1,0 +1,24 @@
+  <div class="flex-container">
+  <header>
+
+  </header>
+
+  <br>
+
+  <section class="content">
+    game overrrrrrrrrrrr
+  </section>
+
+  <br>
+
+  <footer>
+    <div style="text-align: center">
+      <button md-mini-fab *ngIf="count <= 0" [style.background-color]="'#F76464'" (click)="startLevel()">
+        <md-icon class="material-icons md-24">play_arrow</md-icon>
+      </button>
+      <button md-mini-fab *ngIf="count > 0"  [style.background-color]="'#F76464'" (click)="startLevel()">
+        {{count}}
+      </button>
+    </div>
+  </footer>
+  </div>

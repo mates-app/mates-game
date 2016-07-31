@@ -14,6 +14,7 @@ export class TimerService{
   constructor(){
     this.extraTimer.timeObservable.subscribe(value => {
       if(value <= 0){
+        console.log('start gameTimer')
         this.extraTimer.stop();
         this.gameTimer.start();
       }
@@ -21,6 +22,7 @@ export class TimerService{
 
     this.gameTimer.timeObservable.subscribe(value =>{
       if(this.extraTimer.isActive()){
+        console.log('start extraTimer')
         this.gameTimer.stop();
       }
     });
