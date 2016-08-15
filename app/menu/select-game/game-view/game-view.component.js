@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var game_status_service_1 = require('../../../game/game-status.service');
 var timer_service_1 = require('../../../game/timer.service');
+var toolbar_component_1 = require('../../../game/commons/toolbar.component');
 var current_game_service_1 = require('../../../game/current-game.service');
 var mates_game_service_1 = require('../../../mates-commons/mates-game.service');
 var GameMatesAppComponent = (function () {
@@ -27,6 +28,7 @@ var GameMatesAppComponent = (function () {
     GameMatesAppComponent.prototype.ngOnInit = function () {
         var _this = this;
         console.log('game-view component');
+        this.toolbarConfig = new toolbar_component_1.ToolbarConfig();
         this.gameInstance = this.currentGameInstance.getGameInstance();
         this.gameStatus.subjectLevel.subscribe(function (level) {
             console.log("new level", level);

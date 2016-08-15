@@ -3,7 +3,7 @@ import {NgClass} from '@angular/common';
 import {HTTP_PROVIDERS} from '@angular/http';
 import { Observable } from "rxjs/Observable";
 import {CounterComponent, CounterConfig} from './counter.component';
-// import {MathJaxDirective} from '../directives/mathjax.directive';
+import {MathJaxDirective} from './mathjax.directive';
 
 @Component({
   moduleId : module.id,
@@ -11,8 +11,8 @@ import {CounterComponent, CounterConfig} from './counter.component';
   templateUrl: 'answer-buttons.component.html',
   styleUrls: ['answer-buttons.component.css'],
   directives: [ CounterComponent, NgClass, 
-    // MathJaxDirective
-    ],
+    MathJaxDirective
+  ],
   providers: [HTTP_PROVIDERS],
   // viewProviders: [MdIconRegistry]
 

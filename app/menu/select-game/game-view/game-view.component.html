@@ -9,10 +9,11 @@
     [ngStyle]="{'display': gameDisplay}"
     [gameProblem]="gameInstance.levels[gameStatus.level].gameProblems[gameStatus.problem]"
     [gameLevel]="gameInstance.levels[gameStatus.level]"
+    [toolbarConfig]="toolbarConfig"
     (isCorrect)="gameStatus.onAnswer($event)"
-    [hidden]="viewStatus == 2 || viewStatus == 4">
+    >
   </level-play>
-
+<!-- [hidden]="viewStatus == 2 || viewStatus == 4"> -->
 <!--   <game-over
     [gameOverType]="gameOverType"
     *ngIf="viewStatus == 4">

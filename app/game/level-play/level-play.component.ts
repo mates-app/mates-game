@@ -16,9 +16,9 @@ import {GameProblem, GameLevel, GameInstance} from '../../models';
   templateUrl: 'level-play.component.html',
   styleUrls: ['level-play.component.css'],
   directives: [
-    AnswerButtonsComponent,
-    MathProblemExpression,
-    ToolbarComponent
+    // AnswerButtonsComponent,
+    // MathProblemExpression,
+    // ToolbarComponent
     // MathJaxDirective
   ]
 
@@ -32,6 +32,10 @@ export class PlayingLevelComponent {
 
   constructor(public timerService:TimerService, private gameStatus:GameStatusService){
 
+  }
+
+  printProblem(){
+    return JSON.stringify(this.gameLevel)
   }
 
   processAnswer(answer:string){

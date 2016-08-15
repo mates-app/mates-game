@@ -2,6 +2,7 @@ import { Component, OnInit, ApplicationRef} from '@angular/core';
 import * as models from '../../../models';
 import { GameStatusService } from '../../../game/game-status.service'
 import { TimerService } from '../../../game/timer.service'
+import { ToolbarConfig } from '../../../game/commons/toolbar.component'
 import { CurrentGameInstance } from '../../../game/current-game.service'
 import { MatesServices } from '../../../mates-commons/mates-game.service'
 
@@ -19,9 +20,12 @@ export class GameMatesAppComponent {
   viewStatus:ViewStatus = ViewStatus.LOADING_LEVEL;
   gameDisplay:string = "block";
   gameOverType:models.GameOverType
-
+  toolbarConfig:ToolbarConfig
   ngOnInit(){
     console.log('game-view component')
+
+    this.toolbarConfig = new ToolbarConfig()
+
     this.gameInstance = this.currentGameInstance.getGameInstance()
     this.gameStatus.subjectLevel.subscribe(level => {
       console.log("new level", level);

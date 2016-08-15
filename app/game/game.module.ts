@@ -18,7 +18,7 @@ import { AnswerButtonsComponent } from './commons/answer-buttons.component'
 import { CounterComponent, CounterConfig } from './commons/counter.component'
 import { MathProblemExpression } from './commons/math-problem-expression.component'
 import { ToolbarComponent, ToolbarConfig } from './commons/toolbar.component'
-// import { GameInstance, GameProblem, GameLevel} from './models'
+
 
 @NgModule({
 
@@ -51,5 +51,8 @@ import { ToolbarComponent, ToolbarConfig } from './commons/toolbar.component'
   	GameStatusService, 
   	TimerService 
   ]
+
 })
-export class GameModule { }
+export class GameModule {
+
+}

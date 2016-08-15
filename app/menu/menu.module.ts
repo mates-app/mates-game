@@ -7,8 +7,6 @@ import { SelectGameComponent } from './select-game/select-game.component'
 import { GameMatesAppComponent } from './select-game/game-view/game-view.component'
 
 import { GameModule } from '../game/game.module'
-import { LoadingLevelComponent } from '../game/level-load/level-load.component'
-import { PlayingLevelComponent } from '../game/level-play/level-play.component'
 
 
 import { MdButtonModule } from '@angular2-material/button';
@@ -29,8 +27,6 @@ import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
   	MenuComponent, 
   	SelectGameComponent,
     GameMatesAppComponent,
-    // LoadingLevelComponent,
-    // PlayingLevelComponent
   ],
 
 })

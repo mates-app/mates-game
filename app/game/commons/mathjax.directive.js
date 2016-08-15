@@ -9,25 +9,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var mathjax_directive_1 = require('./mathjax.directive');
-var MathProblemExpression = (function () {
-    function MathProblemExpression() {
+var MathJaxDirective = (function () {
+    function MathJaxDirective(el) {
+        this.el = el;
     }
+    MathJaxDirective.prototype.ngOnChanges = function () {
+        this.el.nativeElement.innerHTML = this.texExpression;
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub, this.el.nativeElement]);
+    };
     __decorate([
-        core_1.Input(), 
+        core_1.Input('MathJax'), 
         __metadata('design:type', String)
-    ], MathProblemExpression.prototype, "problemExpression", void 0);
-    MathProblemExpression = __decorate([
-        core_1.Component({
-            selector: 'math-problem-expression',
-            template: "\n  <div style=\"margin-top: -10px\">\n\t<h3 [MathJax]=\"'$$'+problemExpression+'$$'\"></h3>\n  </div>\n  ",
-            directives: [
-                mathjax_directive_1.MathJaxDirective
-            ]
+    ], MathJaxDirective.prototype, "texExpression", void 0);
+    MathJaxDirective = __decorate([
+        core_1.Directive({
+            selector: '[MathJax]'
         }), 
-        __metadata('design:paramtypes', [])
-    ], MathProblemExpression);
-    return MathProblemExpression;
+        __metadata('design:paramtypes', [core_1.ElementRef])
+    ], MathJaxDirective);
+    return MathJaxDirective;
 }());
-exports.MathProblemExpression = MathProblemExpression;
-//# sourceMappingURL=math-problem-expression.component.js.map
+exports.MathJaxDirective = MathJaxDirective;
+//# sourceMappingURL=mathjax.directive.js.map

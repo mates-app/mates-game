@@ -10,8 +10,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var toolbar_component_1 = require('../commons/toolbar.component');
-var answer_buttons_component_1 = require('../commons/answer-buttons.component');
-var math_problem_expression_component_1 = require('../commons/math-problem-expression.component');
 var timer_service_1 = require('../timer.service');
 var game_status_service_1 = require('../game-status.service');
 var models_1 = require('../../models');
@@ -22,6 +20,9 @@ var PlayingLevelComponent = (function () {
         this.gameStatus = gameStatus;
         this.isCorrect = new core_1.EventEmitter();
     }
+    PlayingLevelComponent.prototype.printProblem = function () {
+        return JSON.stringify(this.gameLevel);
+    };
     PlayingLevelComponent.prototype.processAnswer = function (answer) {
         var corrects = this.gameProblem.correctAnswer;
         if (corrects.some(function (correct) { return correct == answer; })) {
@@ -64,11 +65,7 @@ var PlayingLevelComponent = (function () {
             selector: 'level-play',
             templateUrl: 'level-play.component.html',
             styleUrls: ['level-play.component.css'],
-            directives: [
-                answer_buttons_component_1.AnswerButtonsComponent,
-                math_problem_expression_component_1.MathProblemExpression,
-                toolbar_component_1.ToolbarComponent
-            ]
+            directives: []
         }), 
         __metadata('design:paramtypes', [timer_service_1.TimerService, game_status_service_1.GameStatusService])
     ], PlayingLevelComponent);

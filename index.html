@@ -12,11 +12,79 @@
     <script src="node_modules/zone.js/dist/zone.js"></script>
     <script src="node_modules/reflect-metadata/Reflect.js"></script>
     <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script type="text/javascript" src="node_modules/mathjax/MathJax.js?config=TeX-AMS_CHTML"> </script>
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+
     <!-- 2. Configure SystemJS -->
     <script src="systemjs.config.js"></script>
     <script>
       System.import('app').catch(function(err){ console.error(err); });
     </script>
+
+
+<style type="text/css">
+  body{
+    background-color: #F76464;
+    height: 100%;
+  }
+
+  md-icon {
+     background-repeat: no-repeat;
+     display: inline-block;
+     fill: currentColor;
+     height: 24px;
+     width: 24px;
+  }
+
+
+  /* fallback */
+  @font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url('fonts/gm.eot');
+    src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url(fonts/gm.woff2) format('woff2'),
+    url(fonts/gm.woff) format('woff'),
+    url(fonts/gm.ttf) format('truetype')
+
+  }
+
+  /*  font-family: 'Material Icons';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v16/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+  */
+  .material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: 'liga';
+    text-rendering: optimizeLegibility;
+
+  }
+
+
+</style>
+
+
+
+    
   </head>
   <!-- 3. Display the application -->
   <body>

@@ -13,22 +13,29 @@ var common_1 = require('@angular/common');
 var counter_component_1 = require('./counter.component');
 var game_status_service_1 = require('../game-status.service');
 var timer_service_1 = require('../timer.service');
+var icon_1 = require('@angular2-material/icon');
 var ToolbarComponent = (function () {
-    function ToolbarComponent(gameStatus, timerService) {
+    function ToolbarComponent(gameStatus, timerService, mdIconRegistry) {
         this.gameStatus = gameStatus;
         this.timerService = timerService;
+        this.mdIconRegistry = mdIconRegistry;
         this.config = new ToolbarConfig();
+        mdIconRegistry
+            .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+            .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+            .registerFontClassAlias('fontawesome', 'fa');
     }
     ;
     ToolbarComponent.prototype.ngOnInit = function () {
+        var _this = this;
         console.log("on init toolbar");
-        // this.config.timerCounter.setObservableValue(this.timerService.gameTimer.timeObservable);
-        // this.config.extraTimeCounter.setObservableValue(this.timerService.extraTimer.timeObservable);
-        // this.timerService.extraTimer.timeObservable.subscribe(value => this.config.showExtras = value > 0);
-        // this.config.livesCounter.value = this.gameStatus.lives;
-        // this.config.scoreCounter.setObservableValue(this.gameStatus.subjectScore);
-        // this.config.livesCounter.setObservableValue(this.gameStatus.subjectLives);
-        // this.config.levelCounter.setObservableValue(this.gameStatus.subjectLevel);
+        this.config.timerCounter.setObservableValue(this.timerService.gameTimer.timeObservable);
+        this.config.extraTimeCounter.setObservableValue(this.timerService.extraTimer.timeObservable);
+        this.timerService.extraTimer.timeObservable.subscribe(function (value) { return _this.config.showExtras = value > 0; });
+        this.config.livesCounter.value = this.gameStatus.lives;
+        this.config.scoreCounter.setObservableValue(this.gameStatus.subjectScore);
+        this.config.livesCounter.setObservableValue(this.gameStatus.subjectLives);
+        this.config.levelCounter.setObservableValue(this.gameStatus.subjectLevel);
     };
     __decorate([
         core_1.Input(), 
@@ -43,9 +50,10 @@ var ToolbarComponent = (function () {
             directives: [
                 counter_component_1.CounterComponent,
                 common_1.NgClass
-            ]
+            ],
+            viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [game_status_service_1.GameStatusService, timer_service_1.TimerService])
+        __metadata('design:paramtypes', [game_status_service_1.GameStatusService, timer_service_1.TimerService, icon_1.MdIconRegistry])
     ], ToolbarComponent);
     return ToolbarComponent;
 }());

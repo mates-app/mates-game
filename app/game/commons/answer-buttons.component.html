@@ -1,7 +1,9 @@
-<!-- <button 
-  md-raised-button class="answer-button "
-  *ngIf="answers !== null"
-  *ngFor="let answer of answers"
-  (click)="sendAnswer(answer)" >
-</button>
-[MathJax]="'$'+answer+'$'" --> 
+
+<div *ngIf="answers !== null">
+	<button 
+	  md-raised-button class="answer-button "
+	  *ngFor="let answer of answers"
+	  (click)="sendAnswer(answer)" 
+	  [MathJax]="'$'+answer+'$'" >
+	</button>
+</div>

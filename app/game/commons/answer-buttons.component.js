@@ -12,7 +12,7 @@ var core_1 = require('@angular/core');
 var common_1 = require('@angular/common');
 var http_1 = require('@angular/http');
 var counter_component_1 = require('./counter.component');
-// import {MathJaxDirective} from '../directives/mathjax.directive';
+var mathjax_directive_1 = require('./mathjax.directive');
 var AnswerButtonsComponent = (function () {
     function AnswerButtonsComponent() {
         this.answers = new Array();
@@ -37,6 +37,7 @@ var AnswerButtonsComponent = (function () {
             templateUrl: 'answer-buttons.component.html',
             styleUrls: ['answer-buttons.component.css'],
             directives: [counter_component_1.CounterComponent, common_1.NgClass,
+                mathjax_directive_1.MathJaxDirective
             ],
             providers: [http_1.HTTP_PROVIDERS],
         }), 

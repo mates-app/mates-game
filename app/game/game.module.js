@@ -24,7 +24,6 @@ var answer_buttons_component_1 = require('./commons/answer-buttons.component');
 var counter_component_1 = require('./commons/counter.component');
 var math_problem_expression_component_1 = require('./commons/math-problem-expression.component');
 var toolbar_component_1 = require('./commons/toolbar.component');
-// import { GameInstance, GameProblem, GameLevel} from './models'
 var GameModule = (function () {
     function GameModule() {
     }
