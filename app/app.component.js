@@ -18,11 +18,14 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'mates-app',
-            template: "\n  <h1>{{title}}</h1>\n  <a routerLink=\"/login\">Login</a>\n  <a routerLink=\"menu\">Menu</a>\n  <router-outlet></router-outlet>\n"
+            template: "\n  <router-outlet></router-outlet>\n"
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
     return AppComponent;
 }());
 exports.AppComponent = AppComponent;
+// <h1>{{title}}</h1>
+//   <a routerLink="/login">Login</a>
+//   <a routerLink="menu">Menu</a>
 //# sourceMappingURL=app.component.js.map

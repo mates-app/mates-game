@@ -6,10 +6,10 @@ import { Component} from '@angular/core';
 @Component({
   selector: 'menu',
   template: `
-  <h1>Menu</h1>
   <router-outlet></router-outlet>
   `
+
 })
 export class MenuComponent {}
-
+  // <h1>Menu</h1>
 

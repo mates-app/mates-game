@@ -18,11 +18,12 @@ var MenuOptionsComponent = (function () {
     MenuOptionsComponent = __decorate([
         core_1.Component({
             selector: 'menu-options',
-            template: "<h1>Menu Options</h1>\n  \t  <a routerLink=\"select-game\">Select Game</a>\n  "
+            template: "\n  \t  <a routerLink=\"select-game\">Select Game</a>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], MenuOptionsComponent);
     return MenuOptionsComponent;
 }());
 exports.MenuOptionsComponent = MenuOptionsComponent;
+// <h1>Menu Options</h1> 
 //# sourceMappingURL=menu-options.component.js.map

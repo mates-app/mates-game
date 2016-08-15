@@ -18,11 +18,12 @@ var MenuComponent = (function () {
     MenuComponent = __decorate([
         core_1.Component({
             selector: 'menu',
-            template: "\n  <h1>Menu</h1>\n  <router-outlet></router-outlet>\n  "
+            template: "\n  <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], MenuComponent);
     return MenuComponent;
 }());
 exports.MenuComponent = MenuComponent;
+// <h1>Menu</h1>
 //# sourceMappingURL=menu.component.js.map

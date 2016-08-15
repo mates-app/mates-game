@@ -6,14 +6,14 @@ import { Component} from '@angular/core';
 @Component({
   selector: 'mates-app',
   template: `
-  <h1>{{title}}</h1>
-  <a routerLink="/login">Login</a>
-  <a routerLink="menu">Menu</a>
   <router-outlet></router-outlet>
 `
 
 })
 export class AppComponent {}
 
-
+// <h1>{{title}}</h1>
+//   <a routerLink="/login">Login</a>
+//   <a routerLink="menu">Menu</a>
+  
 	
