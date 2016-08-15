@@ -11,6 +11,9 @@ var loginRoutes = [
                 path: 'signup',
                 component: signup_component_1.SignUpComponent
             }, {
+                path: 'signin',
+                component: signin_component_1.SignInComponent
+            }, {
                 path: '',
                 component: signin_component_1.SignInComponent
             }

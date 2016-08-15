@@ -17,8 +17,10 @@ var SignInComponent = (function () {
     }
     SignInComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'signup',
-            template: "\n  \t  <h1>Sign In</h1>\n\t  \n  "
+            templateUrl: 'signin.component.html',
+            styleUrls: ['signin.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], SignInComponent);

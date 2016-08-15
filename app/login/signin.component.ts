@@ -3,12 +3,12 @@
  */
 import { Component} from '@angular/core';
 
+
 @Component({
+  moduleId : module.id,
   selector: 'signup',
-  template: `
-  	  <h1>Sign In</h1>
-	  
-  `
+  templateUrl: 'signin.component.html',
+  styleUrls: ['signin.component.css']
 })
 export class SignInComponent {}
 

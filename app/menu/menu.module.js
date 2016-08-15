@@ -12,14 +12,28 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var menu_routing_1 = require('./menu.routing');
 var menu_component_1 = require('./menu.component');
-var select_game_component_1 = require('./select-game.component');
+var select_game_component_1 = require('./select-game/select-game.component');
+var game_view_component_1 = require('./select-game/game-view/game-view.component');
+var game_module_1 = require('../game/game.module');
+var button_1 = require('@angular2-material/button');
+var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var MenuModule = (function () {
     function MenuModule() {
     }
     MenuModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, menu_routing_1.menuRouting],
-            declarations: [menu_component_1.MenuComponent, select_game_component_1.SelectGameComponent]
+            imports: [
+                platform_browser_1.BrowserModule,
+                menu_routing_1.menuRouting,
+                button_1.MdButtonModule,
+                mates_commons_module_1.MatesCommonsModule,
+                game_module_1.GameModule
+            ],
+            declarations: [
+                menu_component_1.MenuComponent,
+                select_game_component_1.SelectGameComponent,
+                game_view_component_1.GameMatesAppComponent,
+            ],
         }), 
         __metadata('design:paramtypes', [])
     ], MenuModule);

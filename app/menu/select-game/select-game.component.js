@@ -12,15 +12,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by josecullen on 17/07/16.
  */
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
+var mates_game_service_1 = require('../../mates-commons/mates-game.service');
+var current_game_service_1 = require('../../game/current-game.service');
 var SelectGameComponent = (function () {
-    function SelectGameComponent() {
+    function SelectGameComponent(matesServices, router, currentGameInstance) {
+        this.matesServices = matesServices;
+        this.router = router;
+        this.currentGameInstance = currentGameInstance;
     }
+    SelectGameComponent.prototype.ngOnInit = function () {
+        this.gameInstances = this.matesServices.getGameInstances();
+    };
+    SelectGameComponent.prototype.play = function (gameInstance) {
+        console.log('play', gameInstance);
+        this.currentGameInstance.setCurrentInstance(gameInstance);
+        var link = ['/game'];
+        this.router.navigate(link);
+    };
     SelectGameComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'select-game',
-            template: "\n  \t  <h1>Select Game</h1>\n  "
+            templateUrl: 'select-game.component.html',
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, current_game_service_1.CurrentGameInstance])
     ], SelectGameComponent);
     return SelectGameComponent;
 }());

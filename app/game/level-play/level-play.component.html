@@ -1,0 +1,31 @@
+<div class="flex-container">
+<header>
+  <game-toolbar
+    [config]="toolbarConfig"
+    ></game-toolbar>
+</header>
+
+<br>
+
+<section class="content">
+  <div *ngFor="let gameProblemm of gameLevel.gameProblems; let i = index"
+  [ngStyle]="{'display': displayProblem(i)}" style="margin: auto">
+  <math-problem-expression style="margin: auto"
+    [problemExpression]="gameProblemm.problemExpression">
+  </math-problem-expression>
+
+  </div>
+
+</section>
+
+<br>
+
+<footer
+  *ngFor="let gameProblemm of gameLevel.gameProblems; let i = index"
+  [ngStyle]="{'display': displayProblem(i)}">
+  <answer-buttons
+    [answers]="gameProblemm.answerOptions"
+    (answer)="processAnswer($event)">
+  </answer-buttons>
+</footer>
+</div>

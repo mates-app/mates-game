@@ -12,9 +12,12 @@ const loginRoutes: Routes = [
   		  path: 'signup',
       	component: SignUpComponent
       },{
-  		  path: '',
+  		  path: 'signin',
       	component: SignInComponent
-      }
+      },{
+        path: '',
+        component: SignInComponent
+    }
     ]
   }
 ];

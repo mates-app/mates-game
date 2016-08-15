@@ -18,7 +18,7 @@ var LoginComponent = (function () {
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'login',
-            template: "\n  \t  <h1>Login</h1>\n\t  <a routerLink=\"\">Signin</a>\n\t  <a routerLink=\"signup\">Signup</a>\n\t  <router-outlet></router-outlet>\n  "
+            template: "\n  \t  <h1>Login</h1>\n      <a routerLink=\"\">Signin</a>\n      <a routerLink=\"signup\">Signup</a>\n      <router-outlet></router-outlet>\n  "
         }), 
         __metadata('design:paramtypes', [])
     ], LoginComponent);

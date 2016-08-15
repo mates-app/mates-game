@@ -1,0 +1,22 @@
+<div class="flex-container" *ngIf="gameInstance != undefined">
+
+  <level-load
+    *ngIf="viewStatus == 2"
+    (onStart)="playLevel()" >
+  </level-load>
+
+  <level-play
+    [ngStyle]="{'display': gameDisplay}"
+    [gameProblem]="gameInstance.levels[gameStatus.level].gameProblems[gameStatus.problem]"
+    [gameLevel]="gameInstance.levels[gameStatus.level]"
+    (isCorrect)="gameStatus.onAnswer($event)"
+    [hidden]="viewStatus == 2 || viewStatus == 4">
+  </level-play>
+
+<!--   <game-over
+    [gameOverType]="gameOverType"
+    *ngIf="viewStatus == 4">
+  </game-over>
+ -->
+</div>
+
