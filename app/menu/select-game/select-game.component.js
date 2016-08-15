@@ -22,19 +22,25 @@ var SelectGameComponent = (function () {
         this.currentGameInstance = currentGameInstance;
     }
     SelectGameComponent.prototype.ngOnInit = function () {
-        this.gameInstances = this.matesServices.getGameInstances();
+        var _this = this;
+        this.matesServices.getGameConfigs().subscribe(function (gameConfigs) { return _this.gameConfigs = gameConfigs; }, function (error) { return console.log(error); });
     };
-    SelectGameComponent.prototype.play = function (gameInstance) {
-        console.log('play', gameInstance);
-        this.currentGameInstance.setCurrentInstance(gameInstance);
-        var link = ['/game'];
-        this.router.navigate(link);
+    SelectGameComponent.prototype.play = function (id) {
+        var _this = this;
+        console.log('play', id);
+        this.matesServices.getGameInstance(id).subscribe(function (gameInstance) {
+            _this.currentGameInstance.setCurrentInstance(gameInstance);
+            var link = ['/game'];
+            _this.router.navigate(link);
+        }, function (error) { return console.log(error); });
     };
     SelectGameComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
             selector: 'select-game',
             templateUrl: 'select-game.component.html',
+            styles: ["\n  \tbutton {\n  \t\twidth : 100%;\n  \t}"
+            ]
         }), 
         __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, current_game_service_1.CurrentGameInstance])
     ], SelectGameComponent);

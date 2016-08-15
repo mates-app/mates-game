@@ -22,7 +22,7 @@ export class GameProblem{
     public problemExpression:string = '' ,
   	public solvedExpression:string = '',
   	public answerOptions:string[] = [''],
-  	public correctAnswer:string[] = ['']
+  	public answer:string[] = ['']
   ){}
 }
 

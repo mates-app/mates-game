@@ -1,6 +1,12 @@
 import {Subject} from 'rxjs/Subject';
 import {Observable} from 'rxjs/Observable';
 
+export class GameConfig{
+  constructor(
+    public _id:string,
+    public name:string
+   ){}
+}
 
 export class GameInstance{
   constructor(
@@ -22,7 +28,7 @@ export class GameProblem{
     public problemExpression:string ,
   	public solvedExpression:string,
   	public answerOptions:string[],
-  	public correctAnswer:string[]
+  	public answer:string[]
   ){}
 }
 

@@ -9,9 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var Observable_1 = require('rxjs/Observable');
 var MatesServices = (function () {
-    function MatesServices() {
-        this.pathGameInstance = "http://localhost:10000/arithmetic/v1/instance/one?instanceId=576322f4af21d21adc4adabf&gameId=5762d2b63e68b5130b5fcd03";
+    function MatesServices(http) {
+        this.http = http;
+        this.pathGameInstance = "http://localhost:3000/v1/admin/game/";
+        this.pathGameConfigs = "http://localhost:3000/v1/admin/game-config";
+        // getGameInstance():GameInstance {
+        /*
+            return this.http.get(this.pathGameInstance)
+                .map(res => {
+                         console.log(res);
+                            return res;
+              });
+        */
+        //   return this.gameMock;
+        // }
         this.gameMock = {
             "instanceId": "576322f4af21d21adc4adabf",
             "gameId": "5762d2b63e68b5130b5fcd03",
@@ -420,22 +434,30 @@ var MatesServices = (function () {
             ]
         };
     }
-    MatesServices.prototype.getGameInstance = function () {
-        /*
-            return this.http.get(this.pathGameInstance)
-                .map(res => {
-                         console.log(res);
-                            return res;
-              });
-        */
-        return this.gameMock;
+    MatesServices.prototype.getGameInstance = function (id) {
+        return this.http.get(this.pathGameInstance + id)
+            .map(this.extractData)
+            .catch(this.handleError);
     };
-    MatesServices.prototype.getGameInstances = function () {
-        return [this.gameMock];
+    MatesServices.prototype.getGameConfigs = function () {
+        return this.http.get(this.pathGameConfigs)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    MatesServices.prototype.extractData = function (res) {
+        var body = res.json();
+        console.log('extractData', res, body);
+        return body || {};
+    };
+    MatesServices.prototype.handleError = function (error) {
+        var errMsg = (error.message) ? error.message :
+            error.status ? error.status + " - " + error.statusText : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable_1.Observable.throw(errMsg);
     };
     MatesServices = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], MatesServices);
     return MatesServices;
 }());

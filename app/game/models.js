@@ -20,15 +20,15 @@ var GameLevel = (function () {
 }());
 exports.GameLevel = GameLevel;
 var GameProblem = (function () {
-    function GameProblem(problemExpression, solvedExpression, answerOptions, correctAnswer) {
+    function GameProblem(problemExpression, solvedExpression, answerOptions, answer) {
         if (problemExpression === void 0) { problemExpression = ''; }
         if (solvedExpression === void 0) { solvedExpression = ''; }
         if (answerOptions === void 0) { answerOptions = ['']; }
-        if (correctAnswer === void 0) { correctAnswer = ['']; }
+        if (answer === void 0) { answer = ['']; }
         this.problemExpression = problemExpression;
         this.solvedExpression = solvedExpression;
         this.answerOptions = answerOptions;
-        this.correctAnswer = correctAnswer;
+        this.answer = answer;
     }
     return GameProblem;
 }());

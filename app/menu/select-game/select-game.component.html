@@ -1,1 +1,1 @@
-<button md-raised-button (click)="play(gameInstance)" *ngFor="let gameInstance of gameInstances">Jugar</button>
+<button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>

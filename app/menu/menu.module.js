@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var http_1 = require('@angular/http');
 var menu_routing_1 = require('./menu.routing');
 var menu_component_1 = require('./menu.component');
 var select_game_component_1 = require('./select-game/select-game.component');
@@ -25,6 +26,8 @@ var MenuModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 menu_routing_1.menuRouting,
+                http_1.HttpModule,
+                http_1.JsonpModule,
                 button_1.MdButtonModule,
                 mates_commons_module_1.MatesCommonsModule,
                 game_module_1.GameModule

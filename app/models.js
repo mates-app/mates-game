@@ -1,4 +1,12 @@
 "use strict";
+var GameConfig = (function () {
+    function GameConfig(_id, name) {
+        this._id = _id;
+        this.name = name;
+    }
+    return GameConfig;
+}());
+exports.GameConfig = GameConfig;
 var GameInstance = (function () {
     function GameInstance(instanceId, gameId, levels) {
         if (instanceId === void 0) { instanceId = ""; }
@@ -20,11 +28,11 @@ var GameLevel = (function () {
 }());
 exports.GameLevel = GameLevel;
 var GameProblem = (function () {
-    function GameProblem(problemExpression, solvedExpression, answerOptions, correctAnswer) {
+    function GameProblem(problemExpression, solvedExpression, answerOptions, answer) {
         this.problemExpression = problemExpression;
         this.solvedExpression = solvedExpression;
         this.answerOptions = answerOptions;
-        this.correctAnswer = correctAnswer;
+        this.answer = answer;
     }
     return GameProblem;
 }());

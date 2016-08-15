@@ -56,7 +56,7 @@ export class GameMatesAppComponent {
   }
 
   startGame(){
-    this.gameInstance = this.matesServices.getGameInstance();
+    // this.gameInstance = this.matesServices.getGameInstance();
     this.gameStatus.startGame(this.gameInstance.levels);
 
     this.loadingLevel();

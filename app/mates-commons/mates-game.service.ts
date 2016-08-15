@@ -1,16 +1,42 @@
-import {Injectable} from '@angular/core';
-import {Headers, RequestOptions} from '@angular/http';
-import {Observable}     from 'rxjs/Observable';
-
-import {GameInstance} from '../models';
+import { Injectable } from '@angular/core';
+import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { GameInstance, GameConfig } from '../models';
 
 @Injectable()
 export class MatesServices{
-  private pathGameInstance: string = "http://localhost:10000/arithmetic/v1/instance/one?instanceId=576322f4af21d21adc4adabf&gameId=5762d2b63e68b5130b5fcd03";
+  private pathGameInstance: string = "http://localhost:3000/v1/admin/game/";
+  private pathGameConfigs: string = "http://localhost:3000/v1/admin/game-config";
+  constructor(private http: Http) { }
 
-  constructor() { }
+  getGameInstance(id:string): Observable<GameInstance> {
+    return this.http.get(this.pathGameInstance+id)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
 
-  getGameInstance():GameInstance {
+  getGameConfigs():Observable<GameConfig[]>{
+     return this.http.get(this.pathGameConfigs)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+
+  private extractData(res: Response) {
+    let body = res.json();
+    console.log('extractData', res, body)
+    return body || { };
+  }
+
+  private handleError (error: any) {
+    let errMsg = (error.message) ? error.message :
+      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    console.error(errMsg); // log to console instead
+    return Observable.throw(errMsg);
+  }
+
+
+  // getGameInstance():GameInstance {
 /*
     return this.http.get(this.pathGameInstance)
     	.map(res => {
@@ -18,12 +44,9 @@ export class MatesServices{
 			        return res;
       });
 */
-    return this.gameMock;
-  }
+  //   return this.gameMock;
+  // }
 
-  getGameInstances():Array<GameInstance>{
-    return [this.gameMock];
-  }
 
   gameMock:GameInstance = {
   "instanceId": "576322f4af21d21adc4adabf",

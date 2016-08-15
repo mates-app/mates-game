@@ -39,7 +39,7 @@ export class PlayingLevelComponent {
   }
 
   processAnswer(answer:string){
-    let corrects = this.gameProblem.correctAnswer;
+    let corrects = this.gameProblem.answer;
     
     if(corrects.some(correct => correct == answer)){
       corrects.splice(corrects.findIndex(correct => correct == answer), 1);

@@ -47,7 +47,7 @@ var GameMatesAppComponent = (function () {
         this.startGame();
     };
     GameMatesAppComponent.prototype.startGame = function () {
-        this.gameInstance = this.matesServices.getGameInstance();
+        // this.gameInstance = this.matesServices.getGameInstance();
         this.gameStatus.startGame(this.gameInstance.levels);
         this.loadingLevel();
         console.log(this.gameInstance);

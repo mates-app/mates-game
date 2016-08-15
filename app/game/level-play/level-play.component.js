@@ -24,7 +24,7 @@ var PlayingLevelComponent = (function () {
         return JSON.stringify(this.gameLevel);
     };
     PlayingLevelComponent.prototype.processAnswer = function (answer) {
-        var corrects = this.gameProblem.correctAnswer;
+        var corrects = this.gameProblem.answer;
         if (corrects.some(function (correct) { return correct == answer; })) {
             corrects.splice(corrects.findIndex(function (correct) { return correct == answer; }), 1);
             if (corrects.length == 0) {
