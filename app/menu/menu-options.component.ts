@@ -6,9 +6,8 @@ import { Component} from '@angular/core';
 @Component({
   selector: 'menu-options',
   template: `
-  	  <a routerLink="select-game">Select Game</a>
+  	<h1>Menú</h1>
+  	<a routerLink="select-game">Select Game</a>
   `
 })
 export class MenuOptionsComponent {}
-
-// <h1>Menu Options</h1>

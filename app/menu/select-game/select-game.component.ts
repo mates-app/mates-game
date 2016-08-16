@@ -6,16 +6,15 @@ import { Router } from '@angular/router';
 import { MatesServices } from '../../mates-commons/mates-game.service'
 import { GameInstance, GameConfig } from '../../models'
 import { CurrentGameInstance } from '../../game/current-game.service'
+import { MdIconRegistry } from '@angular2-material/icon'
 
 @Component({
   moduleId: module.id,
   selector: 'select-game',
   templateUrl: 'select-game.component.html',
-  styles: [`
-  	button {
-  		width : 100%;
-  	}`
-  ]
+  styleUrls: ['select-game.component.css' ],
+  viewProviders: [MdIconRegistry]
+
 })
 export class SelectGameComponent implements OnInit {
 	gameConfigs:Array<GameConfig>;
@@ -26,8 +25,15 @@ export class SelectGameComponent implements OnInit {
 	constructor(
 		private matesServices : MatesServices,
 		private router : Router,
-		private currentGameInstance : CurrentGameInstance
-	){}
+		private currentGameInstance : CurrentGameInstance,
+		private mdIconRegistry:MdIconRegistry
+	){
+
+    	mdIconRegistry
+	        .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+	        .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+	        .registerFontClassAlias('fontawesome', 'fa');  
+	}
 
 	ngOnInit(){
 		this.matesServices.getGameConfigs().subscribe(

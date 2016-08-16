@@ -15,11 +15,17 @@ var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var mates_game_service_1 = require('../../mates-commons/mates-game.service');
 var current_game_service_1 = require('../../game/current-game.service');
+var icon_1 = require('@angular2-material/icon');
 var SelectGameComponent = (function () {
-    function SelectGameComponent(matesServices, router, currentGameInstance) {
+    function SelectGameComponent(matesServices, router, currentGameInstance, mdIconRegistry) {
         this.matesServices = matesServices;
         this.router = router;
         this.currentGameInstance = currentGameInstance;
+        this.mdIconRegistry = mdIconRegistry;
+        mdIconRegistry
+            .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+            .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+            .registerFontClassAlias('fontawesome', 'fa');
     }
     SelectGameComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -39,10 +45,10 @@ var SelectGameComponent = (function () {
             moduleId: module.id,
             selector: 'select-game',
             templateUrl: 'select-game.component.html',
-            styles: ["\n  \tbutton {\n  \t\twidth : 100%;\n  \t}"
-            ]
+            styleUrls: ['select-game.component.css'],
+            viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, current_game_service_1.CurrentGameInstance])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, current_game_service_1.CurrentGameInstance, icon_1.MdIconRegistry])
     ], SelectGameComponent);
     return SelectGameComponent;
 }());

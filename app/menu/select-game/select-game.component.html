@@ -1,1 +1,15 @@
+
+
+
+<md-toolbar>        
+    <md-button class="md-fab md-mini" aria-label="Favorite">
+	    <md-icon class="md-24" style="color:#921919;">stars</md-icon>
+    </md-button>
+  	<span>Elige el juego</span>
+</md-toolbar>
+
+
+
+
+
 <button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>

@@ -18,6 +18,8 @@ var game_view_component_1 = require('./select-game/game-view/game-view.component
 var game_over_component_1 = require('./select-game/game-over/game-over.component');
 var game_module_1 = require('../game/game.module');
 var button_1 = require('@angular2-material/button');
+var toolbar_1 = require('@angular2-material/toolbar');
+var icon_1 = require('@angular2-material/icon');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var MenuModule = (function () {
     function MenuModule() {
@@ -29,9 +31,11 @@ var MenuModule = (function () {
                 menu_routing_1.menuRouting,
                 http_1.HttpModule,
                 http_1.JsonpModule,
-                button_1.MdButtonModule,
                 mates_commons_module_1.MatesCommonsModule,
-                game_module_1.GameModule
+                game_module_1.GameModule,
+                button_1.MdButtonModule,
+                icon_1.MdIconModule,
+                toolbar_1.MdToolbarModule,
             ],
             declarations: [
                 menu_component_1.MenuComponent,
