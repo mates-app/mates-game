@@ -6,7 +6,7 @@ import { menuRouting } from './menu.routing'
 import { MenuComponent } from './menu.component'
 import { SelectGameComponent } from './select-game/select-game.component'
 import { GameMatesAppComponent } from './select-game/game-view/game-view.component'
-
+import { GameOverComponent } from './select-game/game-over/game-over.component'
 import { GameModule } from '../game/game.module'
 
 import { MdButtonModule } from '@angular2-material/button';
@@ -29,6 +29,7 @@ import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
   	MenuComponent, 
   	SelectGameComponent,
     GameMatesAppComponent,
+    GameOverComponent
   ],
 
 })
