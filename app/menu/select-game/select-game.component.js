@@ -27,6 +27,11 @@ var SelectGameComponent = (function () {
             .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
             .registerFontClassAlias('fontawesome', 'fa');
     }
+    SelectGameComponent.prototype.menu = function () {
+        console.log('click');
+        var link = ['/menu'];
+        this.router.navigate(link);
+    };
     SelectGameComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.matesServices.getGameConfigs().subscribe(function (gameConfigs) { return _this.gameConfigs = gameConfigs; }, function (error) { return console.log(error); });

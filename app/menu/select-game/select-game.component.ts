@@ -35,6 +35,12 @@ export class SelectGameComponent implements OnInit {
 	        .registerFontClassAlias('fontawesome', 'fa');  
 	}
 
+	menu(){
+		console.log('click')
+		let link = ['/menu']
+	   	this.router.navigate(link)
+	}
+
 	ngOnInit(){
 		this.matesServices.getGameConfigs().subscribe(
                        gameConfigs => this.gameConfigs = gameConfigs,

@@ -5,8 +5,8 @@ import { GameInstance, GameConfig } from '../models';
 
 @Injectable()
 export class MatesServices{
-  private pathGameInstance: string = "http://localhost:3000/v1/admin/game/";
-  private pathGameConfigs: string = "http://localhost:3000/v1/admin/game-config";
+  private pathGameInstance: string = "http://"+location.hostname+":3000/v1/admin/game/"
+  private pathGameConfigs: string = "http://"+location.hostname+":3000/v1/admin/game-config";
   constructor(private http: Http) { }
 
   getGameInstance(id:string): Observable<GameInstance> {

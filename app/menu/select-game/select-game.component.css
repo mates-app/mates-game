@@ -2,7 +2,20 @@
 
 button {
   width: 100%;
+  margin-top: 3px;
+
+  /*margin-bottom: 3px;*/
 }
+
+span.title{
+  width: 100%
+}
+
+md-button{
+  text-align: right;
+}
+
+
 md-icon {
    background-repeat: no-repeat;
    display: inline-block;

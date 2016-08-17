@@ -14,8 +14,8 @@ var Observable_1 = require('rxjs/Observable');
 var MatesServices = (function () {
     function MatesServices(http) {
         this.http = http;
-        this.pathGameInstance = "http://localhost:3000/v1/admin/game/";
-        this.pathGameConfigs = "http://localhost:3000/v1/admin/game-config";
+        this.pathGameInstance = "http://" + location.hostname + ":3000/v1/admin/game/";
+        this.pathGameConfigs = "http://" + location.hostname + ":3000/v1/admin/game-config";
     }
     MatesServices.prototype.getGameInstance = function (id) {
         return this.http.get(this.pathGameInstance + id)
