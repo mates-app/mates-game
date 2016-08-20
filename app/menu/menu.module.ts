@@ -12,6 +12,7 @@ import { GameModule } from '../game/game.module'
 import { MdButtonModule } from '@angular2-material/button';
 import { MdToolbarModule } from '@angular2-material/toolbar'
 import { MdIconModule } from '@angular2-material/icon'
+import { MdListModule } from '@angular2-material/list'
 import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
 
 
@@ -28,6 +29,7 @@ import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
     MdButtonModule,    
     MdIconModule,
     MdToolbarModule,
+    MdListModule
   ],
   declarations: [ 
   	MenuComponent, 

@@ -20,6 +20,7 @@ var game_module_1 = require('../game/game.module');
 var button_1 = require('@angular2-material/button');
 var toolbar_1 = require('@angular2-material/toolbar');
 var icon_1 = require('@angular2-material/icon');
+var list_1 = require('@angular2-material/list');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var MenuModule = (function () {
     function MenuModule() {
@@ -36,6 +37,7 @@ var MenuModule = (function () {
                 button_1.MdButtonModule,
                 icon_1.MdIconModule,
                 toolbar_1.MdToolbarModule,
+                list_1.MdListModule
             ],
             declarations: [
                 menu_component_1.MenuComponent,

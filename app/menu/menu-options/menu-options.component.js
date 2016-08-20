@@ -12,13 +12,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by josecullen on 17/07/16.
  */
 var core_1 = require('@angular/core');
+var list_1 = require('@angular2-material/list');
 var MenuOptionsComponent = (function () {
     function MenuOptionsComponent() {
     }
     MenuOptionsComponent = __decorate([
         core_1.Component({
+            moduleId: module.id,
             selector: 'menu-options',
-            template: "\n  \t<h1>Men\u00FA</h1>\n  \t<a routerLink=\"select-game\">Select Game</a>\n  "
+            templateUrl: 'menu-options.component.html',
+            directives: [list_1.MD_LIST_DIRECTIVES],
+            styleUrls: ['../menu.component.css']
         }), 
         __metadata('design:paramtypes', [])
     ], MenuOptionsComponent);

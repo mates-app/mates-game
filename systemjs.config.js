@@ -33,7 +33,8 @@
       'toolbar',
       'input',
       'icon',
-      'grid-list'
+      'grid-list',
+      'list'
     ];
 
     materialPkgs.forEach((pkg) => {
