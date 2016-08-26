@@ -35,6 +35,10 @@ var GameMatesAppComponent = (function () {
             _this.loadingLevel();
         });
         this.gameStatus.subjectGameOver.subscribe(function (gameOverType) { return _this.gameOver(gameOverType); });
+        this.gameStatus.subjectScore
+            .subscribe(function (score) {
+            return _this.matesServices.pushScore(_this.gameInstance.gameId, "57bccba3ee005b59204559a4", score);
+        });
         this.startGame();
     };
     ;

@@ -16,6 +16,7 @@ var MatesServices = (function () {
         this.http = http;
         this.pathGameInstance = "http://" + location.hostname + ":3000/v1/admin/game/";
         this.pathGameConfigs = "http://" + location.hostname + ":3000/v1/admin/game-config";
+        this.pathPushScore = "http://" + location.hostname + ":3000/game-score/push-score";
     }
     MatesServices.prototype.getGameInstance = function (id) {
         return this.http.get(this.pathGameInstance + id)
@@ -26,6 +27,19 @@ var MatesServices = (function () {
         return this.http.get(this.pathGameConfigs)
             .map(this.extractData)
             .catch(this.handleError);
+    };
+    MatesServices.prototype.pushScore = function (gameId, userId, scoreToAdd) {
+        var body = JSON.stringify({
+            gameId: gameId,
+            userId: userId,
+            scoreToAdd: scoreToAdd
+        });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        this.http
+            .put(this.pathPushScore, body, options)
+            .map(function (res) { return res; })
+            .subscribe(function (res) { return console.log(res); });
     };
     MatesServices.prototype.extractData = function (res) {
         var body = res.json();

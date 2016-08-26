@@ -33,6 +33,15 @@ export class GameMatesAppComponent {
     } );
 
     this.gameStatus.subjectGameOver.subscribe(gameOverType => this.gameOver(gameOverType))
+    this.gameStatus.subjectScore
+        .subscribe(
+          score => 
+            this.matesServices.pushScore(
+            this.gameInstance.gameId, 
+            "57bccba3ee005b59204559a4",
+            score)
+          )
+
 
     this.startGame();
   }
@@ -88,7 +97,6 @@ export class GameMatesAppComponent {
     this.gameDisplay = "none";
     this.appRef.tick()
   }
-
 
 }
 

@@ -6,7 +6,8 @@ import { GameInstance, GameConfig } from '../models';
 @Injectable()
 export class MatesServices{
   private pathGameInstance: string = "http://"+location.hostname+":3000/v1/admin/game/"
-  private pathGameConfigs: string = "http://"+location.hostname+":3000/v1/admin/game-config";
+  private pathGameConfigs: string = `http://${location.hostname}:3000/v1/admin/game-config`;
+  private pathPushScore: string = `http://${location.hostname}:3000/game-score/push-score`;
   constructor(private http: Http) { }
 
   getGameInstance(id:string): Observable<GameInstance> {
@@ -19,6 +20,22 @@ export class MatesServices{
      return this.http.get(this.pathGameConfigs)
                     .map(this.extractData)
                     .catch(this.handleError);
+  }
+
+  pushScore(gameId:string, userId:string, scoreToAdd:number){
+    let body = JSON.stringify({ 
+      gameId : gameId,
+      userId : userId,
+      scoreToAdd : scoreToAdd
+    })
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    
+    this.http
+      .put(this.pathPushScore, body, options)
+      .map(res => res )
+      .subscribe(res => console.log(res))
   }
 
 
