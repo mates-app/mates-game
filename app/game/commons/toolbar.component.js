@@ -14,6 +14,7 @@ var counter_component_1 = require('./counter.component');
 var game_status_service_1 = require('../game-status.service');
 var timer_service_1 = require('../timer.service');
 var icon_1 = require('@angular2-material/icon');
+var popup_component_1 = require("./popup.component");
 var ToolbarComponent = (function () {
     function ToolbarComponent(gameStatus, timerService, mdIconRegistry) {
         this.gameStatus = gameStatus;
@@ -33,7 +34,16 @@ var ToolbarComponent = (function () {
         this.config.extraTimeCounter.setObservableValue(this.timerService.extraTimer.timeObservable);
         this.timerService.extraTimer.timeObservable.subscribe(function (value) { return _this.config.showExtras = value > 0; });
         this.config.livesCounter.value = this.gameStatus.lives;
-        this.config.scoreCounter.setObservableValue(this.gameStatus.subjectScore);
+        this.gameStatus.subjectScore.subscribe(function (scoreToAdd) {
+            _this.config.scoreCounter.value += scoreToAdd.allScore();
+            _this.popupScore.message = "Extra! " + scoreToAdd.extra + "pts";
+            _this.popupScore.toggleStatus();
+        });
+        this.timerService.gameTimer.plusTimeSubject.subscribe(function (plus) {
+            _this.popupTime.message = "Extra! " + plus + "s";
+            _this.popupTime.toggleStatus();
+        });
+        // this.config.scoreCounter.setObservableValue(this.gameStatus.subjectScore);
         this.config.livesCounter.setObservableValue(this.gameStatus.subjectLives);
         this.config.levelCounter.setObservableValue(this.gameStatus.subjectLevel);
     };
@@ -41,6 +51,14 @@ var ToolbarComponent = (function () {
         core_1.Input(), 
         __metadata('design:type', ToolbarConfig)
     ], ToolbarComponent.prototype, "config", void 0);
+    __decorate([
+        core_1.ViewChild('popupScore'), 
+        __metadata('design:type', popup_component_1.PopupComponent)
+    ], ToolbarComponent.prototype, "popupScore", void 0);
+    __decorate([
+        core_1.ViewChild('popupTime'), 
+        __metadata('design:type', popup_component_1.PopupComponent)
+    ], ToolbarComponent.prototype, "popupTime", void 0);
     ToolbarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -49,7 +67,8 @@ var ToolbarComponent = (function () {
             styleUrls: ['toolbar.component.css'],
             directives: [
                 counter_component_1.CounterComponent,
-                common_1.NgClass
+                common_1.NgClass,
+                popup_component_1.PopupComponent
             ],
             viewProviders: [icon_1.MdIconRegistry]
         }), 

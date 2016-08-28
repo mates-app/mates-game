@@ -1,0 +1,14 @@
+.popup{
+  height: 50px;
+  line-height: 50px;
+  width: 100px;
+  background-color: #000 !important;
+  font-size: 18px;
+  font-style: oblique;
+  color: #FFF;
+  text-align: center;
+  margin-top: 10px;
+  margin-left: -30px;
+  position: absolute;
+  z-index: 10;
+}

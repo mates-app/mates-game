@@ -18,11 +18,12 @@ import { AnswerButtonsComponent } from './commons/answer-buttons.component'
 import { CounterComponent, CounterConfig } from './commons/counter.component'
 import { MathProblemExpression } from './commons/math-problem-expression.component'
 import { ToolbarComponent, ToolbarConfig } from './commons/toolbar.component'
+import { PopupComponent } from './commons/popup.component'
 
 
 @NgModule({
 
-  imports: [ 
+  imports: [
   	BrowserModule,
   	MdCardModule,
   	MdButtonModule,
@@ -31,25 +32,26 @@ import { ToolbarComponent, ToolbarConfig } from './commons/toolbar.component'
   	MdToolbarModule,
   ],
   exports : [
-    LoadingLevelComponent, 
+    LoadingLevelComponent,
     PlayingLevelComponent,
     AnswerButtonsComponent,
     CounterComponent,
     MathProblemExpression,
     ToolbarComponent
   ],
-  declarations: [ 
-  	LoadingLevelComponent, 
+  declarations: [
+  	LoadingLevelComponent,
   	PlayingLevelComponent,
   	AnswerButtonsComponent,
   	CounterComponent,
   	MathProblemExpression,
-  	ToolbarComponent
+  	ToolbarComponent,
+    PopupComponent
   ],
-  providers : [ 
-  	CurrentGameInstance, 
-  	GameStatusService, 
-  	TimerService 
+  providers : [
+  	CurrentGameInstance,
+  	GameStatusService,
+  	TimerService
   ]
 
 })

@@ -51,6 +51,17 @@ export class ExtraScore{
 
 }
 
+export class Score{
+  constructor(
+    public base:number = 0,
+    public extra:number = 0
+  ){}
+
+  allScore():number{
+    return this.base + this.extra
+  }
+}
+
 export enum GameOverType{
   TIME, LEVELS, LIVES
 }

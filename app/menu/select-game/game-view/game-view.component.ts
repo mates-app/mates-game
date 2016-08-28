@@ -35,11 +35,11 @@ export class GameMatesAppComponent {
     this.gameStatus.subjectGameOver.subscribe(gameOverType => this.gameOver(gameOverType))
     this.gameStatus.subjectScore
         .subscribe(
-          score => 
+          score =>
             this.matesServices.pushScore(
-            this.gameInstance.gameId, 
+            this.gameInstance.gameId,
             "57bccba3ee005b59204559a4",
-            score)
+            score.allScore())
           )
 
 

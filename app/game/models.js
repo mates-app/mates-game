@@ -57,6 +57,19 @@ var ExtraScore = (function () {
     return ExtraScore;
 }());
 exports.ExtraScore = ExtraScore;
+var Score = (function () {
+    function Score(base, extra) {
+        if (base === void 0) { base = 0; }
+        if (extra === void 0) { extra = 0; }
+        this.base = base;
+        this.extra = extra;
+    }
+    Score.prototype.allScore = function () {
+        return this.base + this.extra;
+    };
+    return Score;
+}());
+exports.Score = Score;
 (function (GameOverType) {
     GameOverType[GameOverType["TIME"] = 0] = "TIME";
     GameOverType[GameOverType["LEVELS"] = 1] = "LEVELS";

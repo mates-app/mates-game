@@ -24,6 +24,7 @@ var answer_buttons_component_1 = require('./commons/answer-buttons.component');
 var counter_component_1 = require('./commons/counter.component');
 var math_problem_expression_component_1 = require('./commons/math-problem-expression.component');
 var toolbar_component_1 = require('./commons/toolbar.component');
+var popup_component_1 = require('./commons/popup.component');
 var GameModule = (function () {
     function GameModule() {
     }
@@ -51,7 +52,8 @@ var GameModule = (function () {
                 answer_buttons_component_1.AnswerButtonsComponent,
                 counter_component_1.CounterComponent,
                 math_problem_expression_component_1.MathProblemExpression,
-                toolbar_component_1.ToolbarComponent
+                toolbar_component_1.ToolbarComponent,
+                popup_component_1.PopupComponent
             ],
             providers: [
                 current_game_service_1.CurrentGameInstance,

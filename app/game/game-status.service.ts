@@ -1,13 +1,13 @@
 import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {TimerService} from './timer.service';
-import * as models from '../models';
+import * as models from './models';
 
 @Injectable()
 export class GameStatusService{
   private gameLevels:Array<models.GameLevel>;
-  public subjectScore:Subject<number> = new Subject<number>();
+  // public subjectScore:Subject<number> = new Subject<number>();
+  public subjectScore:Subject<models.Score> = new Subject<models.Score>();
   public subjectLevel:Subject<number> = new Subject<number>();
   public subjectLives:Subject<number> = new Subject<number>();
   public subjectProblem:Subject<number> = new Subject<number>();
@@ -67,9 +67,10 @@ export class GameStatusService{
               ((initial, actual) => initial.thresholdTime < actual.thresholdTime ? initial : actual),
               new models.ExtraScore()
             );
-    scoreToAdd += extras.extraScore;
+    // scoreToAdd += extras.extraScore;
     this.timer.gameTimer.plusTime(extras.extraTime);
-    this.subjectScore.next(this.score += scoreToAdd);
+    // this.subjectScore.next(this.score += scoreToAdd);
+    this.subjectScore.next(new models.Score(scoreToAdd, extras.extraScore));
   }
 
   nextProblem(){

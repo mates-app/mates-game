@@ -11,11 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var Subject_1 = require('rxjs/Subject');
 var timer_service_1 = require('./timer.service');
-var models = require('../models');
+var models = require('./models');
 var GameStatusService = (function () {
     function GameStatusService(timer) {
         var _this = this;
         this.timer = timer;
+        // public subjectScore:Subject<number> = new Subject<number>();
         this.subjectScore = new Subject_1.Subject();
         this.subjectLevel = new Subject_1.Subject();
         this.subjectLives = new Subject_1.Subject();
@@ -65,9 +66,10 @@ var GameStatusService = (function () {
         var extras = scoreConfig.extras
             .filter(function (extra) { return _this.timer.problemTimer.time <= extra.thresholdTime; })
             .reduce((function (initial, actual) { return initial.thresholdTime < actual.thresholdTime ? initial : actual; }), new models.ExtraScore());
-        scoreToAdd += extras.extraScore;
+        // scoreToAdd += extras.extraScore;
         this.timer.gameTimer.plusTime(extras.extraTime);
-        this.subjectScore.next(this.score += scoreToAdd);
+        // this.subjectScore.next(this.score += scoreToAdd);
+        this.subjectScore.next(new models.Score(scoreToAdd, extras.extraScore));
     };
     GameStatusService.prototype.nextProblem = function () {
         if (this.gameLevels[this.level].gameProblems.length - 1 > this.problem) {

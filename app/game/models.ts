@@ -42,7 +42,17 @@ export class ExtraScore{
     public extraScore:number = 0,
     public thresholdTime:number = 100
   ){}
+}
 
+export class Score{
+  constructor(
+    public base:number = 0,
+    public extra:number = 0
+  ){}
+
+  allScore():number{
+    return this.base + this.extra
+  }
 }
 
 export enum GameOverType{

@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
+import {Observer} from 'rxjs/Observer'
 import {Subject} from 'rxjs/Subject';
 
 
@@ -38,7 +39,7 @@ export class TimerService{
     }else{
       this.problemTimer.stop();
     }
-    this.problemTimer.restart();    
+    this.problemTimer.restart();
   }
 
 }
@@ -50,6 +51,7 @@ class Timer{
   private _isActive:boolean;
 
   public timeObservable:Subject<number> = new Subject<number>();
+  public plusTimeSubject:Subject<number> = new Subject<number>();
 
   constructor(
     public initialValue:number,
@@ -85,6 +87,7 @@ class Timer{
   }
 
   public plusTime(plus:number){
+    this.plusTimeSubject.next(plus)
     this.timeObservable.next(this._time += plus);
   }
 

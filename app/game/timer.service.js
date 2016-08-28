@@ -53,6 +53,7 @@ var Timer = (function () {
         this.initialValue = initialValue;
         this.countdown = countdown;
         this.timeObservable = new Subject_1.Subject();
+        this.plusTimeSubject = new Subject_1.Subject();
         this.restart();
     }
     Object.defineProperty(Timer.prototype, "time", {
@@ -82,6 +83,7 @@ var Timer = (function () {
         return this._isActive;
     };
     Timer.prototype.plusTime = function (plus) {
+        this.plusTimeSubject.next(plus);
         this.timeObservable.next(this._time += plus);
     };
     return Timer;

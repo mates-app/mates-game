@@ -13,7 +13,6 @@ var toolbar_component_1 = require('../commons/toolbar.component');
 var timer_service_1 = require('../timer.service');
 var game_status_service_1 = require('../game-status.service');
 var models_1 = require('../../models');
-// import {MathJaxDirective} from '../../../directives/mathjax.directive';
 var PlayingLevelComponent = (function () {
     function PlayingLevelComponent(timerService, gameStatus) {
         this.timerService = timerService;
@@ -64,8 +63,7 @@ var PlayingLevelComponent = (function () {
             moduleId: module.id,
             selector: 'level-play',
             templateUrl: 'level-play.component.html',
-            styleUrls: ['level-play.component.css'],
-            directives: []
+            styleUrls: ['level-play.component.css']
         }), 
         __metadata('design:paramtypes', [timer_service_1.TimerService, game_status_service_1.GameStatusService])
     ], PlayingLevelComponent);
