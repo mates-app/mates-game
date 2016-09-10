@@ -5,36 +5,31 @@ import { HttpModule, JsonpModule, XHRBackend } from '@angular/http';
 import { menuRouting } from './menu.routing'
 import { MenuComponent } from './menu.component'
 import { SelectGameComponent } from './select-game/select-game.component'
-import { GameMatesAppComponent } from './select-game/game-view/game-view.component'
-import { GameOverComponent } from './select-game/game-over/game-over.component'
-import { GameModule } from '../game/game.module'
 
+import { GameOverComponent } from './select-game/game-over/game-over.component'
 import { MdButtonModule } from '@angular2-material/button';
 import { MdToolbarModule } from '@angular2-material/toolbar'
 import { MdIconModule } from '@angular2-material/icon'
 import { MdListModule } from '@angular2-material/list'
 import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
-
-
-
+import {ChoiceGameModule} from "torbi.ng2-choices-game/components";
 
 @NgModule({
-  imports:      [ 
-  	BrowserModule, 
-  	menuRouting, 
+  imports:      [
+  	BrowserModule,
+  	menuRouting,
     HttpModule,
-    JsonpModule,  	
-  	MatesCommonsModule, 
-  	GameModule,    
-    MdButtonModule,    
+    JsonpModule,
+  	MatesCommonsModule,
+    MdButtonModule,
     MdIconModule,
     MdToolbarModule,
-    MdListModule
+    MdListModule,
+    ChoiceGameModule
   ],
-  declarations: [ 
-  	MenuComponent, 
+  declarations: [
+  	MenuComponent,
   	SelectGameComponent,
-    GameMatesAppComponent,
     GameOverComponent
   ],
 

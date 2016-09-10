@@ -14,7 +14,6 @@ var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
 var login_module_1 = require('./login/login.module');
 var menu_module_1 = require('./menu/menu.module');
-var game_module_1 = require('./game/game.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -24,8 +23,7 @@ var AppModule = (function () {
                 platform_browser_1.BrowserModule,
                 app_routing_1.routing,
                 login_module_1.LoginModule,
-                menu_module_1.MenuModule,
-                game_module_1.GameModule
+                menu_module_1.MenuModule
             ],
             declarations: [app_component_1.AppComponent],
             bootstrap: [app_component_1.AppComponent]

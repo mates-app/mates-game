@@ -5,6 +5,7 @@
     <title>Angular 2 QuickStart</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <!-- <link rel="stylesheet" href="styles.css"> -->
     <!-- 1. Load libraries -->
      <!-- Polyfill(s) for older browsers -->
@@ -14,9 +15,18 @@
     <script src="node_modules/systemjs/dist/system.src.js"></script>
 
     <script type="text/javascript" src="node_modules/mathjax/MathJax.js?config=TeX-AMS_CHTML"> </script>
-
+    <!--MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});-->
     <script type="text/x-mathjax-config">
-        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+
+        MathJax.Hub.Config({
+          "fast-preview": {disabled:true},
+          tex2jax: {
+            preview: "none",
+            inlineMath: [["$","$"],["\\(","\\)"]]
+          },
+          "messageStyle": "none"
+
+        });
     </script>
 
     <!-- 2. Configure SystemJS -->
@@ -88,7 +98,7 @@
 
 
 
-    
+
   </head>
   <!-- 3. Display the application -->
   <body>

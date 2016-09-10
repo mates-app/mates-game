@@ -5,8 +5,8 @@ import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { MatesServices } from '../../mates-commons/mates-game.service'
 import { GameInstance, GameConfig } from '../../models'
-import { CurrentGameInstance } from '../../game/current-game.service'
 import { MdIconRegistry } from '@angular2-material/icon'
+import {GameControl} from "torbi.ng2-choices-game/components";
 
 @Component({
   moduleId: module.id,
@@ -18,21 +18,20 @@ import { MdIconRegistry } from '@angular2-material/icon'
 })
 export class SelectGameComponent implements OnInit {
 	gameConfigs:Array<GameConfig>;
-
-	gameInstances:Array<GameInstance>;
-	
+  gameInstances:Array<GameInstance>;
+  isStarted:boolean = false;
 
 	constructor(
 		private matesServices : MatesServices,
 		private router : Router,
-		private currentGameInstance : CurrentGameInstance,
+		private gameControl:GameControl,
 		private mdIconRegistry:MdIconRegistry
 	){
 
     	mdIconRegistry
 	        .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
 	        .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
-	        .registerFontClassAlias('fontawesome', 'fa');  
+	        .registerFontClassAlias('fontawesome', 'fa');
 	}
 
 	menu(){
@@ -52,14 +51,29 @@ export class SelectGameComponent implements OnInit {
 
 	   this.matesServices.getGameInstance(id).subscribe(
 	   	gameInstance => {
-	   		this.currentGameInstance.setCurrentInstance(gameInstance)
-	   		let link = ['/game']
-	   		this.router.navigate(link)
+	   		this.gameControl.setGameInstance(gameInstance)
+        this.gameControl.start()
+        this.isStarted = true
+
+        this.gameControl.onScoreChange()
+          .subscribe(
+            score =>{
+              this.matesServices.pushScore(
+                this.gameControl.getGameInstance().gameId,
+                "57bccba3ee005b59204559a4",
+                score.allScore())
+              console.log('score', score.allScore())
+            }
+
+          )
+
+	   		// let link = ['/game']
+	   		// this.router.navigate(link)
 	   	},
 	   	error => console.log(error)
 	   )
-	   
-	   
+
+
 	}
 }
 

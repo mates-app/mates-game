@@ -14,14 +14,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
 var mates_game_service_1 = require('../../mates-commons/mates-game.service');
-var current_game_service_1 = require('../../game/current-game.service');
 var icon_1 = require('@angular2-material/icon');
+var components_1 = require("torbi.ng2-choices-game/components");
 var SelectGameComponent = (function () {
-    function SelectGameComponent(matesServices, router, currentGameInstance, mdIconRegistry) {
+    function SelectGameComponent(matesServices, router, gameControl, mdIconRegistry) {
         this.matesServices = matesServices;
         this.router = router;
-        this.currentGameInstance = currentGameInstance;
+        this.gameControl = gameControl;
         this.mdIconRegistry = mdIconRegistry;
+        this.isStarted = false;
         mdIconRegistry
             .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
             .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
@@ -40,9 +41,16 @@ var SelectGameComponent = (function () {
         var _this = this;
         console.log('play', id);
         this.matesServices.getGameInstance(id).subscribe(function (gameInstance) {
-            _this.currentGameInstance.setCurrentInstance(gameInstance);
-            var link = ['/game'];
-            _this.router.navigate(link);
+            _this.gameControl.setGameInstance(gameInstance);
+            _this.gameControl.start();
+            _this.isStarted = true;
+            _this.gameControl.onScoreChange()
+                .subscribe(function (score) {
+                _this.matesServices.pushScore(_this.gameControl.getGameInstance().gameId, "57bccba3ee005b59204559a4", score.allScore());
+                console.log('score', score.allScore());
+            });
+            // let link = ['/game']
+            // this.router.navigate(link)
         }, function (error) { return console.log(error); });
     };
     SelectGameComponent = __decorate([
@@ -53,7 +61,7 @@ var SelectGameComponent = (function () {
             styleUrls: ['select-game.component.css'],
             viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, current_game_service_1.CurrentGameInstance, icon_1.MdIconRegistry])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, icon_1.MdIconRegistry])
     ], SelectGameComponent);
     return SelectGameComponent;
 }());

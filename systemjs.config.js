@@ -12,7 +12,7 @@
         'rxjs': 'node_modules/rxjs',
         '@angular2-material': 'node_modules/@angular2-material',
         'mathjax': 'node_modules/mathjax',
-
+        'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game'
     };
 
 
@@ -24,6 +24,10 @@
         'app/game' : { main : 'main.js', defaultExtension : 'js'},
         'rxjs': { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { main: 'index.js', defaultExtension: 'js' },
+        'torbi.ng2-choices-game': {
+          main: 'index',
+          defaultExtension: 'js'
+        }
     };
 
     var materialPkgs = [

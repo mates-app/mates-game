@@ -1,11 +1,15 @@
-
-<md-toolbar>        
+<div *ngIf="!isStarted">
+<md-toolbar>
     <span class="title">Selecciona un juego</span>
 
     <md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()">
 	    <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
     </md-button>
-  	
+
+
 </md-toolbar>
 
 <button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>
+
+</div>
+<game-view></game-view>

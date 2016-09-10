@@ -14,14 +14,13 @@ var http_1 = require('@angular/http');
 var menu_routing_1 = require('./menu.routing');
 var menu_component_1 = require('./menu.component');
 var select_game_component_1 = require('./select-game/select-game.component');
-var game_view_component_1 = require('./select-game/game-view/game-view.component');
 var game_over_component_1 = require('./select-game/game-over/game-over.component');
-var game_module_1 = require('../game/game.module');
 var button_1 = require('@angular2-material/button');
 var toolbar_1 = require('@angular2-material/toolbar');
 var icon_1 = require('@angular2-material/icon');
 var list_1 = require('@angular2-material/list');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
+var components_1 = require("torbi.ng2-choices-game/components");
 var MenuModule = (function () {
     function MenuModule() {
     }
@@ -33,16 +32,15 @@ var MenuModule = (function () {
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 mates_commons_module_1.MatesCommonsModule,
-                game_module_1.GameModule,
                 button_1.MdButtonModule,
                 icon_1.MdIconModule,
                 toolbar_1.MdToolbarModule,
-                list_1.MdListModule
+                list_1.MdListModule,
+                components_1.ChoiceGameModule
             ],
             declarations: [
                 menu_component_1.MenuComponent,
                 select_game_component_1.SelectGameComponent,
-                game_view_component_1.GameMatesAppComponent,
                 game_over_component_1.GameOverComponent
             ],
         }), 
