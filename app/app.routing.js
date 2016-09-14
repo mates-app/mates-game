@@ -7,7 +7,7 @@ var appRoutes = [
     },
     {
         path: '',
-        redirectTo: '/login',
+        redirectTo: '/menu',
         pathMatch: 'full'
     }
 ];

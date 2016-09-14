@@ -6,11 +6,16 @@ const appRoutes: Routes = [
 		path: 'menu',
 		loadChildren: 'app/menu/menu.module#MenuModule'
 	},
-	{
-	    path: '',
-	    redirectTo: '/login',
-	    pathMatch: 'full'
-  	}
+  {
+    path: '',
+    redirectTo: '/menu',
+    pathMatch: 'full'
+  }
+  // {
+	//     path: '',
+	//     redirectTo: '/login',
+	//     pathMatch: 'full'
+  // 	}
 ];
 
 

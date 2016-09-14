@@ -1,14 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { GameInstance, GameConfig } from '../models';
+import { GameConfig } from '../models';
+import {GameInstance} from "torbi.ng2-choices-game/components";
 
 @Injectable()
 export class MatesServices{
-  private pathGameInstance: string = "http://"+location.hostname+":3000/v1/admin/game/"
-  private pathGameConfigs: string = `http://${location.hostname}:3000/v1/admin/game-config`;
-  private pathPushScore: string = `http://${location.hostname}:3000/game-score/push-score`;
+  private pathGameInstance: string = "http://"+location.hostname+":3000/game-instance/"
+  private pathGameConfigs: string = `http://${location.hostname}:3000/game-config/`;
+
+  private pathAllPublicGameConfigs:string = `http://${location.hostname}:3000/game-config/public/all`
+
+  private pathPushScore: string = `http://${location.hostname}:3000/game-match/score`;
   constructor(private http: Http) { }
+
+
+
 
   getGameInstance(id:string): Observable<GameInstance> {
     return this.http.get(this.pathGameInstance+id)
@@ -22,16 +29,23 @@ export class MatesServices{
                     .catch(this.handleError);
   }
 
+  getAllPublicGameConfigs():Observable<GameConfig[]>{
+    return this.http.get(this.pathAllPublicGameConfigs)
+      .map(this.extractData)
+      .catch(this.handleError)
+  }
+
+
   pushScore(gameId:string, userId:string, scoreToAdd:number){
-    let body = JSON.stringify({ 
-      gameId : gameId,
+    let body = JSON.stringify({
+      gameMatchId : gameId,
       userId : userId,
       scoreToAdd : scoreToAdd
     })
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    
+
     this.http
       .put(this.pathPushScore, body, options)
       .map(res => res )

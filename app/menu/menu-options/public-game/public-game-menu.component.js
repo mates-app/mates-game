@@ -1,3 +1,6 @@
+/**
+ * Created by josecullen on 11/09/16.
+ */
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -8,23 +11,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var core_1 = require('@angular/core');
-var models_1 = require('../../../models');
-var GameOverComponent = (function () {
-    function GameOverComponent() {
+var core_1 = require("@angular/core");
+var PublicGameMenu = (function () {
+    function PublicGameMenu() {
     }
-    __decorate([
-        core_1.Input(), 
-        __metadata('design:type', Number)
-    ], GameOverComponent.prototype, "gameOverType", void 0);
-    GameOverComponent = __decorate([
+    PublicGameMenu = __decorate([
         core_1.Component({
-            selector: 'game-over',
-            template: "\n\t\n\t<h1>Game Over {{gameOverType}}</h1>\n\t<a routerLink=\"\">Menu</a>\n\t<a routerLink=\"../select-game\">Select Game</a>\n\t"
+            moduleId: module.id,
+            selector: 'public-game-menu',
+            template: "\n<a md-raised-button routerLink=\"single-game\">Single Game</a>\n<a md-raised-button routerLink=\"multi-player-game\" [disabled]=\"true\">Multiplayer Game</a>\n\n"
         }), 
         __metadata('design:paramtypes', [])
-    ], GameOverComponent);
-    return GameOverComponent;
+    ], PublicGameMenu);
+    return PublicGameMenu;
 }());
-exports.GameOverComponent = GameOverComponent;
-//# sourceMappingURL=game-over.component.js.map
+exports.PublicGameMenu = PublicGameMenu;
+//# sourceMappingURL=public-game-menu.component.js.map

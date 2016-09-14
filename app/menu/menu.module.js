@@ -14,13 +14,14 @@ var http_1 = require('@angular/http');
 var menu_routing_1 = require('./menu.routing');
 var menu_component_1 = require('./menu.component');
 var select_game_component_1 = require('./select-game/select-game.component');
-var game_over_component_1 = require('./select-game/game-over/game-over.component');
 var button_1 = require('@angular2-material/button');
 var toolbar_1 = require('@angular2-material/toolbar');
 var icon_1 = require('@angular2-material/icon');
 var list_1 = require('@angular2-material/list');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var components_1 = require("torbi.ng2-choices-game/components");
+var public_game_menu_component_1 = require("./menu-options/public-game/public-game-menu.component");
+var single_game_selection_component_1 = require("./menu-options/single-game/single-game-selection.component");
 var MenuModule = (function () {
     function MenuModule() {
     }
@@ -41,7 +42,8 @@ var MenuModule = (function () {
             declarations: [
                 menu_component_1.MenuComponent,
                 select_game_component_1.SelectGameComponent,
-                game_over_component_1.GameOverComponent
+                public_game_menu_component_1.PublicGameMenu,
+                single_game_selection_component_1.SingleGameSelection
             ],
         }), 
         __metadata('design:paramtypes', [])

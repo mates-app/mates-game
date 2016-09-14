@@ -4,9 +4,10 @@
 import { Component , OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { MatesServices } from '../../mates-commons/mates-game.service'
-import { GameInstance, GameConfig } from '../../models'
+// import { GameInstance, GameConfig } from '../../models'
 import { MdIconRegistry } from '@angular2-material/icon'
-import {GameControl} from "torbi.ng2-choices-game/components";
+import {GameControl, GameInstance} from "torbi.ng2-choices-game/components";
+import {GameConfig} from "../../models";
 
 @Component({
   moduleId: module.id,

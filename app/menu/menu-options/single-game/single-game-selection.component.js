@@ -1,3 +1,6 @@
+/**
+ * Created by josecullen on 11/09/16.
+ */
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -8,17 +11,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-/**
- * Created by josecullen on 17/07/16.
- */
-var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var mates_game_service_1 = require('../../mates-commons/mates-game.service');
-// import { GameInstance, GameConfig } from '../../models'
-var icon_1 = require('@angular2-material/icon');
+var core_1 = require("@angular/core");
 var components_1 = require("torbi.ng2-choices-game/components");
-var SelectGameComponent = (function () {
-    function SelectGameComponent(matesServices, router, gameControl, mdIconRegistry) {
+var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
+var router_1 = require("@angular/router");
+var icon_registry_1 = require("@angular2-material/icon/icon-registry");
+var SingleGameSelection = (function () {
+    function SingleGameSelection(matesServices, router, gameControl, mdIconRegistry) {
         this.matesServices = matesServices;
         this.router = router;
         this.gameControl = gameControl;
@@ -29,16 +28,16 @@ var SelectGameComponent = (function () {
             .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
             .registerFontClassAlias('fontawesome', 'fa');
     }
-    SelectGameComponent.prototype.menu = function () {
+    SingleGameSelection.prototype.menu = function () {
         console.log('click');
         var link = ['/menu'];
         this.router.navigate(link);
     };
-    SelectGameComponent.prototype.ngOnInit = function () {
+    SingleGameSelection.prototype.ngOnInit = function () {
         var _this = this;
-        this.matesServices.getGameConfigs().subscribe(function (gameConfigs) { return _this.gameConfigs = gameConfigs; }, function (error) { return console.log(error); });
+        this.matesServices.getAllPublicGameConfigs().subscribe(function (gameConfigs) { return _this.gameConfigs = gameConfigs; }, function (error) { return console.log(error); });
     };
-    SelectGameComponent.prototype.play = function (id) {
+    SingleGameSelection.prototype.play = function (id) {
         var _this = this;
         console.log('play', id);
         this.matesServices.getGameInstance(id).subscribe(function (gameInstance) {
@@ -47,24 +46,24 @@ var SelectGameComponent = (function () {
             _this.isStarted = true;
             _this.gameControl.onScoreChange()
                 .subscribe(function (score) {
-                _this.matesServices.pushScore(_this.gameControl.getGameInstance().gameId, "57bccba3ee005b59204559a4", score.allScore());
+                _this.matesServices.pushScore(_this.gameControl.getGameInstance().gameMatchId, "57bccba3ee005b59204559a4", score.allScore());
                 console.log('score', score.allScore());
             });
             // let link = ['/game']
             // this.router.navigate(link)
         }, function (error) { return console.log(error); });
     };
-    SelectGameComponent = __decorate([
+    SingleGameSelection = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'select-game',
-            templateUrl: 'select-game.component.html',
-            styleUrls: ['select-game.component.css'],
-            viewProviders: [icon_1.MdIconRegistry]
+            selector: 'single-game-selection',
+            templateUrl: 'single-game-selection.component.html',
+            styleUrls: ['single-game-selection.component.css'],
+            viewProviders: [icon_registry_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, icon_1.MdIconRegistry])
-    ], SelectGameComponent);
-    return SelectGameComponent;
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, icon_registry_1.MdIconRegistry])
+    ], SingleGameSelection);
+    return SingleGameSelection;
 }());
-exports.SelectGameComponent = SelectGameComponent;
-//# sourceMappingURL=select-game.component.js.map
+exports.SingleGameSelection = SingleGameSelection;
+//# sourceMappingURL=single-game-selection.component.js.map

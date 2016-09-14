@@ -14,9 +14,10 @@ var Observable_1 = require('rxjs/Observable');
 var MatesServices = (function () {
     function MatesServices(http) {
         this.http = http;
-        this.pathGameInstance = "http://" + location.hostname + ":3000/v1/admin/game/";
-        this.pathGameConfigs = "http://" + location.hostname + ":3000/v1/admin/game-config";
-        this.pathPushScore = "http://" + location.hostname + ":3000/game-score/push-score";
+        this.pathGameInstance = "http://" + location.hostname + ":3000/game-instance/";
+        this.pathGameConfigs = "http://" + location.hostname + ":3000/game-config/";
+        this.pathAllPublicGameConfigs = "http://" + location.hostname + ":3000/game-config/public/all";
+        this.pathPushScore = "http://" + location.hostname + ":3000/game-match/score";
     }
     MatesServices.prototype.getGameInstance = function (id) {
         return this.http.get(this.pathGameInstance + id)
@@ -28,9 +29,14 @@ var MatesServices = (function () {
             .map(this.extractData)
             .catch(this.handleError);
     };
+    MatesServices.prototype.getAllPublicGameConfigs = function () {
+        return this.http.get(this.pathAllPublicGameConfigs)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     MatesServices.prototype.pushScore = function (gameId, userId, scoreToAdd) {
         var body = JSON.stringify({
-            gameId: gameId,
+            gameMatchId: gameId,
             userId: userId,
             scoreToAdd: scoreToAdd
         });

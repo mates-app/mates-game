@@ -38,7 +38,8 @@
       'input',
       'icon',
       'grid-list',
-      'list'
+      'list',
+      'progress-circle'
     ];
 
     materialPkgs.forEach((pkg) => {
