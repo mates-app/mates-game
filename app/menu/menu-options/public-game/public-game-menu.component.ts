@@ -8,8 +8,8 @@ import {Component} from "@angular/core";
   moduleId: module.id,
   selector: 'public-game-menu',
   template: `
-<a md-raised-button routerLink="single-game">Single Game</a>
-<a md-raised-button routerLink="multi-player-game" [disabled]="true">Multiplayer Game</a>
+<a md-raised-button routerLink="single">Single Game</a>
+<a md-raised-button routerLink="multiplayer">Multiplayer Game</a>
 
 `
 })

@@ -19,7 +19,7 @@ var PublicGameMenu = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'public-game-menu',
-            template: "\n<a md-raised-button routerLink=\"single-game\">Single Game</a>\n<a md-raised-button routerLink=\"multi-player-game\" [disabled]=\"true\">Multiplayer Game</a>\n\n"
+            template: "\n<a md-raised-button routerLink=\"single\">Single Game</a>\n<a md-raised-button routerLink=\"multiplayer\">Multiplayer Game</a>\n\n"
         }), 
         __metadata('design:paramtypes', [])
     ], PublicGameMenu);

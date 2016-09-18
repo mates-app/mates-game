@@ -3,7 +3,7 @@
  */
 
 import {Component} from "@angular/core";
-import {GameConfig} from "../../../models";
+import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
 import {Router} from "@angular/router";
@@ -59,7 +59,7 @@ export class SingleGameSelection{
           .subscribe(
             score =>{
               this.matesServices.pushScore(
-                this.gameControl.getGameInstance().gameMatchId,
+                (<GameMatesInstance>this.gameControl.getGameInstance()).gameMatchId,
                 "57bccba3ee005b59204559a4",
                 score.allScore())
               console.log('score', score.allScore())

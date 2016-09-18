@@ -18,7 +18,24 @@ var MatesServices = (function () {
         this.pathGameConfigs = "http://" + location.hostname + ":3000/game-config/";
         this.pathAllPublicGameConfigs = "http://" + location.hostname + ":3000/game-config/public/all";
         this.pathPushScore = "http://" + location.hostname + ":3000/game-match/score";
+        this.pathGameMatch = "http://" + location.hostname + ":3000/game-match";
     }
+    MatesServices.prototype.createMatch = function (gameId, isMultiPlayer) {
+        var body = JSON.stringify({
+            gameId: gameId,
+            isMultiPlayer: isMultiPlayer
+        });
+        var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        var options = new http_1.RequestOptions({ headers: headers });
+        return this.http.post(this.pathGameMatch, body, options)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
+    MatesServices.prototype.getPublicMatches = function (type) {
+        return this.http.get(this.pathGameMatch + "/public/" + type)
+            .map(this.extractData)
+            .catch(this.handleError);
+    };
     MatesServices.prototype.getGameInstance = function (id) {
         return this.http.get(this.pathGameInstance + id)
             .map(this.extractData)

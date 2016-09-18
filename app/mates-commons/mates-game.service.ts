@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { GameConfig } from '../models';
+import { GameConfig, GameMatch } from '../models';
 import {GameInstance} from "torbi.ng2-choices-game/components";
 
 @Injectable()
@@ -12,10 +12,32 @@ export class MatesServices{
   private pathAllPublicGameConfigs:string = `http://${location.hostname}:3000/game-config/public/all`
 
   private pathPushScore: string = `http://${location.hostname}:3000/game-match/score`;
+  private pathGameMatch: string = `http://${location.hostname}:3000/game-match`;
+  
   constructor(private http: Http) { }
 
 
+  createMatch(gameId:string, isMultiPlayer:boolean):Observable<GameInstance> {
+    let body = JSON.stringify({
+      gameId : gameId,
+      isMultiPlayer : isMultiPlayer      
+    })
 
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this.http.post(this.pathGameMatch, body, options)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  getPublicMatches(type:string):Observable<GameMatch[]>{
+
+    return this.http.get(`${this.pathGameMatch}/public/${type}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+
+  }
 
   getGameInstance(id:string): Observable<GameInstance> {
     return this.http.get(this.pathGameInstance+id)
