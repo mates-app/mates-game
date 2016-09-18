@@ -5,6 +5,8 @@
 import {Component, OnInit} from "@angular/core";
 import {GameMatch} from "../../../models";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
+// <md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()"></md-button>
+import {MdIconRegistry} from "@angular2-material/icon";
 
 
 @Component({
@@ -16,9 +18,9 @@ import {MatesServices} from "../../../mates-commons/mates-game.service";
 <md-toolbar>
     <span class="title">Selecciona un juego</span>
 
-    <md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()">
+    
 	    <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
-    </md-button>
+    
     
 
 </md-toolbar>
@@ -31,14 +33,23 @@ import {MatesServices} from "../../../mates-commons/mates-game.service";
 
     
 
-`
+`,
+viewProviders: [MdIconRegistry]
 })
 export class MultiplayerGameSelection implements OnInit{
   gameMatches:Array<GameMatch> = new Array()
 
   constructor(
-    private matesServices:MatesServices
-  ){}
+    private matesServices:MatesServices,
+    private mdIconRegistry:MdIconRegistry
+  ){
+
+    mdIconRegistry
+      .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+      .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+      .registerFontClassAlias('fontawesome', 'fa');
+
+  }
 
   ngOnInit(){
     this

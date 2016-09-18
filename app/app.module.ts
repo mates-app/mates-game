@@ -2,8 +2,9 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent }  from './app.component';
 import { routing }        from './app.routing';
-import { LoginModule } from './login/login.module'
+// import { LoginModule } from './login/login.module'
 import { MenuModule } from './menu/menu.module'
+  	// LoginModule,
 
 
 
@@ -11,7 +12,6 @@ import { MenuModule } from './menu/menu.module'
   imports:      [
   	BrowserModule,
   	routing,
-  	LoginModule,
   	MenuModule
 
   ],

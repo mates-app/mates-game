@@ -13,10 +13,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
+// <md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()"></md-button>
+var icon_1 = require("@angular2-material/icon");
 var MultiplayerGameSelection = (function () {
-    function MultiplayerGameSelection(matesServices) {
+    function MultiplayerGameSelection(matesServices, mdIconRegistry) {
         this.matesServices = matesServices;
+        this.mdIconRegistry = mdIconRegistry;
         this.gameMatches = new Array();
+        mdIconRegistry
+            .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+            .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+            .registerFontClassAlias('fontawesome', 'fa');
     }
     MultiplayerGameSelection.prototype.ngOnInit = function () {
         var _this = this;
@@ -32,9 +39,10 @@ var MultiplayerGameSelection = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'public-game-menu',
-            template: "\n\n<div *ngIf=\"!isStarted\">\n<md-toolbar>\n    <span class=\"title\">Selecciona un juego</span>\n\n    <md-button class=\"md-fab md-mini\" style=\"cursor:pointer\" (click)=\"menu()\">\n\t    <md-icon class=\"md-24\" style=\"color:#921919;\">keyboard_arrow_left</md-icon>\n    </md-button>\n    \n\n</md-toolbar>\n<a md-raised-button routerLink=\"create\">Create Game</a>\n<button md-raised-button (click)=\"play(gameConfig._id)\" *ngFor=\"let gameMatch of gameMatches\">{{gameMatch._id}}</button>\n\n</div>\n\n\n\n    \n\n"
+            template: "\n\n<div *ngIf=\"!isStarted\">\n<md-toolbar>\n    <span class=\"title\">Selecciona un juego</span>\n\n    \n\t    <md-icon class=\"md-24\" style=\"color:#921919;\">keyboard_arrow_left</md-icon>\n    \n    \n\n</md-toolbar>\n<a md-raised-button routerLink=\"create\">Create Game</a>\n<button md-raised-button (click)=\"play(gameConfig._id)\" *ngFor=\"let gameMatch of gameMatches\">{{gameMatch._id}}</button>\n\n</div>\n\n\n\n    \n\n",
+            viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, icon_1.MdIconRegistry])
     ], MultiplayerGameSelection);
     return MultiplayerGameSelection;
 }());

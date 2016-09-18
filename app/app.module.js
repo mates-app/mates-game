@@ -12,8 +12,9 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
-var login_module_1 = require('./login/login.module');
+// import { LoginModule } from './login/login.module'
 var menu_module_1 = require('./menu/menu.module');
+// LoginModule,
 var AppModule = (function () {
     function AppModule() {
     }
@@ -22,7 +23,6 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_1.routing,
-                login_module_1.LoginModule,
                 menu_module_1.MenuModule
             ],
             declarations: [app_component_1.AppComponent],

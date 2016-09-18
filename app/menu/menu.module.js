@@ -22,6 +22,9 @@ var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var components_1 = require("torbi.ng2-choices-game/components");
 var public_game_menu_component_1 = require("./menu-options/public-game/public-game-menu.component");
 var single_game_selection_component_1 = require("./menu-options/single-game/single-game-selection.component");
+var multiplayer_game_component_1 = require('./menu-options/multiplayer-game/multiplayer-game.component');
+var create_multiplayer_game_component_1 = require('./menu-options/create-multiplayer-game/create-multiplayer-game.component');
+var menu_options_component_1 = require('./menu-options/menu-options.component');
 var MenuModule = (function () {
     function MenuModule() {
     }
@@ -29,7 +32,6 @@ var MenuModule = (function () {
         core_1.NgModule({
             imports: [
                 platform_browser_1.BrowserModule,
-                menu_routing_1.menuRouting,
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 mates_commons_module_1.MatesCommonsModule,
@@ -37,13 +39,17 @@ var MenuModule = (function () {
                 icon_1.MdIconModule,
                 toolbar_1.MdToolbarModule,
                 list_1.MdListModule,
-                components_1.ChoiceGameModule
+                components_1.ChoiceGameModule,
+                menu_routing_1.menuRouting
             ],
             declarations: [
                 menu_component_1.MenuComponent,
+                menu_options_component_1.MenuOptionsComponent,
                 select_game_component_1.SelectGameComponent,
                 public_game_menu_component_1.PublicGameMenu,
-                single_game_selection_component_1.SingleGameSelection
+                single_game_selection_component_1.SingleGameSelection,
+                multiplayer_game_component_1.MultiplayerGameSelection,
+                create_multiplayer_game_component_1.CreateMultiplayerGame
             ],
         }), 
         __metadata('design:paramtypes', [])

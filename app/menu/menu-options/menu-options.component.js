@@ -12,7 +12,6 @@ var __metadata = (this && this.__metadata) || function (k, v) {
  * Created by josecullen on 17/07/16.
  */
 var core_1 = require('@angular/core');
-var list_1 = require('@angular2-material/list');
 var MenuOptionsComponent = (function () {
     function MenuOptionsComponent() {
     }
@@ -21,7 +20,6 @@ var MenuOptionsComponent = (function () {
             moduleId: module.id,
             selector: 'menu-options',
             templateUrl: 'menu-options.component.html',
-            directives: [list_1.MD_LIST_DIRECTIVES],
             styleUrls: ['../menu.component.css']
         }), 
         __metadata('design:paramtypes', [])

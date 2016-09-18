@@ -7,13 +7,14 @@ import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
 import {Router, ActivatedRoute} from "@angular/router";
-
+import {MdIconRegistry} from "@angular2-material/icon";
 
 @Component({
   moduleId: module.id,
   selector: 'create-multiplayer-game',
   templateUrl : 'create-multiplayer-game.component.html',
-  styleUrls : ['create-multiplayer-game.component.css']
+  styleUrls : ['create-multiplayer-game.component.css'],
+  viewProviders: [MdIconRegistry]
 })
 export class CreateMultiplayerGame{
 
@@ -25,9 +26,16 @@ gameConfigs:Array<GameConfig>;
     private matesServices : MatesServices,
     private router : Router,
     private gameControl:GameControl,
-    private route: ActivatedRoute
-
+    private route: ActivatedRoute,
+    private mdIconRegistry:MdIconRegistry
   ){
+
+    mdIconRegistry
+      .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+      .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+      .registerFontClassAlias('fontawesome', 'fa');
+
+
 
   }
 

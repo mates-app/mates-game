@@ -15,7 +15,7 @@ var core_1 = require("@angular/core");
 var components_1 = require("torbi.ng2-choices-game/components");
 var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
 var router_1 = require("@angular/router");
-var icon_registry_1 = require("@angular2-material/icon/icon-registry");
+var icon_1 = require("@angular2-material/icon");
 var SingleGameSelection = (function () {
     function SingleGameSelection(matesServices, router, gameControl, mdIconRegistry) {
         this.matesServices = matesServices;
@@ -59,9 +59,9 @@ var SingleGameSelection = (function () {
             selector: 'single-game-selection',
             templateUrl: 'single-game-selection.component.html',
             styleUrls: ['single-game-selection.component.css'],
-            viewProviders: [icon_registry_1.MdIconRegistry]
+            viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, icon_registry_1.MdIconRegistry])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, icon_1.MdIconRegistry])
     ], SingleGameSelection);
     return SingleGameSelection;
 }());

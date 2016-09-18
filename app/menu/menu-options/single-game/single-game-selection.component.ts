@@ -7,7 +7,7 @@ import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
 import {Router} from "@angular/router";
-import {MdIconRegistry} from "@angular2-material/icon/icon-registry";
+import {MdIconRegistry} from "@angular2-material/icon";
 
 @Component({
   moduleId: module.id,

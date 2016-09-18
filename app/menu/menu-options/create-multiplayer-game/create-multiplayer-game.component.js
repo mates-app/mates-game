@@ -15,13 +15,19 @@ var core_1 = require("@angular/core");
 var components_1 = require("torbi.ng2-choices-game/components");
 var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
 var router_1 = require("@angular/router");
+var icon_1 = require("@angular2-material/icon");
 var CreateMultiplayerGame = (function () {
-    function CreateMultiplayerGame(matesServices, router, gameControl, route) {
+    function CreateMultiplayerGame(matesServices, router, gameControl, route, mdIconRegistry) {
         this.matesServices = matesServices;
         this.router = router;
         this.gameControl = gameControl;
         this.route = route;
+        this.mdIconRegistry = mdIconRegistry;
         this.isStarted = false;
+        mdIconRegistry
+            .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
+            .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
+            .registerFontClassAlias('fontawesome', 'fa');
     }
     CreateMultiplayerGame.prototype.menu = function () {
         this.router.navigate(['../../', {}], { relativeTo: this.route });
@@ -43,9 +49,10 @@ var CreateMultiplayerGame = (function () {
             moduleId: module.id,
             selector: 'create-multiplayer-game',
             templateUrl: 'create-multiplayer-game.component.html',
-            styleUrls: ['create-multiplayer-game.component.css']
+            styleUrls: ['create-multiplayer-game.component.css'],
+            viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, router_1.ActivatedRoute])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, router_1.ActivatedRoute, icon_1.MdIconRegistry])
     ], CreateMultiplayerGame);
     return CreateMultiplayerGame;
 }());
