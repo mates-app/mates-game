@@ -16,7 +16,21 @@ var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
 // <md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()"></md-button>
 var icon_1 = require("@angular2-material/icon");
 var MultiplayerGameSelection = (function () {
-    function MultiplayerGameSelection(matesServices, mdIconRegistry) {
+    function MultiplayerGameSelection() {
+    }
+    MultiplayerGameSelection = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'multiplayer-game-selection',
+            template: "\n<router-outlet></router-outlet>\n"
+        }), 
+        __metadata('design:paramtypes', [])
+    ], MultiplayerGameSelection);
+    return MultiplayerGameSelection;
+}());
+exports.MultiplayerGameSelection = MultiplayerGameSelection;
+var MultiplayerGameSelectionList = (function () {
+    function MultiplayerGameSelectionList(matesServices, mdIconRegistry) {
         this.matesServices = matesServices;
         this.mdIconRegistry = mdIconRegistry;
         this.gameMatches = new Array();
@@ -25,7 +39,7 @@ var MultiplayerGameSelection = (function () {
             .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
             .registerFontClassAlias('fontawesome', 'fa');
     }
-    MultiplayerGameSelection.prototype.ngOnInit = function () {
+    MultiplayerGameSelectionList.prototype.ngOnInit = function () {
         var _this = this;
         this
             .matesServices
@@ -35,16 +49,16 @@ var MultiplayerGameSelection = (function () {
             _this.gameMatches = gameMatches;
         });
     };
-    MultiplayerGameSelection = __decorate([
+    MultiplayerGameSelectionList = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'public-game-menu',
-            template: "\n\n<div *ngIf=\"!isStarted\">\n<md-toolbar>\n    <span class=\"title\">Selecciona un juego</span>\n\n    \n\t    <md-icon class=\"md-24\" style=\"color:#921919;\">keyboard_arrow_left</md-icon>\n    \n    \n\n</md-toolbar>\n<a md-raised-button routerLink=\"create\">Create Game</a>\n<button md-raised-button (click)=\"play(gameConfig._id)\" *ngFor=\"let gameMatch of gameMatches\">{{gameMatch._id}}</button>\n\n</div>\n\n\n\n    \n\n",
+            selector: 'multiplayer-game-selection-list',
+            template: "\n<div *ngIf=\"!isStarted\">\n<md-toolbar>\n    <span class=\"title\">Selecciona un juego</span>\n    \n\t    <md-icon class=\"md-24\" style=\"color:#921919;\">keyboard_arrow_left</md-icon>\n\n</md-toolbar>\n<a md-raised-button routerLink=\"create\">Create Game</a>\n<button md-raised-button (click)=\"play(gameConfig._id)\" *ngFor=\"let gameMatch of gameMatches\">{{gameMatch.name}}</button>\n\n</div>\n\n\n",
             viewProviders: [icon_1.MdIconRegistry]
         }), 
         __metadata('design:paramtypes', [mates_game_service_1.MatesServices, icon_1.MdIconRegistry])
-    ], MultiplayerGameSelection);
-    return MultiplayerGameSelection;
+    ], MultiplayerGameSelectionList);
+    return MultiplayerGameSelectionList;
 }());
-exports.MultiplayerGameSelection = MultiplayerGameSelection;
+exports.MultiplayerGameSelectionList = MultiplayerGameSelectionList;
 //# sourceMappingURL=multiplayer-game.component.js.map

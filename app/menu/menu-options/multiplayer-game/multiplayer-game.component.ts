@@ -11,32 +11,38 @@ import {MdIconRegistry} from "@angular2-material/icon";
 
 @Component({
   moduleId: module.id,
-  selector: 'public-game-menu',
+  selector: 'multiplayer-game-selection',
   template: `
+<router-outlet></router-outlet>
+`
+})
+export class MultiplayerGameSelection{
 
+}
+
+
+
+@Component({
+  moduleId: module.id,
+  selector: 'multiplayer-game-selection-list',
+  template: `
 <div *ngIf="!isStarted">
 <md-toolbar>
     <span class="title">Selecciona un juego</span>
-
     
 	    <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
-    
-    
 
 </md-toolbar>
 <a md-raised-button routerLink="create">Create Game</a>
-<button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameMatch of gameMatches">{{gameMatch._id}}</button>
+<button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameMatch of gameMatches">{{gameMatch.name}}</button>
 
 </div>
 
 
-
-    
-
 `,
 viewProviders: [MdIconRegistry]
 })
-export class MultiplayerGameSelection implements OnInit{
+export class MultiplayerGameSelectionList implements OnInit{
   gameMatches:Array<GameMatch> = new Array()
 
   constructor(

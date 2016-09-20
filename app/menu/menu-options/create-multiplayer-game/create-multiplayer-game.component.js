@@ -12,37 +12,38 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require("@angular/core");
-var components_1 = require("torbi.ng2-choices-game/components");
 var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
 var router_1 = require("@angular/router");
 var icon_1 = require("@angular2-material/icon");
 var CreateMultiplayerGame = (function () {
-    function CreateMultiplayerGame(matesServices, router, gameControl, route, mdIconRegistry) {
+    function CreateMultiplayerGame(matesServices, router, route, mdIconRegistry) {
         this.matesServices = matesServices;
         this.router = router;
-        this.gameControl = gameControl;
         this.route = route;
         this.mdIconRegistry = mdIconRegistry;
-        this.isStarted = false;
+        this.createGameBody = {
+            gameId: '',
+            name: '',
+            isMultiPlayer: true
+        };
         mdIconRegistry
             .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
             .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
             .registerFontClassAlias('fontawesome', 'fa');
     }
     CreateMultiplayerGame.prototype.menu = function () {
-        this.router.navigate(['../../', {}], { relativeTo: this.route });
+        this.router.navigate(['../', {}], { relativeTo: this.route });
     };
     CreateMultiplayerGame.prototype.ngOnInit = function () {
         var _this = this;
         this.matesServices.getAllPublicGameConfigs().subscribe(function (gameConfigs) { return _this.gameConfigs = gameConfigs; }, function (error) { return console.log(error); });
     };
-    CreateMultiplayerGame.prototype.create = function (gameId) {
+    CreateMultiplayerGame.prototype.create = function () {
         var _this = this;
-        console.log(gameId);
         this
             .matesServices
-            .createMatch(gameId, true)
-            .subscribe(function (gameMatch) { return _this.router.navigate(['../../', {}], { relativeTo: _this.route }); });
+            .createMatch(this.createGameBody)
+            .subscribe(function (gameMatch) { return _this.router.navigate(['../', {}], { relativeTo: _this.route }); });
     };
     CreateMultiplayerGame = __decorate([
         core_1.Component({
@@ -52,7 +53,7 @@ var CreateMultiplayerGame = (function () {
             styleUrls: ['create-multiplayer-game.component.css'],
             viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, components_1.GameControl, router_1.ActivatedRoute, icon_1.MdIconRegistry])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, router_1.ActivatedRoute, icon_1.MdIconRegistry])
     ], CreateMultiplayerGame);
     return CreateMultiplayerGame;
 }());

@@ -17,16 +17,13 @@ export class MatesServices{
   constructor(private http: Http) { }
 
 
-  createMatch(gameId:string, isMultiPlayer:boolean):Observable<GameInstance> {
-    let body = JSON.stringify({
-      gameId : gameId,
-      isMultiPlayer : isMultiPlayer      
-    })
 
+  createMatch(createGameBody:CreateGameBody):Observable<GameInstance> {
+    
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.pathGameMatch, body, options)
+    return this.http.post(this.pathGameMatch, JSON.stringify(createGameBody), options)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -511,4 +508,13 @@ export class MatesServices{
 
 
 
+}
+
+
+export interface CreateGameBody{
+  
+  gameId:string,
+  name:string,
+  isMultiPlayer:boolean
+  
 }

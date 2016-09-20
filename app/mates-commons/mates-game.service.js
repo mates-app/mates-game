@@ -20,14 +20,10 @@ var MatesServices = (function () {
         this.pathPushScore = "http://" + location.hostname + ":3000/game-match/score";
         this.pathGameMatch = "http://" + location.hostname + ":3000/game-match";
     }
-    MatesServices.prototype.createMatch = function (gameId, isMultiPlayer) {
-        var body = JSON.stringify({
-            gameId: gameId,
-            isMultiPlayer: isMultiPlayer
-        });
+    MatesServices.prototype.createMatch = function (createGameBody) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         var options = new http_1.RequestOptions({ headers: headers });
-        return this.http.post(this.pathGameMatch, body, options)
+        return this.http.post(this.pathGameMatch, JSON.stringify(createGameBody), options)
             .map(this.extractData)
             .catch(this.handleError);
     };

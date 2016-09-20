@@ -5,7 +5,7 @@
 import {Component} from "@angular/core";
 import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
-import {MatesServices} from "../../../mates-commons/mates-game.service";
+import {MatesServices, CreateGameBody} from "../../../mates-commons/mates-game.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {MdIconRegistry} from "@angular2-material/icon";
 
@@ -18,14 +18,17 @@ import {MdIconRegistry} from "@angular2-material/icon";
 })
 export class CreateMultiplayerGame{
 
-gameConfigs:Array<GameConfig>;
-  gameInstances:Array<GameInstance>;
-  isStarted:boolean = false;
+createGameBody:CreateGameBody = {
+  gameId : '',
+  name: '',
+  isMultiPlayer: true
+}
 
+gameConfigs:Array<GameConfig>;
+ 
   constructor(
     private matesServices : MatesServices,
     private router : Router,
-    private gameControl:GameControl,
     private route: ActivatedRoute,
     private mdIconRegistry:MdIconRegistry
   ){
@@ -35,12 +38,10 @@ gameConfigs:Array<GameConfig>;
       .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
       .registerFontClassAlias('fontawesome', 'fa');
 
-
-
   }
 
   menu(){    
-    this.router.navigate(['../../', {  }], { relativeTo: this.route });
+    this.router.navigate(['../', {  }], { relativeTo: this.route });
   }
 
   ngOnInit(){
@@ -49,12 +50,12 @@ gameConfigs:Array<GameConfig>;
       error =>  console.log(error));
   }
 
-  create(gameId:string){
-      console.log(gameId)
+  create(){
+      
       this
         .matesServices
-        .createMatch(gameId, true)
-        .subscribe(gameMatch => this.router.navigate(['../../', {  }], { relativeTo: this.route }))
+        .createMatch(this.createGameBody)
+        .subscribe(gameMatch => this.router.navigate(['../', {  }], { relativeTo: this.route }))
   }
 
 

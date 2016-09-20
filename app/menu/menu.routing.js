@@ -16,10 +16,16 @@ var menuRoutes = [
         component: menu_component_1.MenuComponent,
         children: [
             { path: 'select-game', component: select_game_component_1.SelectGameComponent },
-            { path: 'public-game', component: public_game_menu_component_1.PublicGameMenu },
-            { path: 'public-game/single', component: single_game_selection_component_1.SingleGameSelection },
-            { path: 'public-game/multiplayer', component: multiplayer_game_component_1.MultiplayerGameSelection },
-            { path: 'public-game/multiplayer/create', component: create_multiplayer_game_component_1.CreateMultiplayerGame },
+            { path: 'public-game', component: public_game_menu_component_1.PublicGameMenu,
+                children: [
+                    { path: '', component: public_game_menu_component_1.PublicGameMenuList },
+                    { path: 'single', component: single_game_selection_component_1.SingleGameSelection },
+                    { path: 'multiplayer', component: multiplayer_game_component_1.MultiplayerGameSelection,
+                        children: [
+                            { path: '', component: multiplayer_game_component_1.MultiplayerGameSelectionList },
+                            { path: 'create', component: create_multiplayer_game_component_1.CreateMultiplayerGame }
+                        ] },
+                ] },
             { path: '', component: menu_options_component_1.MenuOptionsComponent }
         ]
     }

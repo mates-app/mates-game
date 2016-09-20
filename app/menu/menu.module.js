@@ -9,6 +9,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var forms_1 = require('@angular/forms');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
 var menu_routing_1 = require('./menu.routing');
@@ -18,6 +19,7 @@ var button_1 = require('@angular2-material/button');
 var toolbar_1 = require('@angular2-material/toolbar');
 var icon_1 = require('@angular2-material/icon');
 var list_1 = require('@angular2-material/list');
+var input_1 = require('@angular2-material/input');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var components_1 = require("torbi.ng2-choices-game/components");
 var public_game_menu_component_1 = require("./menu-options/public-game/public-game-menu.component");
@@ -39,7 +41,9 @@ var MenuModule = (function () {
                 icon_1.MdIconModule,
                 toolbar_1.MdToolbarModule,
                 list_1.MdListModule,
+                input_1.MdInputModule,
                 components_1.ChoiceGameModule,
+                forms_1.FormsModule,
                 menu_routing_1.menuRouting
             ],
             declarations: [
@@ -49,7 +53,9 @@ var MenuModule = (function () {
                 public_game_menu_component_1.PublicGameMenu,
                 single_game_selection_component_1.SingleGameSelection,
                 multiplayer_game_component_1.MultiplayerGameSelection,
-                create_multiplayer_game_component_1.CreateMultiplayerGame
+                create_multiplayer_game_component_1.CreateMultiplayerGame,
+                public_game_menu_component_1.PublicGameMenuList,
+                multiplayer_game_component_1.MultiplayerGameSelectionList
             ],
         }), 
         __metadata('design:paramtypes', [])

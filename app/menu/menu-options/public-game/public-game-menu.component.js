@@ -19,11 +19,25 @@ var PublicGameMenu = (function () {
         core_1.Component({
             moduleId: module.id,
             selector: 'public-game-menu',
-            template: "\n<a md-raised-button routerLink=\"single\">Single Game</a>\n<a md-raised-button routerLink=\"multiplayer\">Multiplayer Game</a>\n\n"
+            template: "\n<router-outlet></router-outlet>\n"
         }), 
         __metadata('design:paramtypes', [])
     ], PublicGameMenu);
     return PublicGameMenu;
 }());
 exports.PublicGameMenu = PublicGameMenu;
+var PublicGameMenuList = (function () {
+    function PublicGameMenuList() {
+    }
+    PublicGameMenuList = __decorate([
+        core_1.Component({
+            moduleId: module.id,
+            selector: 'public-game-menu',
+            template: "\n<a md-raised-button routerLink=\"single\">Single Game</a>\n<a md-raised-button routerLink=\"multiplayer\">Multiplayer Game</a>\n\n"
+        }), 
+        __metadata('design:paramtypes', [])
+    ], PublicGameMenuList);
+    return PublicGameMenuList;
+}());
+exports.PublicGameMenuList = PublicGameMenuList;
 //# sourceMappingURL=public-game-menu.component.js.map
