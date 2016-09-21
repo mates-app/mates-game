@@ -8,10 +8,10 @@ export class GameConfig{
 
 export class GameMatch{
   constructor(
-    gameId:string,
-    name:string,
-    isPublic:boolean,
-    isMultiPlayer:boolean
+    public gameId:string,
+    public name:string,
+    public isPublic:boolean,
+    public isMultiPlayer:boolean
   ){
 
   }

@@ -18,6 +18,7 @@ import { PublicGameMenu, PublicGameMenuList} from "./menu-options/public-game/pu
 import { SingleGameSelection} from "./menu-options/single-game/single-game-selection.component";
 import { MultiplayerGameSelection, MultiplayerGameSelectionList } from './menu-options/multiplayer-game/multiplayer-game.component'
 import { CreateMultiplayerGame} from './menu-options/create-multiplayer-game/create-multiplayer-game.component'
+import { MultiplayerRoom} from './menu-options/multiplayer-room/multiplayer-room.component'
 import { MenuOptionsComponent} from './menu-options/menu-options.component'
 
 @NgModule({
@@ -44,7 +45,8 @@ import { MenuOptionsComponent} from './menu-options/menu-options.component'
     MultiplayerGameSelection,
     CreateMultiplayerGame,
     PublicGameMenuList,
-    MultiplayerGameSelectionList
+    MultiplayerGameSelectionList,
+    MultiplayerRoom
   ],
 
 })

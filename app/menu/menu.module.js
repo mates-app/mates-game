@@ -26,6 +26,7 @@ var public_game_menu_component_1 = require("./menu-options/public-game/public-ga
 var single_game_selection_component_1 = require("./menu-options/single-game/single-game-selection.component");
 var multiplayer_game_component_1 = require('./menu-options/multiplayer-game/multiplayer-game.component');
 var create_multiplayer_game_component_1 = require('./menu-options/create-multiplayer-game/create-multiplayer-game.component');
+var multiplayer_room_component_1 = require('./menu-options/multiplayer-room/multiplayer-room.component');
 var menu_options_component_1 = require('./menu-options/menu-options.component');
 var MenuModule = (function () {
     function MenuModule() {
@@ -55,7 +56,8 @@ var MenuModule = (function () {
                 multiplayer_game_component_1.MultiplayerGameSelection,
                 create_multiplayer_game_component_1.CreateMultiplayerGame,
                 public_game_menu_component_1.PublicGameMenuList,
-                multiplayer_game_component_1.MultiplayerGameSelectionList
+                multiplayer_game_component_1.MultiplayerGameSelectionList,
+                multiplayer_room_component_1.MultiplayerRoom
             ],
         }), 
         __metadata('design:paramtypes', [])

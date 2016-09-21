@@ -18,7 +18,7 @@ export class MatesServices{
 
 
 
-  createMatch(createGameBody:CreateGameBody):Observable<GameInstance> {
+  createMatch(createGameBody:CreateGameBody):Observable<GameMatch> {
     
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });

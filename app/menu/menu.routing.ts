@@ -6,10 +6,7 @@ import {PublicGameMenu, PublicGameMenuList} from "./menu-options/public-game/pub
 import {SingleGameSelection} from "./menu-options/single-game/single-game-selection.component";
 import {MultiplayerGameSelection, MultiplayerGameSelectionList} from './menu-options/multiplayer-game/multiplayer-game.component'
 import {CreateMultiplayerGame} from    './menu-options/create-multiplayer-game/create-multiplayer-game.component'
-// import {GameViewComponent} from "torbi.ng2-choices-game/lib/game-view/game-view.component";
-// import { GameMatesAppComponent } from './select-game/game-view/game-view.component'
-// import { AuthGuard } from '../auth-guard.service'
-
+import {MultiplayerRoom} from    './menu-options/multiplayer-room/multiplayer-room.component'
 
 const menuRoutes: Routes = [
   {
@@ -24,7 +21,8 @@ const menuRoutes: Routes = [
           { path : 'multiplayer',  component : MultiplayerGameSelection,
             children: [
               { path : '',  component : MultiplayerGameSelectionList },
-              { path : 'create',  component : CreateMultiplayerGame }
+              { path : 'create',  component : CreateMultiplayerGame },
+              { path : 'room',  component : MultiplayerRoom }
             ] },
           
         ]},

@@ -15,9 +15,11 @@ var core_1 = require("@angular/core");
 var mates_game_service_1 = require("../../../mates-commons/mates-game.service");
 var router_1 = require("@angular/router");
 var icon_1 = require("@angular2-material/icon");
+var mates_exchange_service_1 = require("../../../mates-commons/mates-exchange.service");
 var CreateMultiplayerGame = (function () {
-    function CreateMultiplayerGame(matesServices, router, route, mdIconRegistry) {
+    function CreateMultiplayerGame(matesServices, matesExchanges, router, route, mdIconRegistry) {
         this.matesServices = matesServices;
+        this.matesExchanges = matesExchanges;
         this.router = router;
         this.route = route;
         this.mdIconRegistry = mdIconRegistry;
@@ -43,7 +45,10 @@ var CreateMultiplayerGame = (function () {
         this
             .matesServices
             .createMatch(this.createGameBody)
-            .subscribe(function (gameMatch) { return _this.router.navigate(['../', {}], { relativeTo: _this.route }); });
+            .subscribe(function (gameMatch) {
+            _this.matesExchanges.setSelectedGameMatch(gameMatch);
+            _this.router.navigate(['../room', {}], { relativeTo: _this.route });
+        });
     };
     CreateMultiplayerGame = __decorate([
         core_1.Component({
@@ -53,7 +58,7 @@ var CreateMultiplayerGame = (function () {
             styleUrls: ['create-multiplayer-game.component.css'],
             viewProviders: [icon_1.MdIconRegistry]
         }), 
-        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, router_1.Router, router_1.ActivatedRoute, icon_1.MdIconRegistry])
+        __metadata('design:paramtypes', [mates_game_service_1.MatesServices, mates_exchange_service_1.MatesExchangeServices, router_1.Router, router_1.ActivatedRoute, icon_1.MdIconRegistry])
     ], CreateMultiplayerGame);
     return CreateMultiplayerGame;
 }());

@@ -9,21 +9,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var platform_browser_1 = require('@angular/platform-browser');
-var mates_game_service_1 = require('./mates-game.service');
-var mates_exchange_service_1 = require('./mates-exchange.service');
-var MatesCommonsModule = (function () {
-    function MatesCommonsModule() {
+var MatesExchangeServices = (function () {
+    function MatesExchangeServices() {
     }
-    MatesCommonsModule = __decorate([
-        core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule],
-            declarations: [],
-            providers: [mates_game_service_1.MatesServices, mates_exchange_service_1.MatesExchangeServices]
-        }), 
+    MatesExchangeServices.prototype.getSelectedGameMatch = function () {
+        return this.selectedGameMatch;
+    };
+    MatesExchangeServices.prototype.setSelectedGameMatch = function (gameMatch) {
+        this.selectedGameMatch = gameMatch;
+    };
+    MatesExchangeServices = __decorate([
+        core_1.Injectable(), 
         __metadata('design:paramtypes', [])
-    ], MatesCommonsModule);
-    return MatesCommonsModule;
+    ], MatesExchangeServices);
+    return MatesExchangeServices;
 }());
-exports.MatesCommonsModule = MatesCommonsModule;
-//# sourceMappingURL=mates-commons.module.js.map
+exports.MatesExchangeServices = MatesExchangeServices;
+//# sourceMappingURL=mates-exchange.service.js.map

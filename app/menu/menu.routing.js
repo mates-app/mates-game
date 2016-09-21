@@ -7,9 +7,7 @@ var public_game_menu_component_1 = require("./menu-options/public-game/public-ga
 var single_game_selection_component_1 = require("./menu-options/single-game/single-game-selection.component");
 var multiplayer_game_component_1 = require('./menu-options/multiplayer-game/multiplayer-game.component');
 var create_multiplayer_game_component_1 = require('./menu-options/create-multiplayer-game/create-multiplayer-game.component');
-// import {GameViewComponent} from "torbi.ng2-choices-game/lib/game-view/game-view.component";
-// import { GameMatesAppComponent } from './select-game/game-view/game-view.component'
-// import { AuthGuard } from '../auth-guard.service'
+var multiplayer_room_component_1 = require('./menu-options/multiplayer-room/multiplayer-room.component');
 var menuRoutes = [
     {
         path: 'menu',
@@ -23,7 +21,8 @@ var menuRoutes = [
                     { path: 'multiplayer', component: multiplayer_game_component_1.MultiplayerGameSelection,
                         children: [
                             { path: '', component: multiplayer_game_component_1.MultiplayerGameSelectionList },
-                            { path: 'create', component: create_multiplayer_game_component_1.CreateMultiplayerGame }
+                            { path: 'create', component: create_multiplayer_game_component_1.CreateMultiplayerGame },
+                            { path: 'room', component: multiplayer_room_component_1.MultiplayerRoom }
                         ] },
                 ] },
             { path: '', component: menu_options_component_1.MenuOptionsComponent }

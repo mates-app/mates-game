@@ -15,6 +15,10 @@ var GameConfig = (function () {
 exports.GameConfig = GameConfig;
 var GameMatch = (function () {
     function GameMatch(gameId, name, isPublic, isMultiPlayer) {
+        this.gameId = gameId;
+        this.name = name;
+        this.isPublic = isPublic;
+        this.isMultiPlayer = isMultiPlayer;
     }
     return GameMatch;
 }());

@@ -3,11 +3,12 @@
  */
 
 import {Component} from "@angular/core";
-import {GameConfig, GameMatesInstance} from "../../../models";
+import {GameConfig, GameMatesInstance, GameMatch} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices, CreateGameBody} from "../../../mates-commons/mates-game.service";
 import {Router, ActivatedRoute} from "@angular/router";
 import {MdIconRegistry} from "@angular2-material/icon";
+import {MatesExchangeServices} from "../../../mates-commons/mates-exchange.service";
 
 @Component({
   moduleId: module.id,
@@ -28,6 +29,7 @@ gameConfigs:Array<GameConfig>;
  
   constructor(
     private matesServices : MatesServices,
+    private matesExchanges:MatesExchangeServices,
     private router : Router,
     private route: ActivatedRoute,
     private mdIconRegistry:MdIconRegistry
@@ -55,7 +57,10 @@ gameConfigs:Array<GameConfig>;
       this
         .matesServices
         .createMatch(this.createGameBody)
-        .subscribe(gameMatch => this.router.navigate(['../', {  }], { relativeTo: this.route }))
+        .subscribe(gameMatch => {
+          this.matesExchanges.setSelectedGameMatch(gameMatch)
+          this.router.navigate(['../room', {  }], { relativeTo: this.route })
+        })
   }
 
 
