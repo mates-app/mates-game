@@ -19,6 +19,7 @@ var MatesServices = (function () {
         this.pathAllPublicGameConfigs = "http://" + location.hostname + ":3000/game-config/public/all";
         this.pathPushScore = "http://" + location.hostname + ":3000/game-match/score";
         this.pathGameMatch = "http://" + location.hostname + ":3000/game-match";
+        this.pathUser = "http://" + location.hostname + ":3000/users";
     }
     MatesServices.prototype.createMatch = function (createGameBody) {
         var headers = new http_1.Headers({ 'Content-Type': 'application/json' });

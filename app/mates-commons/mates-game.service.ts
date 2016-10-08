@@ -13,13 +13,13 @@ export class MatesServices{
 
   private pathPushScore: string = `http://${location.hostname}:3000/game-match/score`;
   private pathGameMatch: string = `http://${location.hostname}:3000/game-match`;
-  
+
+  private pathUser: string = `http://${location.hostname}:3000/users`;
+
   constructor(private http: Http) { }
 
-
-
   createMatch(createGameBody:CreateGameBody):Observable<GameMatch> {
-    
+
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
@@ -512,9 +512,9 @@ export class MatesServices{
 
 
 export interface CreateGameBody{
-  
+
   gameId:string,
   name:string,
   isMultiPlayer:boolean
-  
+
 }

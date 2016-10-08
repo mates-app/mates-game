@@ -31,4 +31,12 @@ var GameMatesInstance = (function (_super) {
     return GameMatesInstance;
 }(components_1.GameInstance));
 exports.GameMatesInstance = GameMatesInstance;
+var User = (function () {
+    function User(username) {
+        if (username === void 0) { username = ""; }
+        this.username = username;
+    }
+    return User;
+}());
+exports.User = User;
 //# sourceMappingURL=models.js.map

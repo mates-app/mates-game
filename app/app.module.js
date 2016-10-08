@@ -10,11 +10,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
+var forms_1 = require('@angular/forms');
+var input_1 = require('@angular2-material/input');
+var card_1 = require('@angular2-material/card');
+var button_1 = require('@angular2-material/button');
 var app_component_1 = require('./app.component');
 var app_routing_1 = require('./app.routing');
-// import { LoginModule } from './login/login.module'
 var menu_module_1 = require('./menu/menu.module');
-// LoginModule,
+var login_component_1 = require('./login.component');
+var login_routing_module_1 = require('./login-routing.module');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -23,9 +27,18 @@ var AppModule = (function () {
             imports: [
                 platform_browser_1.BrowserModule,
                 app_routing_1.routing,
-                menu_module_1.MenuModule
+                menu_module_1.MenuModule,
+                forms_1.FormsModule,
+                input_1.MdInputModule,
+                card_1.MdCardModule,
+                button_1.MdButtonModule,
+                login_routing_module_1.LoginRoutingModule
             ],
-            declarations: [app_component_1.AppComponent],
+            declarations: [
+                app_component_1.AppComponent,
+                login_component_1.LoginComponent
+            ],
+            providers: [app_routing_1.appRoutingProviders],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

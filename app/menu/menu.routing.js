@@ -8,26 +8,35 @@ var single_game_selection_component_1 = require("./menu-options/single-game/sing
 var multiplayer_game_component_1 = require('./menu-options/multiplayer-game/multiplayer-game.component');
 var create_multiplayer_game_component_1 = require('./menu-options/create-multiplayer-game/create-multiplayer-game.component');
 var multiplayer_room_component_1 = require('./menu-options/multiplayer-room/multiplayer-room.component');
-var menuRoutes = [
+var auth_guard_service_1 = require('../auth-guard.service');
+var menuRoutings = [
     {
-        path: 'menu',
+        path: '',
         component: menu_component_1.MenuComponent,
+        canActivate: [auth_guard_service_1.AuthGuard],
         children: [
-            { path: 'select-game', component: select_game_component_1.SelectGameComponent },
-            { path: 'public-game', component: public_game_menu_component_1.PublicGameMenu,
+            {
+                path: '',
+                // canActivateChild: [AuthGuard],
                 children: [
-                    { path: '', component: public_game_menu_component_1.PublicGameMenuList },
-                    { path: 'single', component: single_game_selection_component_1.SingleGameSelection },
-                    { path: 'multiplayer', component: multiplayer_game_component_1.MultiplayerGameSelection,
+                    { path: 'select-game', component: select_game_component_1.SelectGameComponent },
+                    { path: 'public-game', component: public_game_menu_component_1.PublicGameMenu,
                         children: [
-                            { path: '', component: multiplayer_game_component_1.MultiplayerGameSelectionList },
-                            { path: 'create', component: create_multiplayer_game_component_1.CreateMultiplayerGame },
-                            { path: 'room', component: multiplayer_room_component_1.MultiplayerRoom }
+                            { path: '', component: public_game_menu_component_1.PublicGameMenuList },
+                            { path: 'single', component: single_game_selection_component_1.SingleGameSelection },
+                            { path: 'multiplayer', component: multiplayer_game_component_1.MultiplayerGameSelection,
+                                children: [
+                                    { path: '', component: multiplayer_game_component_1.MultiplayerGameSelectionList },
+                                    { path: 'create', component: create_multiplayer_game_component_1.CreateMultiplayerGame },
+                                    { path: 'room', component: multiplayer_room_component_1.MultiplayerRoom }
+                                ]
+                            },
                         ] },
-                ] },
-            { path: '', component: menu_options_component_1.MenuOptionsComponent }
+                    { path: '', component: menu_options_component_1.MenuOptionsComponent }
+                ]
+            }
         ]
     }
 ];
-exports.menuRouting = router_1.RouterModule.forChild(menuRoutes);
+exports.menuRouting = router_1.RouterModule.forChild(menuRoutings);
 //# sourceMappingURL=menu.routing.js.map

@@ -21,3 +21,8 @@ export class GameMatesInstance extends GameInstance{
   public gameMatchId:string;
 }
 
+export class User{
+  constructor(
+    public username:string = ""
+  ){}
+}

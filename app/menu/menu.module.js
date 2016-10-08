@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var forms_1 = require('@angular/forms');
-var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+var common_1 = require('@angular/common');
 var menu_routing_1 = require('./menu.routing');
 var menu_component_1 = require('./menu.component');
 var select_game_component_1 = require('./select-game/select-game.component');
@@ -19,6 +19,7 @@ var button_1 = require('@angular2-material/button');
 var toolbar_1 = require('@angular2-material/toolbar');
 var icon_1 = require('@angular2-material/icon');
 var list_1 = require('@angular2-material/list');
+var card_1 = require('@angular2-material/card');
 var input_1 = require('@angular2-material/input');
 var mates_commons_module_1 = require('../mates-commons/mates-commons.module');
 var components_1 = require("torbi.ng2-choices-game/components");
@@ -34,7 +35,7 @@ var MenuModule = (function () {
     MenuModule = __decorate([
         core_1.NgModule({
             imports: [
-                platform_browser_1.BrowserModule,
+                common_1.CommonModule,
                 http_1.HttpModule,
                 http_1.JsonpModule,
                 mates_commons_module_1.MatesCommonsModule,
@@ -43,9 +44,10 @@ var MenuModule = (function () {
                 toolbar_1.MdToolbarModule,
                 list_1.MdListModule,
                 input_1.MdInputModule,
+                card_1.MdCardModule,
                 components_1.ChoiceGameModule,
                 forms_1.FormsModule,
-                menu_routing_1.menuRouting
+                menu_routing_1.menuRouting,
             ],
             declarations: [
                 menu_component_1.MenuComponent,
@@ -58,7 +60,7 @@ var MenuModule = (function () {
                 public_game_menu_component_1.PublicGameMenuList,
                 multiplayer_game_component_1.MultiplayerGameSelectionList,
                 multiplayer_room_component_1.MultiplayerRoom
-            ],
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], MenuModule);
