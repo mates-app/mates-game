@@ -1,11 +1,12 @@
 import { NgModule }      from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common'
 import { MatesServices } from './mates-game.service'
 import { MatesExchangeServices } from './mates-exchange.service'
+import { UserServices} from './users.service'
 
 @NgModule({
-  imports:      [ BrowserModule ],
+  imports:      [ CommonModule ],
   declarations: [  ],
-  providers : [ MatesServices, MatesExchangeServices ]
+  providers : [ MatesServices, MatesExchangeServices, UserServices ]
 })
 export class MatesCommonsModule { }

@@ -36,6 +36,13 @@ export class MatesServices{
 
   }
 
+  getMatchesByNameFragment(name:string):Observable<GameMatch[]>{
+    return this.http.get(`${this.pathGameMatch}/by-name-fragment?name=${name}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+
+  }
+
   getGameInstance(id:string): Observable<GameInstance> {
     return this.http.get(this.pathGameInstance+id)
                     .map(this.extractData)

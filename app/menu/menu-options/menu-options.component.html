@@ -1,11 +1,7 @@
-<md-toolbar>
-    <span class="title">Menú</span>
-</md-toolbar>
+<menu-header [title]="'Menú'" [showBackButton]="false"></menu-header>
 
-
-<!--<a md-raised-button routerLink="select-game">Select Game</a>-->
-<a md-raised-button routerLink="public-game">Public Game</a>
-<a md-raised-button routerLink="private-game" [disabled]="true">Private Game</a>
+<a md-raised-button routerLink="singleplayer">Single Player</a>
+<a md-raised-button routerLink="multiplayer">Multi Player</a>
 
 <a md-raised-button routerLink="select-game" [disabled]="true">Perfil</a>
 <a md-raised-button routerLink="select-game" [disabled]="true">Configuración</a>

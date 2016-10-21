@@ -2,32 +2,13 @@
 button {
   width: 100%;
   margin-top: 3px;
-
-  /*margin-bottom: 3px;*/
-}
-
-span.title{
-  width: 100%
-}
-
-md-button{
-  text-align: right;
-}
-
-
-md-icon {
-   background-repeat: no-repeat;
-   display: inline-block;
-   fill: currentColor;
-   height: 24px;
-   width: 24px;
 }
 
 @font-face {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://fonts.gstatic.com/s/materialicons/v16/2fcrYFNaTjcS6g4U3t-Y5ZjZjT5FdEJ140U2DJYC3mY.woff2) format('woff2');
+  src: local('Material Icons'), local('MaterialIcons-Regular');
 }
 
 .material-icons {

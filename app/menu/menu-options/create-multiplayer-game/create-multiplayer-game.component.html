@@ -1,16 +1,8 @@
 <div *ngIf="!isStarted">
-<md-toolbar>
-    <span class="title">Selecciona un juego</span>
-
-    <a md-button class="md-fab md-mini" style="cursor:pointer" (click)="menu()">
-	    <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
-    </a>
-
-
-</md-toolbar>
-
+<menu-header [title]="'Create Multiplayer Game'"></menu-header>
 <p>{{createGameBody.gameId}}</p>
 <md-input placeholder="match name" [(ngModel)]="createGameBody.name"></md-input>
+<button (click)="menu()">Back</button>
 <button md-raised-button (click)="create()" >Create</button>
 
 <button md-raised-button (click)="createGameBody.gameId = gameConfig._id" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>

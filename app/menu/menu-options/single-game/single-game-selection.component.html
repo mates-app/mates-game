@@ -1,8 +1,9 @@
+
 <div *ngIf="!isStarted">
-
-<button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>
-
+  <menu-header [title]="'Single Game'"></menu-header>
+  <button md-raised-button (click)="play(gameConfig._id)" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>
 </div>
+
 <game-view>
   <first-level-body>
     <h1>Disfrutá el juego!</h1>

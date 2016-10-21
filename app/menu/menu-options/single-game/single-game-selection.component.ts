@@ -6,7 +6,6 @@ import {Component} from "@angular/core";
 import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
-import {Router} from "@angular/router";
 import {MdIconRegistry} from "@angular2-material/icon";
 
 @Component({
@@ -23,22 +22,9 @@ export class SingleGameSelection{
 
   constructor(
     private matesServices : MatesServices,
-    private router : Router,
     private gameControl:GameControl,
     private mdIconRegistry:MdIconRegistry
-  ){
-
-    mdIconRegistry
-      .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
-      .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
-      .registerFontClassAlias('fontawesome', 'fa');
-  }
-
-  menu(){
-    console.log('click')
-    let link = ['/menu']
-    this.router.navigate(link)
-  }
+  ){}
 
   ngOnInit(){
     this.matesServices.getAllPublicGameConfigs().subscribe(
@@ -66,9 +52,6 @@ export class SingleGameSelection{
             }
 
           )
-
-        // let link = ['/game']
-        // this.router.navigate(link)
       },
       error => console.log(error)
     )

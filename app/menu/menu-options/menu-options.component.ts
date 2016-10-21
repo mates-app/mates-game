@@ -5,8 +5,18 @@ import { Component} from '@angular/core';
 
 @Component({
   moduleId: module.id,
+  template: '<router-outlet></router-outlet>'
+})
+export class MenuOptionsOutlet {}
+
+
+
+@Component({
+  moduleId: module.id,
   selector: 'menu-options',
   templateUrl: 'menu-options.component.html',  
   styleUrls: ['../menu.component.css']
 })
 export class MenuOptionsComponent {}
+
+
