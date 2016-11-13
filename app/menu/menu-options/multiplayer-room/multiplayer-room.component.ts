@@ -6,7 +6,7 @@ import {Component, OnInit} from "@angular/core";
 import {GameMatch} from "../../../models";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
 import {MatesExchangeServices} from "../../../mates-commons/mates-exchange.service";
-import {MdIconRegistry} from "@angular2-material/icon";
+import {MdIconRegistry} from "@angular/material";
 import {Router, ActivatedRoute} from "@angular/router";
 import {GameControl, GameInstance} from "torbi.ng2-choices-game/components";
 

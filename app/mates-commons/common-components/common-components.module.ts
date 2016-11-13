@@ -1,14 +1,12 @@
 import { NgModule }      from '@angular/core'
+import { MaterialModule } from '@angular/material';
 import { CommonModule } from '@angular/common'
-import { MdInputModule } from '@angular2-material/input'
-import { MdIconModule } from '@angular2-material/icon'
 import { FinderComponent, ItemFounded } from './finder/finder.component'
 
 @NgModule({
   imports:      [ 
-    CommonModule, 
-    MdInputModule, 
-    MdIconModule ],
+    MaterialModule.forRoot(),
+    CommonModule],
   declarations: [ 
     FinderComponent, 
     ItemFounded ],

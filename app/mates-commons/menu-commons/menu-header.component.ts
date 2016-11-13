@@ -2,7 +2,7 @@
  * Created by josecullen on 17/07/16. (click)="onBack.emit()"
  */
 import { Directive, Component, Input, Output, EventEmitter } from '@angular/core';
-import { MdIconRegistry } from "@angular2-material/icon";
+import { MdIconRegistry } from "@angular/material";
 import {Router, ActivatedRoute} from "@angular/router";
 
 @Component({

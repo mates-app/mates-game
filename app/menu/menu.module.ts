@@ -6,12 +6,7 @@ import { CommonModule } from '@angular/common'
 import { menuRouting } from './menu.routing'
 import { MenuComponent } from './menu.component'
 
-import { MdButtonModule } from '@angular2-material/button';
-import { MdToolbarModule } from '@angular2-material/toolbar'
-import { MdIconModule } from '@angular2-material/icon'
-import { MdListModule } from '@angular2-material/list'
-import { MdCardModule } from '@angular2-material/card'
-import { MdInputModule } from '@angular2-material/input'
+import { MaterialModule } from '@angular/material';
 
 import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
 import { ChoiceGameModule} from "torbi.ng2-choices-game/components";
@@ -29,12 +24,7 @@ import { MenuCommonsModule } from '../mates-commons/menu-commons/menu-commons.mo
     HttpModule,
     JsonpModule,
   	MatesCommonsModule,
-    MdButtonModule,
-    MdIconModule,
-    MdToolbarModule,
-    MdListModule,
-    MdInputModule,
-    MdCardModule,
+    MaterialModule.forRoot(),
     ChoiceGameModule,
     FormsModule,
     menuRouting,

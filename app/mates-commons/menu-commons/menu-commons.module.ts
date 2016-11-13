@@ -1,13 +1,11 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule } from '@angular/common'
 import { MenuHeaderComponent} from './menu-header.component'
-import { MdButtonModule } from '@angular2-material/button';
-import { MdToolbarModule } from '@angular2-material/toolbar'
-import { MdIconModule } from '@angular2-material/icon'
+import { MaterialModule } from '@angular/material';
 
 
 @NgModule({
-  imports:      [ CommonModule, MdButtonModule, MdIconModule, MdToolbarModule ],
+  imports:      [ CommonModule, MaterialModule.forRoot() ],
   declarations: [ MenuHeaderComponent ],
   exports:      [ MenuHeaderComponent ],
   providers : [  ]

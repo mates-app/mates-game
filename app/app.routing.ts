@@ -1,9 +1,5 @@
 import { ModuleWithProviders }  from '@angular/core';
-
 import { Routes, RouterModule } from '@angular/router';
-// import { loginRoutes, authProviders } from './login/login.routing'
-
-// import { AuthGuard } from './login/auth-guard.service'
 
 const appRouting: Routes = [
 	{
