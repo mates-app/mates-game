@@ -9,5 +9,14 @@
     "removeComments": false,
     "noImplicitAny": false,
     "outDir": "dist"
-  }
+  },
+  "filesGlob":[
+    // "app/**/*.ts",
+    // "!node_modules/**"
+  ],
+  "exclude": [
+    "node_modules",
+    "typings"
+  ]
+  
 }
