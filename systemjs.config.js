@@ -6,17 +6,17 @@
     // map tells the System loader where to look for things
     var map = {
         'app': 'dist/app',
-        '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
-        '@angular/common': 'npm:@angular/common/bundles/common.umd.js',
-        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.js',
-        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.js',
-        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
-        '@angular/http': 'npm:@angular/http/bundles/http.umd.js',
-        '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
-        '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
+        '@angular/core': 'npm:@angular/core/bundles/core.umd.min.js',
+        '@angular/common': 'npm:@angular/common/bundles/common.umd.min.js',
+        '@angular/compiler': 'npm:@angular/compiler/bundles/compiler.umd.min.js',
+        '@angular/platform-browser': 'npm:@angular/platform-browser/bundles/platform-browser.umd.min.js',
+        '@angular/platform-browser-dynamic': 'npm:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.min.js',
+        '@angular/http': 'npm:@angular/http/bundles/http.umd.min.js',
+        '@angular/router': 'npm:@angular/router/bundles/router.umd.min.js',
+        '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.min.js',
         '@angular/material': 'npm:@angular/material/material.umd.js',
-
-        'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
+        'hammerjs':'npm:hammerjs',
+        'angular2-in-memory-web-api': 'npm:/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
         'rxjs': 'node_modules/rxjs',
         'mathjax': 'node_modules/mathjax',
         'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game'
@@ -37,6 +37,10 @@
         'torbi.ng2-choices-game': {
           main: 'index',
           defaultExtension: 'js'
+        },
+        'hammerjs':{
+            main: 'hammerjs.min',
+            defaultExtension: 'js'
         }
     };
     var config = {
