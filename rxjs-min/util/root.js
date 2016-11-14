@@ -1,0 +1,1 @@
+"use strict";var objectTypes={boolean:!1,function:!0,object:!0,number:!1,string:!1,undefined:!1};exports.root=objectTypes[typeof self]&&self||objectTypes[typeof window]&&window;var freeGlobal=objectTypes[typeof global]&&global;!freeGlobal||freeGlobal.global!==freeGlobal&&freeGlobal.window!==freeGlobal||(exports.root=freeGlobal);

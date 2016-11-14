@@ -1,0 +1,1 @@
+"use strict";var Observable_1=require("../../Observable"),switchMapTo_1=require("../../operator/switchMapTo");Observable_1.Observable.prototype.switchMapTo=switchMapTo_1.switchMapTo;

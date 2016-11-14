@@ -1,0 +1,1 @@
+"use strict";var Observable_1=require("../../Observable"),repeat_1=require("../../operator/repeat");Observable_1.Observable.prototype.repeat=repeat_1.repeat;

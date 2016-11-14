@@ -1,0 +1,1 @@
+"use strict";function partition(t,i){return[filter_1.filter.call(this,t),filter_1.filter.call(this,not_1.not(t,i))]}var not_1=require("../util/not"),filter_1=require("./filter");exports.partition=partition;

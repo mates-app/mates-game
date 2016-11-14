@@ -1,0 +1,1 @@
+"use strict";exports.isArray=Array.isArray||function(r){return r&&"number"==typeof r.length};

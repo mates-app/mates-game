@@ -1,0 +1,1 @@
+"use strict";function isObject(t){return null!=t&&"object"==typeof t}exports.isObject=isObject;

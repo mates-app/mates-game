@@ -1,0 +1,1 @@
+"use strict";function tryCatcher(){try{return tryCatchTarget.apply(this,arguments)}catch(r){return errorObject_1.errorObject.e=r,errorObject_1.errorObject}}function tryCatch(r){return tryCatchTarget=r,tryCatcher}var errorObject_1=require("./errorObject"),tryCatchTarget;exports.tryCatch=tryCatch;

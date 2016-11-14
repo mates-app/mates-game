@@ -1,0 +1,1 @@
+"use strict";function getSymbolObservable(e){var b,o=e.Symbol;return"function"==typeof o?o.observable?b=o.observable:(b=o("observable"),o.observable=b):b="@@observable",b}var root_1=require("../util/root");exports.getSymbolObservable=getSymbolObservable,exports.$$observable=getSymbolObservable(root_1.root);

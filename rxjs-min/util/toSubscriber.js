@@ -1,0 +1,1 @@
+"use strict";function toSubscriber(r,b,e){if(r){if(r instanceof Subscriber_1.Subscriber)return r;if(r[rxSubscriber_1.$$rxSubscriber])return r[rxSubscriber_1.$$rxSubscriber]()}return r||b||e?new Subscriber_1.Subscriber(r,b,e):new Subscriber_1.Subscriber}var Subscriber_1=require("../Subscriber"),rxSubscriber_1=require("../symbol/rxSubscriber");exports.toSubscriber=toSubscriber;

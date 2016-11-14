@@ -1,0 +1,1 @@
+"use strict";function concatMap(e,r){return this.lift(new mergeMap_1.MergeMapOperator(e,r,1))}var mergeMap_1=require("./mergeMap");exports.concatMap=concatMap;

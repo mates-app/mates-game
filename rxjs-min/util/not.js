@@ -1,0 +1,1 @@
+"use strict";function not(t,r){function n(){return!n.pred.apply(n.thisArg,arguments)}return n.pred=t,n.thisArg=r,n}exports.not=not;

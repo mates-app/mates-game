@@ -1,0 +1,1 @@
+"use strict";function publish(t){return t?multicast_1.multicast.call(this,function(){return new Subject_1.Subject},t):multicast_1.multicast.call(this,new Subject_1.Subject)}var Subject_1=require("../Subject"),multicast_1=require("./multicast");exports.publish=publish;

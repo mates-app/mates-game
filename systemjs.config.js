@@ -14,10 +14,10 @@
         '@angular/http': 'npm:@angular/http/bundles/http.umd.min.js',
         '@angular/router': 'npm:@angular/router/bundles/router.umd.min.js',
         '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.min.js',
-        '@angular/material': 'npm:@angular/material/material.umd.js',
+        '@angular/material': 'npm:@angular/material/material.umd.min.js',
         'hammerjs':'npm:hammerjs',
         'angular2-in-memory-web-api': 'npm:/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-        'rxjs': 'node_modules/rxjs',
+        'rxjs': 'rxjs-min',
         'mathjax': 'node_modules/mathjax',
         'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game'
     };

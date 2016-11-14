@@ -1,0 +1,1 @@
+"use strict";function isScheduler(e){return e&&"function"==typeof e.schedule}exports.isScheduler=isScheduler;

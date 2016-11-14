@@ -1,0 +1,1 @@
+"use strict";var Observable_1=require("../../Observable"),from_1=require("../../observable/from");Observable_1.Observable.from=from_1.from;

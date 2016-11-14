@@ -1,0 +1,1 @@
+"use strict";function distinctKey(t,i,n){return distinct_1.distinct.call(this,function(n,c){return i?i(n[t],c[t]):n[t]===c[t]},n)}var distinct_1=require("./distinct");exports.distinctKey=distinctKey;

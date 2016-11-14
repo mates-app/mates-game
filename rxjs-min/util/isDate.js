@@ -1,0 +1,1 @@
+"use strict";function isDate(t){return t instanceof Date&&!isNaN(+t)}exports.isDate=isDate;

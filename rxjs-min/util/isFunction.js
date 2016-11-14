@@ -1,0 +1,1 @@
+"use strict";function isFunction(n){return"function"==typeof n}exports.isFunction=isFunction;

@@ -1,0 +1,1 @@
+"use strict";var AsapAction_1=require("./AsapAction"),AsapScheduler_1=require("./AsapScheduler");exports.asap=new AsapScheduler_1.AsapScheduler(AsapAction_1.AsapAction);

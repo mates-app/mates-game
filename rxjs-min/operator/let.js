@@ -1,0 +1,1 @@
+"use strict";function letProto(t){return t(this)}exports.letProto=letProto;

@@ -1,0 +1,1 @@
+"use strict";var Observable_1=require("../../Observable"),cache_1=require("../../operator/cache");Observable_1.Observable.prototype.cache=cache_1.cache;

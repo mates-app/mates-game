@@ -1,0 +1,1 @@
+"use strict";function subscribeOn(b,e){return void 0===e&&(e=0),new SubscribeOnObservable_1.SubscribeOnObservable(this,e,b)}var SubscribeOnObservable_1=require("../observable/SubscribeOnObservable");exports.subscribeOn=subscribeOn;

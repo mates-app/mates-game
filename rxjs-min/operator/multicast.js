@@ -1,0 +1,1 @@
+"use strict";function multicast(e,t){var b;return b="function"==typeof e?e:function(){return e},t?new MulticastObservable_1.MulticastObservable(this,b,t):new ConnectableObservable_1.ConnectableObservable(this,b)}var MulticastObservable_1=require("../observable/MulticastObservable"),ConnectableObservable_1=require("../observable/ConnectableObservable");exports.multicast=multicast;
