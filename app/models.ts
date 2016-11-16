@@ -11,7 +11,9 @@ export class GameMatch{
     public gameId:string,
     public name:string,
     public isPublic:boolean,
-    public isMultiPlayer:boolean
+    public isMultiPlayer:boolean,
+    public isStarted:boolean = false,
+    public _id:string = ""
   ){
 
   }

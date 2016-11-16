@@ -2,7 +2,6 @@
 <menu-header [title]="'Create Multiplayer Game'"></menu-header>
 <p>{{createGameBody.gameId}}</p>
 <md-input placeholder="match name" [(ngModel)]="createGameBody.name"></md-input>
-<button (click)="menu()">Back</button>
 <button md-raised-button (click)="create()" >Create</button>
 
 <button md-raised-button (click)="createGameBody.gameId = gameConfig._id" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>

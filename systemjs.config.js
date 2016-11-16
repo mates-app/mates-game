@@ -19,7 +19,8 @@
         'angular2-in-memory-web-api': 'npm:/angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
         'rxjs': 'rxjs-min',
         'mathjax': 'node_modules/mathjax',
-        'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game'
+        'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game',
+        'socket.io-client' : 'npm:socket.io-client/socket.io.js'
     };
 
     var packages = {
@@ -27,6 +28,7 @@
             main: 'main.js', 
             defaultExtension: 'js' 
         },
+        "socket.io-client": {"defaultExtension": "js"},
         'rxjs': { 
             defaultExtension: 'js' 
         },

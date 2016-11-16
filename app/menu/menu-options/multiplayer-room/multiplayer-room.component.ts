@@ -9,16 +9,21 @@ import {MatesExchangeServices} from "../../../mates-commons/mates-exchange.servi
 import {MdIconRegistry} from "@angular/material";
 import {Router, ActivatedRoute} from "@angular/router";
 import {GameControl, GameInstance} from "torbi.ng2-choices-game/components";
-
+import * as io from "socket.io-client";
 
 @Component({
   moduleId: module.id,
   selector: 'multiplayer-room',
   template: `
-  <div *ngIf="!isStarted">
+  <div *ngIf="gameMatch.isStarted">
     <h2>{{gameMatch.name}}</h2>
     <a md-button (click)="start()">Iniciar</a>
   </div>
+  <div *ngIf="!gameMatch.isStarted">
+    <h2>{{gameMatch.name}}</h2>
+    <h3>Esperando para comenzar . . .</h3>
+  </div>
+
   <game-view>
     <first-level-body>
         <h1>Disfrutá el juego!</h1>
@@ -31,11 +36,7 @@ import {GameControl, GameInstance} from "torbi.ng2-choices-game/components";
     <game-over-body>
         <effectivity-content [isGameOver]="true"></effectivity-content>
     </game-over-body>
-
   </game-view>
-
-
-
 `
 })
 export class MultiplayerRoom implements OnInit{
@@ -52,13 +53,30 @@ export class MultiplayerRoom implements OnInit{
     }
 
     ngOnInit(){
-        
         this.gameMatch = this.matesExchange.getSelectedGameMatch()
-
         this.matesServices
             .getGameInstance(this.gameMatch.gameId)
             .subscribe(gameInstance => this.gameControl.setGameInstance(gameInstance))
-        
+        // this.checkStatus()
+
+        var socket = io.connect('http://localhost:3000', { 'forceNew': true });
+        socket.on('connect', (message) => console.log('message', message))
+        socket.on('news', (message) => console.log('message', message))
+        socket.on(this.gameMatch._id, (message) => message.type === 'start' ? this.gameMatch.isStarted = true : console.log(message))
+    }
+
+    checkStatus() {
+        if (!this.gameMatch.isStarted) {
+            this.matesServices
+                .getMatchById(this.gameMatch._id)
+                .subscribe(
+                gameMatch => {
+                    this.gameMatch = gameMatch
+                    if(!this.gameMatch.isStarted){
+                        setTimeout(this.checkStatus(), 3000)
+                    }
+                })
+        }
     }
 
     start(){

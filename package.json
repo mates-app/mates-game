@@ -2,11 +2,11 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"gulp copy:assets\" ",
+    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" \"gulp copy:assets\" \"gulp minify\" ",
     "lite": "lite-server",
     "postinstall": "typings install",
     "tsc": "tsc",
-    "tsc:w": "tsc -w",
+    "tsc:w": "tsc -w -p app",
     "typings": "typings"
   },
   "license": "ISC",
@@ -37,6 +37,8 @@
     "zone.js": "^0.6.25"
   },
   "devDependencies": {
+    "@types/socket.io": "^1.4.27",
+    "@types/socket.io-client": "^1.4.27",
     "@types/core-js": "^0.9.34",
     "@types/node": "^6.0.45",
     "concurrently": "^3.0.0",

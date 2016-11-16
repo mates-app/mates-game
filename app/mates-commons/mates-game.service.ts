@@ -43,6 +43,13 @@ export class MatesServices{
 
   }
 
+  getMatchById(id:string):Observable<GameMatch>{
+    return this.http.get(`${this.pathGameMatch}/${id}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+
+  }
+
   getGameInstance(id:string): Observable<GameInstance> {
     return this.http.get(this.pathGameInstance+id)
                     .map(this.extractData)

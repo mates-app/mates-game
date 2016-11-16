@@ -55,8 +55,6 @@ export class SingleGameSelection{
       },
       error => console.log(error)
     )
-
-
-  }
+}
 
 }
