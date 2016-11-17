@@ -6,6 +6,7 @@ import {Component} from "@angular/core";
 import {GameConfig, GameMatesInstance} from "../../../models";
 import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
 import {MatesServices} from "../../../mates-commons/mates-game.service";
+import {AuthService} from "../../../auth.service";
 import {MdIconRegistry} from "@angular/material";
 
 @Component({
@@ -23,7 +24,8 @@ export class SingleGameSelection{
   constructor(
     private matesServices : MatesServices,
     private gameControl:GameControl,
-    private mdIconRegistry:MdIconRegistry
+    private mdIconRegistry:MdIconRegistry,
+    private authService:AuthService
   ){}
 
   ngOnInit(){
@@ -46,7 +48,7 @@ export class SingleGameSelection{
             score =>{
               this.matesServices.pushScore(
                 (<GameMatesInstance>this.gameControl.getGameInstance()).gameMatchId,
-                "57bccba3ee005b59204559a4",
+                this.authService.getUser()._id,
                 score.allScore())
               console.log('score', score.allScore())
             }

@@ -11,7 +11,7 @@ import { User } from './models'
 @Injectable()
 export class AuthService {
   isLoggedIn: boolean = false;
-
+  user:User = null 
   redirectUrl: string;
 
   private pathUsers: string = `http://${location.hostname}:3000/users`;
@@ -34,10 +34,17 @@ export class AuthService {
   login(user:User): Observable<boolean> {
     return this.http.get(`${this.pathUsers}/is-valid/${user.username}`)
                     .map(res => {
-                      this.isLoggedIn = res.json()                      
+                      this.isLoggedIn = res.json().valid
+                      if(this.isLoggedIn){
+                        this.user = res.json().user
+                      } 
                       return this.isLoggedIn
                     })
                     .catch(this.handleError);
+  }
+
+  getUser():User{
+    return this.user
   }
 
   signup(user:User): Observable<boolean>{
@@ -49,6 +56,8 @@ export class AuthService {
                     .map(this.extractData)
                     .catch(this.handleError)
   }
+
+
 
   public logout(): void {
     this.isLoggedIn = false;
