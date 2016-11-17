@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/delay';
+// import 'rxjs/add/observable/of';
+// import 'rxjs/add/operator/do';
+// import 'rxjs/add/operator/delay';
 
 import { UserServices } from './mates-commons/users.service'
 import { User } from './models'
@@ -50,7 +50,7 @@ export class AuthService {
                     .catch(this.handleError)
   }
 
-  logout(): void {
+  public logout(): void {
     this.isLoggedIn = false;
   }
 }

@@ -57,26 +57,12 @@ export class MultiplayerRoom implements OnInit{
         this.matesServices
             .getGameInstance(this.gameMatch.gameId)
             .subscribe(gameInstance => this.gameControl.setGameInstance(gameInstance))
-        // this.checkStatus()
 
         var socket = io.connect('http://localhost:3000', { 'forceNew': true });
-        socket.on('connect', (message) => console.log('message', message))
-        socket.on('news', (message) => console.log('message', message))
-        socket.on(this.gameMatch._id, (message) => message.type === 'start' ? this.gameMatch.isStarted = true : console.log(message))
-    }
-
-    checkStatus() {
-        if (!this.gameMatch.isStarted) {
-            this.matesServices
-                .getMatchById(this.gameMatch._id)
-                .subscribe(
-                gameMatch => {
-                    this.gameMatch = gameMatch
-                    if(!this.gameMatch.isStarted){
-                        setTimeout(this.checkStatus(), 3000)
-                    }
-                })
-        }
+        socket.on(this.gameMatch._id, (message) => 
+            message.type === 'start' 
+                ? this.gameMatch.isStarted = true 
+                : console.log(message))
     }
 
     start(){

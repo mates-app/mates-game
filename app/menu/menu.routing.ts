@@ -16,6 +16,7 @@ const menuRoutings: Routes = [
     children: [{
         path: 'menu',
         component: MenuOptionsOutlet,
+        canActivate: [AuthGuard],
         children: [
           { path : '', component: MenuOptionsComponent},
           { path : 'singleplayer',  component : SingleGameSelection },

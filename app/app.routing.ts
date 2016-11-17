@@ -1,11 +1,13 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth-guard.service'
+
 
 const appRouting: Routes = [
 	{
 		path: 'menu',
 		loadChildren: 'app/menu/menu.module#MenuModule',
-		// canLoad: [AuthGuard]
+		canLoad: [AuthGuard]
 	},
 	{
 		path: '',
