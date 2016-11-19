@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-// import 'rxjs/add/observable/of';
-// import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/delay';
-
 import { UserServices } from './mates-commons/users.service'
 import { User } from './models'
 
@@ -14,7 +10,7 @@ export class AuthService {
   user:User = null 
   redirectUrl: string;
 
-  private pathUsers: string = `http://${location.hostname}:3000/users`;
+  private pathUsers: string = `http://${location.hostname}:4000/users`;
 
   constructor(private http: Http) { }
 
@@ -23,16 +19,22 @@ export class AuthService {
     console.log('extractData', res, body)
     return body || { };
   }
+  
 
   private handleError (error: any) {
-    let errMsg = (error.message) ? error.message :
-      error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+    let errMsg = (error.message) 
+      ? error.message 
+      : error.status 
+          ? `${error.status} - ${error.statusText}` 
+          : 'Server error';
     console.error(errMsg); // log to console instead
     return Observable.throw(errMsg);
   }
 
   login(user:User): Observable<boolean> {
-    return this.http.get(`${this.pathUsers}/is-valid/${user.username}`)
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.post(`${this.pathUsers}/login`, JSON.stringify(user), options)
                     .map(res => {
                       this.isLoggedIn = res.json().valid
                       if(this.isLoggedIn){
@@ -40,6 +42,12 @@ export class AuthService {
                       } 
                       return this.isLoggedIn
                     })
+                    .catch(this.handleError);
+  }
+
+  exists(username:string):Observable<boolean> {
+    return this.http.get(`${this.pathUsers}/exists/${username}`)
+                    .map(res => res.json())
                     .catch(this.handleError);
   }
 

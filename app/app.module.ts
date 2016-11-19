@@ -22,8 +22,7 @@ import { LoginRoutingModule }   from './login-routing.module';
     LoginRoutingModule
   ],
   declarations: [
-    AppComponent,
-    LoginComponent
+    AppComponent
   ],
   providers: [appRoutingProviders],
   bootstrap:    [ AppComponent ]

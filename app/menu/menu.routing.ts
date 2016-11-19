@@ -15,13 +15,15 @@ const menuRoutings: Routes = [
     component: MenuComponent,
     children: [{
         path: 'menu',
-        component: MenuOptionsOutlet,
-        canActivate: [AuthGuard],
+        component: MenuOptionsOutlet,        
         children: [
           { path : '', component: MenuOptionsComponent},
-          { path : 'singleplayer',  component : SingleGameSelection },
+          { path : 'singleplayer',  
+            component : SingleGameSelection, 
+            canActivate: [AuthGuard], },
           { path : 'multiplayer',  
             component : MultiplayerGameSelection,
+            canActivate: [AuthGuard],
             children: [
               { path : '',  component : MultiplayerGameSelectionList },
               { path : 'create',  component : CreateMultiplayerGame },

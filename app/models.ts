@@ -26,6 +26,11 @@ export class GameMatesInstance extends GameInstance{
 export class User{
   constructor(
     public username:string = "",
+    public password:string = "",
     public _id:string = ""
-  ){}
+  ){
+
+  }
+
+
 }
