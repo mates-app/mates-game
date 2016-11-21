@@ -36,6 +36,12 @@ export class MatesServices{
 
   }
 
+  getConfigsByNameMatching(name:string):Observable<GameConfig[]>{
+    return this.http.get(`${this.pathGameConfigs}name-matching/${name}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
   getMatchesByNameFragment(name:string):Observable<GameMatch[]>{
     return this.http.get(`${this.pathGameMatch}/by-name-fragment?name=${name}`)
                     .map(this.extractData)

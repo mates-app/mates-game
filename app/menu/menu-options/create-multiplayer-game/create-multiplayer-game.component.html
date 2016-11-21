@@ -1,10 +1,82 @@
-<div *ngIf="!isStarted">
-<menu-header [title]="'Create Multiplayer Game'"></menu-header>
-<p>{{createGameBody.gameId}}</p>
+<div style="height:90%">
+<menu-header [title]="'Create Multiplayer Game'">
+
+</menu-header>
+
+<div class="centered-container">
+
+<md-card style="height:80%">
+    <!--<md-card-title>Card with title</md-card-title>-->
+    <md-card-content>
+
+        <md-input 
+            placeholder="Nombre del Juego" 
+            maxlength="20" 
+            class="full-width" 
+            [(ngModel)]="createGameBody.name"
+            required>
+            <span md-suffix>
+                <md-icon>lock</md-icon>
+                <md-icon>check_circle</md-icon>
+            </span>
+            <md-hint align="end" style="color:#921919;"></md-hint>
+        </md-input>
+
+        <md-tab-group (selectChange)="onTabChange($event)">
+            <md-tab>
+                <template md-tab-label>CONFIGURACIÓN</template>
+                <template md-tab-content>
+                    <finder 
+                        (finderEvent)="findConfigs($event)" 
+                        [placeholder]="'Filtrar Configuraciones'">
+                        <items-founded>
+                        <div>
+                            <button 
+                                md-raised-button 
+                                (click)="selectGame(gameConfig)" 
+                                *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}
+                            </button>
+                            <br>
+                        </div>
+                        </items-founded>
+                    </finder>
+                </template>
+            </md-tab>
+            <md-tab>
+                <template md-tab-label>USUARIOS</template>
+                <template md-tab-content>
+                    <finder 
+                        (finderEvent)="findUsers($event)" 
+                        [placeholder]="'Filtrar Usuarios'">
+                        <items-founded>
+                        <div>
+                            <button 
+                                md-raised-button 
+                                (click)="selectGame(gameMatch)" 
+                                *ngFor="let user of users">{{user.username}}
+                            </button>
+                        </div>
+                        </items-founded>
+                    </finder>
+                </template>
+            </md-tab>
+        </md-tab-group>
+
+
+
+    </md-card-content>
+</md-card>
+<br>
+
+</div>
+
+</div>
+<md-card class="footer-card">
+    <button md-button (click)="create()">CREAR</button>
+</md-card>
+
+<!--<p>{{createGameBody.gameId}}</p>
 <md-input placeholder="match name" [(ngModel)]="createGameBody.name"></md-input>
 <button md-raised-button (click)="create()" >Create</button>
 
-<button md-raised-button (click)="createGameBody.gameId = gameConfig._id" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>
-
-
-</div>
+<button md-raised-button (click)="createGameBody.gameId = gameConfig._id" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}</button>-->

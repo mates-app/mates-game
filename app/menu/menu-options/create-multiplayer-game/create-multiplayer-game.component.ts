@@ -2,38 +2,58 @@
  * Created by josecullen on 11/09/16.
  */
 
-import {Component} from "@angular/core";
-import {GameConfig, GameMatesInstance, GameMatch} from "../../../models";
-import {GameInstance, GameControl} from "torbi.ng2-choices-game/components";
-import {MatesServices, CreateGameBody} from "../../../mates-commons/mates-game.service";
-import {Router, ActivatedRoute} from "@angular/router";
-import {MdIconRegistry} from "@angular/material";
-import {MatesExchangeServices} from "../../../mates-commons/mates-exchange.service";
+import { Component } from "@angular/core";
+import { GameConfig, GameMatesInstance, GameMatch, User } from "../../../models";
+import { GameInstance, GameControl } from "torbi.ng2-choices-game/components";
+import { MatesServices, CreateGameBody } from "../../../mates-commons/mates-game.service";
+import { UserServices } from "../../../mates-commons/users.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { MdIconRegistry } from "@angular/material";
+import { MatesExchangeServices } from "../../../mates-commons/mates-exchange.service";
 
 @Component({
   moduleId: module.id,
   selector: 'create-multiplayer-game',
-  templateUrl : 'create-multiplayer-game.component.html',
-  styleUrls : ['create-multiplayer-game.component.css'],
+  templateUrl: 'create-multiplayer-game.component.html',
+  styleUrls: ['create-multiplayer-game.component.css'],
   viewProviders: [MdIconRegistry]
 })
-export class CreateMultiplayerGame{
+export class CreateMultiplayerGame {
+  tabIndex: number = 0
+  gameConfigs: Array<GameConfig>;
+  users: Array<User>;
+  
+  validations = {
+    name:false
+  }
 
-createGameBody:CreateGameBody = {
-  gameId : '',
-  name: '',
-  isMultiPlayer: true
-}
+  createGameBody: CreateGameBody = {
+    gameId: '',
+    name: '',
+    isMultiPlayer: true
+  }
 
-gameConfigs:Array<GameConfig>;
- 
+  onTabChange(tab) {
+    this.tabIndex = tab.index
+  }
+
+  validateName(){
+    if(this.createGameBody.name.length > 6 ){
+
+    }else{
+      
+    }
+  }
+  
+
   constructor(
-    private matesServices : MatesServices,
-    private matesExchanges:MatesExchangeServices,
-    private router : Router,
+    private matesServices: MatesServices,
+    private usersServices: UserServices,
+    private matesExchanges: MatesExchangeServices,
+    private router: Router,
     private route: ActivatedRoute,
-    private mdIconRegistry:MdIconRegistry
-  ){
+    private mdIconRegistry: MdIconRegistry
+  ) {
 
     mdIconRegistry
       .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
@@ -42,25 +62,43 @@ gameConfigs:Array<GameConfig>;
 
   }
 
-  menu(){    
-    this.router.navigate(['../', {  }], { relativeTo: this.route });
+  menu() {
+    this.router.navigate(['../', {}], { relativeTo: this.route });
   }
 
-  ngOnInit(){
+  ngOnInit() {
     this.matesServices.getAllPublicGameConfigs().subscribe(
       gameConfigs => this.gameConfigs = gameConfigs,
-      error =>  console.log(error));
+      error => console.log(error));
+    
+    this.usersServices.getUsersByNameFragment('').subscribe(
+      users => this.users = users,
+      error => console.log(error));
   }
 
-  create(){
-      
-      this
-        .matesServices
-        .createMatch(this.createGameBody)
-        .subscribe(gameMatch => {
-          this.matesExchanges.setSelectedGameMatch(gameMatch)
-          this.router.navigate(['../room', {  }], { relativeTo: this.route })
-        })
+  findConfigs(name:string){
+    this.matesServices.getConfigsByNameMatching(name)
+        .subscribe(
+          gameConfigs => this.gameConfigs = gameConfigs
+        )
+  }
+
+  findUsers(name:string){
+    this.usersServices.getUsersByNameFragment(name)
+        .subscribe(
+          users => this.users = users
+        )
+  }
+
+  create() {
+
+    this
+      .matesServices
+      .createMatch(this.createGameBody)
+      .subscribe(gameMatch => {
+        this.matesExchanges.setSelectedGameMatch(gameMatch)
+        this.router.navigate(['../room', {}], { relativeTo: this.route })
+      })
   }
 
 

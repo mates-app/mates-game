@@ -20,7 +20,7 @@ export class UserServices{
 
   }
 
-  getUsersByNameFragment(name:string):Observable<GameMatch[]>{
+  getUsersByNameFragment(name:string):Observable<User[]>{
     return this.http.get(`${this.pathUsers}/by-username-fragment?username=${name}`)
                     .map(this.extractData)
                     .catch(this.handleError);
