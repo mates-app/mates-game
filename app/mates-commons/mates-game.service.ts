@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { GameConfig, GameMatch } from '../models';
+import { GameConfig, GameMatch, User } from '../models';
 import {GameInstance} from "torbi.ng2-choices-game/components";
 
 @Injectable()
@@ -36,9 +36,16 @@ export class MatesServices{
 
   }
 
+
   getConfigsByNameMatching(name:string):Observable<GameConfig[]>{
     return this.http.get(`${this.pathGameConfigs}name-matching/${name}`)
                     .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  gameMatchExists(name:string):Observable<boolean>{
+    return this.http.get(`${this.pathGameMatch}/exists/${name}`)
+                    .map(exists => exists.json())
                     .catch(this.handleError);
   }
 
@@ -535,6 +542,7 @@ export interface CreateGameBody{
 
   gameId:string,
   name:string,
-  isMultiPlayer:boolean
+  isMultiPlayer:boolean,
+  users:Array<User>
 
 }

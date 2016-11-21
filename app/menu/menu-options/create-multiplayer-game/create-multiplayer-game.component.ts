@@ -22,14 +22,19 @@ export class CreateMultiplayerGame {
   tabIndex: number = 0
   gameConfigs: Array<GameConfig>;
   users: Array<User>;
-  
+
   validations = {
-    name:false
+    name:{
+       valid: false,
+       dirty: false,
+       message: ""
+    }
   }
 
   createGameBody: CreateGameBody = {
     gameId: '',
     name: '',
+    users: [],
     isMultiPlayer: true
   }
 
@@ -38,10 +43,21 @@ export class CreateMultiplayerGame {
   }
 
   validateName(){
+    this.validations.name.dirty = true
     if(this.createGameBody.name.length > 6 ){
-
+      this.matesServices
+          .gameMatchExists(this.createGameBody.name)
+          .subscribe(
+            exists => {
+              this.validations.name.valid = !exists
+              this.validations.name.valid
+                ? this.validations.name.message = ''
+                : this.validations.name.message = 'El nombre ya existe'
+            } 
+          )
     }else{
-      
+      this.validations.name.valid = false
+      this.validations.name.message = 'El nombre debe tener entre 6 y 20 caracteres'
     }
   }
   
