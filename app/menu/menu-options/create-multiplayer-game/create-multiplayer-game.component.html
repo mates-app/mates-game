@@ -17,7 +17,7 @@
             (change)="validateName()"
             required>
             <span md-suffix>
-                <md-icon *ngIf="createGameBody.users.length !== 0" style="color:#edb425;">lock_outline
+                <md-icon *ngIf="createGameBody.users.length !== 0" style="color:#edb425;">lock
                 </md-icon>
                 <md-icon *ngIf="createGameBody.users.length === 0" style="color:#edb425;">lock_open
                 </md-icon>
@@ -32,6 +32,8 @@
             </span>
             <md-hint align="end" style="color:#921919;">{{validations.name.message}}</md-hint>
         </md-input>
+        <h6>Configuración: {{gameConfigName}}</h6>
+        <h6>Usuarios: {{createGameBody.users.length}}</h6>
         <br><br>
         <md-tab-group (selectChange)="onTabChange($event)">
             <md-tab>
@@ -44,7 +46,7 @@
                         <div>
                             <button 
                                 md-raised-button 
-                                (click)="selectGame(gameConfig)" 
+                                (click)="selectGameConfig(gameConfig)" 
                                 *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}
                             </button>
                             <br>
@@ -62,14 +64,15 @@
                         <items-founded>
                         <div>
                             <button 
-                                md-raised-button 
-                                (click)="selectGame(gameMatch)" 
+                                md-raised-button color="{{resolveUserColor(user)}}" 
+                                (click)="selectUser(user)" 
                                 *ngFor="let user of users">{{user.username}}
                             </button>
                         </div>
                         </items-founded>
                     </finder>
                 </template>
+
             </md-tab>
         </md-tab-group>
 
@@ -83,7 +86,7 @@
 
 </div>
 <md-card class="footer-card">
-    <button md-button (click)="create()" [disabled]="!validations.name.valid">CREAR</button>
+    <button md-button (click)="create()" [disabled]="!validations.name.valid || createGameBody.gameId.length === 0">CREAR</button>
 </md-card>
 
 <!--<p>{{createGameBody.gameId}}</p>

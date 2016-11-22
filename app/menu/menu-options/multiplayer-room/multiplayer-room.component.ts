@@ -58,7 +58,7 @@ export class MultiplayerRoom implements OnInit{
             .getGameInstance(this.gameMatch.gameId)
             .subscribe(gameInstance => this.gameControl.setGameInstance(gameInstance))
 
-        var socket = io.connect('http://localhost:3000', { 'forceNew': true });
+        var socket = io.connect('http://localhost:4001', { 'forceNew': true });
         socket.on(this.gameMatch._id, (message) => 
             message.type === 'start' 
                 ? this.gameMatch.isStarted = true 

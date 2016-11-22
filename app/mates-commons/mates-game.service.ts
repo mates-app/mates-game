@@ -6,15 +6,15 @@ import {GameInstance} from "torbi.ng2-choices-game/components";
 
 @Injectable()
 export class MatesServices{
-  private pathGameInstance: string = "http://"+location.hostname+":3000/game-instance/"
-  private pathGameConfigs: string = `http://${location.hostname}:3000/game-config/`;
+  private pathGameInstance: string = "http://"+location.hostname+":4001/game-instance/"
+  private pathGameConfigs: string = `http://${location.hostname}:4001/game-config/`;
 
-  private pathAllPublicGameConfigs:string = `http://${location.hostname}:3000/game-config/public/all`
+  private pathAllPublicGameConfigs:string = `http://${location.hostname}:4001/game-config/public/all`
 
-  private pathPushScore: string = `http://${location.hostname}:3000/game-match/score`;
-  private pathGameMatch: string = `http://${location.hostname}:3000/game-match`;
+  private pathPushScore: string = `http://${location.hostname}:4001/game-match/score`;
+  private pathGameMatch: string = `http://${location.hostname}:4001/game-match`;
 
-  private pathUser: string = `http://${location.hostname}:3000/users`;
+  private pathUser: string = `http://${location.hostname}:4001/users`;
 
   constructor(private http: Http) { }
 

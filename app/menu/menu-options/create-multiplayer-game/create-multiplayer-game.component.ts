@@ -22,6 +22,7 @@ export class CreateMultiplayerGame {
   tabIndex: number = 0
   gameConfigs: Array<GameConfig>;
   users: Array<User>;
+  gameConfigName:string = ''
 
   validations = {
     name:{
@@ -44,7 +45,7 @@ export class CreateMultiplayerGame {
 
   validateName(){
     this.validations.name.dirty = true
-    if(this.createGameBody.name.length > 6 ){
+    if(this.createGameBody.name.length >= 6 ){
       this.matesServices
           .gameMatchExists(this.createGameBody.name)
           .subscribe(
@@ -106,8 +107,34 @@ export class CreateMultiplayerGame {
         )
   }
 
-  create() {
+  selectGameConfig(gameConfig:GameConfig){
+    this.gameConfigName = gameConfig.name
+    this.createGameBody.gameId = gameConfig._id
+  }
 
+  resolveUserColor(user:User):string{
+    let result = this.isUserSelected(user)
+            ? 'accent' 
+            : ''
+    return result
+  }
+
+  isUserSelected(user:User):boolean{
+    return this.createGameBody.users.length > 0 &&
+      this.createGameBody.users.some(u => u._id === user._id)
+  }
+
+  selectUser(user:User){ 
+    if(this.isUserSelected(user)){
+      this.createGameBody.users = this.createGameBody.users.filter(u => u._id !== user._id)
+    }else{
+      this.createGameBody.users.push(user) 
+    }
+      
+      
+  }
+
+  create() {
     this
       .matesServices
       .createMatch(this.createGameBody)

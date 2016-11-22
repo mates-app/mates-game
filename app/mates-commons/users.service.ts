@@ -8,7 +8,7 @@ import { User } from '../models'
 @Injectable()
 export class UserServices{
 
-  private pathUsers: string = `http://${location.hostname}:3000/users`;
+  private pathUsers: string = `http://${location.hostname}:4001/users`;
 
   constructor(private http: Http) { }
 
