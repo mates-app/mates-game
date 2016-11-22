@@ -9,6 +9,7 @@ import {MatesExchangeServices} from "../../../mates-commons/mates-exchange.servi
 import {UserServices} from "../../../mates-commons/users.service";
 import {MdIconRegistry} from "@angular/material";
 import {Router, ActivatedRoute} from "@angular/router";
+import { AuthService } from "../../../auth.service";
 
 @Component({
   moduleId: module.id,
@@ -36,27 +37,66 @@ export class MultiplayerGameSelection{
   moduleId: module.id,
   selector: 'multiplayer-game-selection-list',
   template: `
-<div *ngIf="!isStarted">
-  <menu-header [title]="'Multiplayer Game'" [routeBack]="'../../'"></menu-header>  
+<menu-header [title]="'Multiplayer Game'" [routeBack]="'../../'"></menu-header>
 
-  <button md-raised-button class="special-button" routerLink="create">Create Game</button>
-  
-  <finder 
-    (finderEvent)="findMatches($event)" 
-    [placeholder]="'Search for Game Matches'">
-    <items-founded>
-      <div>
-        <button 
-          md-raised-button 
-          (click)="selectGame(gameMatch)" 
-          *ngFor="let gameMatch of gameMatches">{{gameMatch.name}}</button>
-        <br>
-      </div>
-    </items-founded>
-  </finder>
-  
-  
+<div class="centered-container">
+  <md-card style="height:80%">
+    <button md-raised-button color="accent" routerLink="create">Create Game</button>
+    
+    <h4 *ngIf="canSubmit()">Juego Seleccionado: {{gameSelected.name}}</h4>
+
+    <md-tab-group>
+    <md-tab>
+        <template md-tab-label>PRIVADOS</template>
+        <template md-tab-content>
+            <finder 
+              (finderEvent)="findPrivateMatches($event)" 
+              [placeholder]="'Search for Private Matches'">
+              <items-founded>
+                <div>
+                  <button 
+                    md-raised-button 
+                    (click)="gameSelected = gameMatch" 
+                    *ngFor="let gameMatch of privateMatches">{{gameMatch.name}}</button>
+                  <br>
+                </div>
+              </items-founded>
+            </finder>
+        </template>
+    </md-tab>
+    <md-tab>
+        <template md-tab-label>PÚBLICOS</template>
+        <template md-tab-content>
+            <finder 
+              (finderEvent)="findPublicMatches($event)" 
+              [placeholder]="'Search for Public Matches'">
+              <items-founded>
+                <div>
+                  <button 
+                    md-raised-button 
+                    (click)="gameSelected = gameMatch" 
+                    *ngFor="let gameMatch of publicMatches">{{gameMatch.name}}</button>
+                  <br>
+                </div>
+              </items-founded>
+            </finder>
+        </template>
+
+    </md-tab>
+</md-tab-group>
+
+  </md-card>
 </div>
+
+<md-card class="footer-card">
+  <button md-button 
+    (click)="play()" 
+    color="primary" 
+    [disabled]="!canSubmit()">JUGAR
+  </button>
+</md-card>
+  
+
 `,
 styles:[`
     button {
@@ -66,52 +106,72 @@ styles:[`
     .special-button{
       background-color: blue;
     }
+    .footer-card {
+      padding: 10px 16px;
+    }
+    .centered-container{
+      height: 80%;
+      display:block;
+      overflow:auto;
+
+      text-align: center;
+      margin-top: 10px;
+      margin-left: 10px;
+      margin-right: 10px; 
+    }
 `],
 viewProviders: [MdIconRegistry]
 })
 export class MultiplayerGameSelectionList implements OnInit{
-  gameMatches:Array<GameMatch> = new Array()
+  publicMatches:Array<GameMatch> = new Array()
+  privateMatches:Array<GameMatch> = new Array()
+  gameSelected:GameMatch
 
   constructor(
     private matesServices:MatesServices,
     private userServices:UserServices,
     private mdIconRegistry:MdIconRegistry,
+    private authService: AuthService,
     private router : Router,
     private route: ActivatedRoute,
     private matesExchangeService:MatesExchangeServices
   ){
-
     mdIconRegistry
       .addSvgIcon('thumb-up', '/game-mates/icon/assets/thumbup-icon.svg')
       .addSvgIconSetInNamespace('core', '/game-mates/icon/assets/core-icon-set.svg')
       .registerFontClassAlias('fontawesome', 'fa');
-
-  }
-
-
-  menu(){    
-    this.router.navigate(['../', {  }], { relativeTo: this.route });
   }
 
   ngOnInit(){
-    this
-      .matesServices
-      .getPublicMatches('multi-player')
-      .subscribe(gameMatches => {        
-        this.gameMatches = gameMatches
-      })
+    this.findPublicMatches('')
+    this.findPrivateMatches('')
+        
   }
   
-  findMatches(name:string){
-    this.matesServices.getMatchesByNameFragment(name).subscribe(gameMatches => this.gameMatches = gameMatches)
+  findPublicMatches(name:string){
+    this.matesServices.getMatchesByNameFragment(name)
+        .subscribe(gameMatches => this.publicMatches = gameMatches
+          .filter(match => match.isPublic)
+          .filter(match => match.isMultiPlayer)
+        )
   }
 
-  findUsers(name:string){
-    this.userServices.getUsersByNameFragment(name).subscribe(users => users.forEach(console.log))
+  findPrivateMatches(name:string){
+    this.matesServices.getMatchesByNameFragment(name)
+        .subscribe(gameMatches => this.privateMatches = gameMatches
+          .filter(match => !match.isPublic)
+          .filter(match => match.isMultiPlayer)
+          .filter(match => match.users.some(user => user.username === this.authService.getUser().username)
+                                                    || match.author.username === this.authService.getUser().username)
+        )
   }
 
-  selectGame(gameMatch:GameMatch){
-    this.matesExchangeService.setSelectedGameMatch(gameMatch)
+  canSubmit():boolean{
+    return this.gameSelected !== undefined
+  }
+
+  play(){
+    this.matesExchangeService.setSelectedGameMatch(this.gameSelected)
     this.router.navigate(['room', {  }], { relativeTo: this.route });
   }
 
