@@ -23,7 +23,7 @@ const menuRoutings: Routes = [
             canActivate: [AuthGuard], },
           { path : 'multiplayer',  
             component : MultiplayerGameSelection,
-            // canActivate: [AuthGuard],
+            canActivate: [AuthGuard],
             children: [
               { path : '',  component : MultiplayerGameSelectionList },
               { path : 'create',  component : CreateMultiplayerGame },

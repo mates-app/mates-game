@@ -12,6 +12,8 @@ export class GameMatch{
     public name:string,
     public isPublic:boolean,
     public isMultiPlayer:boolean,
+    public users:Array<User>,
+    public author:User,
     public isStarted:boolean = false,
     public _id:string = ""
   ){

@@ -543,6 +543,9 @@ export interface CreateGameBody{
   gameId:string,
   name:string,
   isMultiPlayer:boolean,
-  users:Array<User>
+  users:Array<User>,
+  author:User,
+  isPublic:boolean
+
 
 }
