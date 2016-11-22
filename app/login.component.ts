@@ -122,7 +122,9 @@ export class LoginComponent {
   }
   
   login() {
+    console.log('login')
     this.authService.login(this.user).subscribe(isValid => {
+      console.log(isValid)
       if (this.authService.isLoggedIn) {
         let redirect = this.authService.redirectUrl ? this.authService.redirectUrl : '/menu';
         this.router.navigate([redirect]);

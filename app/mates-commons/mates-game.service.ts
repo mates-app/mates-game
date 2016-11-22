@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { GameConfig, GameMatch } from '../models';
+import { GameConfig, GameMatch, User } from '../models';
 import {GameInstance} from "torbi.ng2-choices-game/components";
 
 @Injectable()
 export class MatesServices{
-  private pathGameInstance: string = "http://"+location.hostname+":3000/game-instance/"
-  private pathGameConfigs: string = `http://${location.hostname}:3000/game-config/`;
+  private pathGameInstance: string = "http://"+location.hostname+":4001/game-instance/"
+  private pathGameConfigs: string = `http://${location.hostname}:4001/game-config/`;
 
-  private pathAllPublicGameConfigs:string = `http://${location.hostname}:3000/game-config/public/all`
+  private pathAllPublicGameConfigs:string = `http://${location.hostname}:4001/game-config/public/all`
 
-  private pathPushScore: string = `http://${location.hostname}:3000/game-match/score`;
-  private pathGameMatch: string = `http://${location.hostname}:3000/game-match`;
+  private pathPushScore: string = `http://${location.hostname}:4001/game-match/score`;
+  private pathGameMatch: string = `http://${location.hostname}:4001/game-match`;
 
-  private pathUser: string = `http://${location.hostname}:3000/users`;
+  private pathUser: string = `http://${location.hostname}:4001/users`;
 
   constructor(private http: Http) { }
 
@@ -34,6 +34,19 @@ export class MatesServices{
                     .map(this.extractData)
                     .catch(this.handleError);
 
+  }
+
+
+  getConfigsByNameMatching(name:string):Observable<GameConfig[]>{
+    return this.http.get(`${this.pathGameConfigs}name-matching/${name}`)
+                    .map(this.extractData)
+                    .catch(this.handleError);
+  }
+
+  gameMatchExists(name:string):Observable<boolean>{
+    return this.http.get(`${this.pathGameMatch}/exists/${name}`)
+                    .map(exists => exists.json())
+                    .catch(this.handleError);
   }
 
   getMatchesByNameFragment(name:string):Observable<GameMatch[]>{
@@ -529,6 +542,7 @@ export interface CreateGameBody{
 
   gameId:string,
   name:string,
-  isMultiPlayer:boolean
+  isMultiPlayer:boolean,
+  users:Array<User>
 
 }
