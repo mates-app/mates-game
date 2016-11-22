@@ -10,6 +10,7 @@ import { UserServices } from "../../../mates-commons/users.service";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MdIconRegistry } from "@angular/material";
 import { MatesExchangeServices } from "../../../mates-commons/mates-exchange.service";
+import { AuthService } from "../../../auth.service";
 
 @Component({
   moduleId: module.id,
@@ -36,11 +37,18 @@ export class CreateMultiplayerGame {
     gameId: '',
     name: '',
     users: [],
+    author:this.authService.getUser(),
+    isPublic: true,
     isMultiPlayer: true
   }
 
   onTabChange(tab) {
     this.tabIndex = tab.index
+  }
+
+  isPublic(){
+    this.createGameBody.isPublic = this.createGameBody.users.length === 0
+    return this.createGameBody.isPublic 
   }
 
   validateName(){
@@ -67,6 +75,7 @@ export class CreateMultiplayerGame {
     private matesServices: MatesServices,
     private usersServices: UserServices,
     private matesExchanges: MatesExchangeServices,
+    private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
     private mdIconRegistry: MdIconRegistry
@@ -89,7 +98,7 @@ export class CreateMultiplayerGame {
       error => console.log(error));
     
     this.usersServices.getUsersByNameFragment('').subscribe(
-      users => this.users = users,
+      users => this.users = users ,
       error => console.log(error));
   }
 
@@ -103,7 +112,7 @@ export class CreateMultiplayerGame {
   findUsers(name:string){
     this.usersServices.getUsersByNameFragment(name)
         .subscribe(
-          users => this.users = users
+          users => this.users
         )
   }
 
@@ -130,8 +139,6 @@ export class CreateMultiplayerGame {
     }else{
       this.createGameBody.users.push(user) 
     }
-      
-      
   }
 
   create() {

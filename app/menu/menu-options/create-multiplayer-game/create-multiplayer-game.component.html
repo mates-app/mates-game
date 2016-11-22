@@ -17,9 +17,9 @@
             (change)="validateName()"
             required>
             <span md-suffix>
-                <md-icon *ngIf="createGameBody.users.length !== 0" style="color:#edb425;">lock
+                <md-icon *ngIf="!isPublic()" style="color:#edb425;">lock
                 </md-icon>
-                <md-icon *ngIf="createGameBody.users.length === 0" style="color:#edb425;">lock_open
+                <md-icon *ngIf="isPublic()" style="color:#edb425;">lock_open
                 </md-icon>
                 <md-icon 
                     style="color:#AED581;"
@@ -34,7 +34,6 @@
         </md-input>
         <h6>Configuración: {{gameConfigName}}</h6>
         <h6>Usuarios: {{createGameBody.users.length}}</h6>
-        <br><br>
         <md-tab-group (selectChange)="onTabChange($event)">
             <md-tab>
                 <template md-tab-label>CONFIGURACIÓN</template>
