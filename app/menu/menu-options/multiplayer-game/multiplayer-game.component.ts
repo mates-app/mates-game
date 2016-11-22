@@ -37,14 +37,14 @@ export class MultiplayerGameSelection{
   moduleId: module.id,
   selector: 'multiplayer-game-selection-list',
   template: `
+<menu-header [title]="'Multiplayer Game'" [routeBack]="'../../'"></menu-header>
+
 <div class="centered-container">
-
   <md-card style="height:80%">
-
-    <menu-header [title]="'Multiplayer Game'" [routeBack]="'../../'"></menu-header>  
-
-    <button md-raised-button class="special-button" routerLink="create">Create Game</button>
+    <button md-raised-button color="accent" routerLink="create">Create Game</button>
     
+    <h4 *ngIf="canSubmit()">Juego Seleccionado: {{gameSelected.name}}</h4>
+
     <md-tab-group>
     <md-tab>
         <template md-tab-label>PRIVADOS</template>
@@ -85,19 +85,15 @@ export class MultiplayerGameSelection{
     </md-tab>
 </md-tab-group>
 
-
-
-
-
-    
-
-
-
   </md-card>
 </div>
 
 <md-card class="footer-card">
-  <button md-button (click)="play()" [disabled]="gameSelected === undefined">JUGAR</button>
+  <button md-button 
+    (click)="play()" 
+    color="primary" 
+    [disabled]="!canSubmit()">JUGAR
+  </button>
 </md-card>
   
 
@@ -129,7 +125,7 @@ viewProviders: [MdIconRegistry]
 export class MultiplayerGameSelectionList implements OnInit{
   publicMatches:Array<GameMatch> = new Array()
   privateMatches:Array<GameMatch> = new Array()
-  gameSelected:GameMatch = undefined
+  gameSelected:GameMatch
 
   constructor(
     private matesServices:MatesServices,
@@ -170,10 +166,12 @@ export class MultiplayerGameSelectionList implements OnInit{
         )
   }
 
+  canSubmit():boolean{
+    return this.gameSelected !== undefined
+  }
 
-
-  selectGame(gameMatch:GameMatch){
-    this.matesExchangeService.setSelectedGameMatch(gameMatch)
+  play(){
+    this.matesExchangeService.setSelectedGameMatch(this.gameSelected)
     this.router.navigate(['room', {  }], { relativeTo: this.route });
   }
 
