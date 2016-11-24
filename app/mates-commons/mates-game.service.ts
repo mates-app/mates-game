@@ -63,6 +63,20 @@ export class MatesServices{
 
   }
 
+  startMatch(gameMatchId:string){
+
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    let body = {
+      gameMatchId : gameMatchId
+    }
+    return this.http
+            .put(`${this.pathGameMatch}/start`, JSON.stringify(body), options)
+            .map(this.extractData)
+            .catch(this.handleError)
+              
+  }
+
   getGameInstance(id:string): Observable<GameInstance> {
     return this.http.get(this.pathGameInstance+id)
                     .map(this.extractData)
