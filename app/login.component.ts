@@ -6,6 +6,7 @@ import {MdIconRegistry} from "@angular/material";
 
 
 @Component({
+  moduleId: module.id, 
   template: `
 <div class="centered-container">
     <md-card>
@@ -75,7 +76,7 @@ import {MdIconRegistry} from "@angular/material";
     </md-card>
 </div>
     `,
-    styleUrls: [ 'styles.css' ],
+    styleUrls: [ '../styles.css' ],
     viewProviders: [MdIconRegistry]
 })
 export class LoginComponent {
