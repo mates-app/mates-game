@@ -8,12 +8,12 @@ export class GameConfig{
 
 export class GameMatch{
   constructor(
-    public gameId:string,
-    public name:string,
-    public isPublic:boolean,
-    public isMultiPlayer:boolean,
-    public users:Array<User>,
-    public author:User,
+    public gameId:string = '',
+    public name:string = '',
+    public isPublic:boolean = true,
+    public isMultiPlayer:boolean = true,
+    public users:Array<User> = [],
+    public author:User = new User('','',''),
     public isStarted:boolean = false,
     public _id:string = ""
   ){

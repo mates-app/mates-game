@@ -1,11 +1,41 @@
 <div style="height:100%">
     <menu-header [title]="'Menú'" [showBackButton]="false"></menu-header>
-
+<!--
     <a md-raised-button routerLink="singleplayer">Single Player</a>
     <a md-raised-button routerLink="multiplayer">Multi Player</a>
 
     <a md-raised-button routerLink="select-game" [disabled]="true">Perfil</a>
     <a md-raised-button routerLink="select-game" [disabled]="true">Configuración</a>
     <a md-raised-button routerLink="select-game" [disabled]="true">Créditos</a>
-    <a md-raised-button (click)="logout()">Logout</a>
+    <a md-raised-button (click)="logout()">Logout</a>-->
+    <md-tab-group>
+        <md-tab label="One" style="width:50%">
+            <template md-tab-label>
+                Individual    
+            </template>        
+            <template md-tab-content>
+                <single-player-finder
+                    (onSelection)="onSelection($event)">
+                </single-player-finder>
+                <a md-button 
+                    (click)="play()"
+                    *ngIf="gameMatch !== undefined">Jugar
+                </a>        
+            </template>
+        </md-tab>
+        <md-tab label="Two" style="width:50%">
+            <template md-tab-label>
+                Multijugador    
+            </template>
+            <template md-tab-content>
+                <multi-player-finder
+                    [user]="user"
+                    (onSelection)="onSelection($event)">
+                </multi-player-finder>
+                <a md-button (click)="play()">Jugar</a>        
+            </template>
+        </md-tab>
+    </md-tab-group>
+
+    
 </div>

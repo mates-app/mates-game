@@ -14,7 +14,6 @@ import 'rxjs/add/observable/interval'
     </span>
   </md-input>
   <ng-content select="items-founded"></ng-content>
-  
   `,
   styles: [`
     md-input {

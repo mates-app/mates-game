@@ -2,16 +2,28 @@ import { NgModule }      from '@angular/core'
 import { MaterialModule } from '@angular/material';
 import { CommonModule } from '@angular/common'
 import { FinderComponent, ItemFounded } from './finder/finder.component'
+import { MatesCommonsModule } from '../mates-commons.module'
+import { SinglePlayerFinder } from './finder/single-player.finder'
+import { MultiPlayerFinder } from './finder/multi-player.finder'
 
 @NgModule({
-  imports:      [ 
+  imports: [ 
     MaterialModule.forRoot(),
-    CommonModule],
+    MatesCommonsModule,
+    CommonModule
+  ],
   declarations: [ 
     FinderComponent, 
-    ItemFounded ],
+    ItemFounded,
+    SinglePlayerFinder,
+    MultiPlayerFinder
+  ],
   exports : [
     FinderComponent, 
-    ItemFounded]
+    ItemFounded,
+    SinglePlayerFinder,
+    MultiPlayerFinder
+  ]
 })
 export class CommonComponents { }
+

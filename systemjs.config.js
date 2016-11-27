@@ -20,6 +20,7 @@
         'rxjs': 'rxjs-min',
         'mathjax': 'node_modules/mathjax',
         'torbi.ng2-choices-game' : 'node_modules/torbi.ng2-choices-game',
+        'choices-game' : 'node_modules/torbi.ng2-choices-game',
         'socket.io-client' : 'npm:socket.io-client/socket.io.js'
     };
 
