@@ -5,7 +5,7 @@ import { FinderComponent, ItemFounded } from './finder/finder.component'
 import { MatesCommonsModule } from '../mates-commons.module'
 import { SinglePlayerFinder } from './finder/single-player.finder'
 import { MultiPlayerFinder } from './finder/multi-player.finder'
-
+import { GameMatchFinder } from './finder/game-match.finder'
 @NgModule({
   imports: [ 
     MaterialModule.forRoot(),
@@ -16,13 +16,15 @@ import { MultiPlayerFinder } from './finder/multi-player.finder'
     FinderComponent, 
     ItemFounded,
     SinglePlayerFinder,
-    MultiPlayerFinder
+    MultiPlayerFinder,
+    GameMatchFinder
   ],
   exports : [
     FinderComponent, 
     ItemFounded,
     SinglePlayerFinder,
-    MultiPlayerFinder
+    MultiPlayerFinder,
+    GameMatchFinder
   ]
 })
 export class CommonComponents { }

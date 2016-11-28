@@ -5,19 +5,17 @@ import { CommonModule } from '@angular/common'
 
 import { menuRouting } from './menu.routing'
 import { MenuComponent } from './menu.component'
+import { OutletComponent } from './outlet.component'
 
 import { MaterialModule } from '@angular/material';
 
 import { MatesCommonsModule } from '../mates-commons/mates-commons.module';
 import { ChoiceGameModule} from "torbi.ng2-choices-game/components";
-import { SingleGameSelection} from "./menu-options/single-game/single-game-selection.component";
-import { MultiplayerGameSelection, MultiplayerGameSelectionList } from './menu-options/multiplayer-game/multiplayer-game.component'
-import { CreateMultiplayerGame} from './menu-options/create-multiplayer-game/create-multiplayer-game.component'
+import { GameMatchEditor} from './game-match-editor/game-match-editor'
 import { MultiplayerRoom} from './menu-options/multiplayer-room/multiplayer-room.component'
-import { MenuOptionsComponent, MenuOptionsOutlet} from './menu-options/menu-options.component'
 import { CommonComponents } from '../mates-commons/common-components/common-components.module'
 import { MenuCommonsModule } from '../mates-commons/menu-commons/menu-commons.module'
-
+import { YourGamesView} from './your-games/your-games.view'
 @NgModule({
   imports:      [
     CommonModule,
@@ -34,14 +32,10 @@ import { MenuCommonsModule } from '../mates-commons/menu-commons/menu-commons.mo
   ],
   declarations: [
   	MenuComponent,
-    MenuOptionsOutlet,
-    MenuOptionsComponent,
-    SingleGameSelection,
-    MultiplayerGameSelection,
-    CreateMultiplayerGame,
-    MultiplayerGameSelectionList,
-    MultiplayerRoom
-    
+    OutletComponent,
+    GameMatchEditor,
+    MultiplayerRoom,
+    YourGamesView
   ]
 })
 export class MenuModule { }

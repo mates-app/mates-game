@@ -1,37 +1,39 @@
 import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MenuComponent } from './menu.component'
-import { MenuOptionsComponent, MenuOptionsOutlet } from './menu-options/menu-options.component'
-import {SingleGameSelection} from "./menu-options/single-game/single-game-selection.component";
-import {MultiplayerGameSelection, MultiplayerGameSelectionList} from './menu-options/multiplayer-game/multiplayer-game.component'
-import {CreateMultiplayerGame} from    './menu-options/create-multiplayer-game/create-multiplayer-game.component'
-import {MultiplayerRoom} from    './menu-options/multiplayer-room/multiplayer-room.component'
+import { OutletComponent } from './outlet.component'
+import { GameMatchEditor } from './game-match-editor/game-match-editor'
+import { YourGamesView } from './your-games/your-games.view'
 
 import { AuthGuard } from '../auth-guard.service'
 
 const menuRoutings: Routes = [
   {
 	  path: '',
-    component: MenuComponent,
+    component: OutletComponent,
     children: [{
         path: 'menu',
-        component: MenuOptionsOutlet,        
-        children: [
-          { path : '', component: MenuOptionsComponent},
-          { path : 'editor',  component : CreateMultiplayerGame },
-          { path : 'singleplayer',  
-            component : SingleGameSelection, 
-            canActivate: [AuthGuard], },
-          { path : 'multiplayer',  
-            component : MultiplayerGameSelection,
-            canActivate: [AuthGuard],
-            children: [
-              { path : '',  component : MultiplayerGameSelectionList },
-              { path : 'create',  component : CreateMultiplayerGame },
-              { path : 'room',  component : MultiplayerRoom }
-            ]
-          }          
-        ]
+        canActivate: [AuthGuard],
+        component: OutletComponent,        
+        children: [{ 
+          path: '',
+          canActivate: [AuthGuard],
+          component: MenuComponent,
+        },{
+          path: 'your-games',
+          canActivate: [AuthGuard],
+          component: OutletComponent,  
+          children: [{
+            path: '',
+            component: YourGamesView
+          },{
+            path: 'create',
+            component: GameMatchEditor
+          },{
+            path: ':id',
+            component: GameMatchEditor
+          }]
+        }]
       }
 	]
   }

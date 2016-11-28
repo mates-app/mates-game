@@ -76,9 +76,9 @@ export class MultiplayerRoom implements OnInit{
 
     ngOnInit(){
         this.gameMatch = this.matesExchange.getSelectedGameMatch()
-        this.matesServices
-            .getGameInstance(this.gameMatch.gameId)
-            .subscribe(gameInstance => this.gameControl.setGameInstance(gameInstance))
+        // this.matesServices
+        //     .getGameInstance(this.gameMatch.gameId)
+        //     .subscribe(gameInstance => this.gameControl.setGameInstance(gameInstance))
 
         this.socket = io.connect('http://localhost:4001', { 'forceNew': true });
         this.socket.on(this.gameMatch._id, (message) => 
