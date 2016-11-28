@@ -8,7 +8,7 @@ import { User } from '../models'
 @Injectable()
 export class UserServices{
 
-  private pathUsers: string = `http://${location.hostname}:4001/users`;
+  private pathUsers: string = `http://${location.hostname}:4000/users`;
 
   constructor(private http: Http) { }
 
@@ -21,7 +21,7 @@ export class UserServices{
   }
 
   getUsersByNameFragment(name:string):Observable<User[]>{
-    return this.http.get(`${this.pathUsers}/by-username-fragment?username=${name}`)
+    return this.http.get(`${this.pathUsers}/name-match/${name}`)
                     .map(this.extractData)
                     .catch(this.handleError);
 

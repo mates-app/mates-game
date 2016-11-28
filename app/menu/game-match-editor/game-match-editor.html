@@ -1,0 +1,84 @@
+<!--<div style="height:90%">-->
+    <menu-header [title]="title">
+        <mates-content>
+            <div class="centered-container">
+                <md-card style="height:90%">
+                    <md-card-content>
+                        <md-input 
+                            placeholder="Nombre del Juego" 
+                            maxlength="20" 
+                            class="full-width" 
+                            [(ngModel)]="newMatch.name" 
+                            (change)="validateName()"
+                            required>
+                            <span md-suffix>
+                                <md-icon *ngIf="!isPublic()" style="color:#edb425;">lock
+                                </md-icon>
+                                <md-icon *ngIf="isPublic()" style="color:#edb425;">lock_open
+                                </md-icon>
+                                <md-icon 
+                                    style="color:#AED581;"
+                                    *ngIf="validations.name.valid && validations.name.dirty">check_circle
+                                </md-icon>
+                                <md-icon 
+                                    style="color:#921919;"
+                                    *ngIf="!validations.name.valid && validations.name.dirty">error
+                                </md-icon>
+                            </span>
+                            <md-hint align="end" style="color:#921919;">{{validations.name.message}}</md-hint>
+                        </md-input>
+                        <h6>Configuración: {{newMatch.gameId.name}}</h6>
+                        <h6>Usuarios: {{newMatch.users.length}}</h6>
+                        <md-tab-group (selectChange)="onTabChange($event)">
+                            <md-tab>
+                                <template md-tab-label>CONFIGURACIÓN</template>
+                                <template md-tab-content>
+                                    <finder (finderEvent)="findConfigs($event)" [placeholder]="'Filtrar Configuraciones'">
+                                        <items-founded>
+                                            <div>
+                                                <button md-raised-button (click)="newMatch.gameId = gameConfig" *ngFor="let gameConfig of gameConfigs">{{gameConfig.name}}
+                                                </button>
+                                                <br>
+                                            </div>
+                                        </items-founded>
+                                    </finder>
+                                </template>
+                            </md-tab>
+                            <md-tab>
+                                <template md-tab-label>USUARIOS</template>
+                                <template md-tab-content>
+                                    <finder (finderEvent)="findUsers($event)" [placeholder]="'Filtrar Usuarios'">
+                                        <items-founded>
+                                            <div>
+                                                <button 
+                                                md-raised-button 
+                                                    color="{{resolveUserColor(user)}}" (click)="selectUser(user)" *ngFor="let user of users">{{user.username}}
+                            </button>
+                                            </div>
+                                        </items-founded>
+                                    </finder>
+                                </template>
+
+                            </md-tab>
+                        </md-tab-group>
+                    </md-card-content>
+                </md-card>
+                <br>
+
+            </div>
+
+<md-card class="footer-card">
+    <button md-button 
+        (click)="create()" 
+        [disabled]="!validations.name.valid || newMatch.gameId.length === 0">
+        <span *ngIf="type === 'create'">CREAR</span>
+        <span *ngIf="type === 'edit'">Guardar Edición</span>
+    </button>
+</md-card>
+
+
+
+</mates-content>
+</menu-header>
+
+<!--</div>-->
