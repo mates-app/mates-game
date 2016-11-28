@@ -9,11 +9,12 @@ export class GameMatchServices{
   private pathGameMatch: string = `http://${location.hostname}:4001/game-match`;
   constructor(private http: Http) { }
 
-  create(createGameBody:CreateGameBody):Observable<GameMatch> {
+  create(gameMatch:GameMatch):Observable<GameMatch> {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.pathGameMatch, JSON.stringify(createGameBody), options)
+    
+    return this.http.post(this.pathGameMatch, JSON.stringify(gameMatch), options)
                     .map(this.extractData)
                     .catch(this.handleError);
   }
@@ -66,15 +67,3 @@ export class GameMatchServices{
 
 }
 
-
-export interface CreateGameBody{
-
-  gameId:string,
-  name:string,
-  isMultiPlayer:boolean,
-  users:Array<User>,
-  author:User,
-  isPublic:boolean
-
-
-}
