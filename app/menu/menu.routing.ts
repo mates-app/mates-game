@@ -18,6 +18,7 @@ const menuRoutings: Routes = [
         component: MenuOptionsOutlet,        
         children: [
           { path : '', component: MenuOptionsComponent},
+          { path : 'editor',  component : CreateMultiplayerGame },
           { path : 'singleplayer',  
             component : SingleGameSelection, 
             canActivate: [AuthGuard], },

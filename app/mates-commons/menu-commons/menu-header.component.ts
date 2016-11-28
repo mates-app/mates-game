@@ -8,25 +8,52 @@ import {Router, ActivatedRoute} from "@angular/router";
 @Component({
     selector: 'menu-header',
     template: `
-    <md-toolbar>
-        <span class="title">{{title}}</span>
 
-        <a  md-button class="md-fab md-mini" 
-            style="cursor:pointer" 
-            (click)="back()" 
-            *ngIf="showBackButton">
-            <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
-        </a>
-    </md-toolbar>
+    <md-sidenav-layout>
+        <md-sidenav #start (open)="closeStartButton.focus()">
+            <a md-button class="side-button" routerLink="singleplayer">Single Player</a>
+            <a md-button class="side-button" routerLink="multiplayer">Multi Player</a>
+            <a md-button class="side-button" (click)="logout()">Logout</a>
+            <button md-button #closeStartButton (click)="start.close()">Cerrar</button>
+        </md-sidenav>
+        
+        <md-toolbar>
+            <a  md-button class="md-fab md-mini" 
+                style="cursor:pointer" 
+                (click)="start.open()">
+                <md-icon class="md-24" style="color:#921919;">menu</md-icon>
+            </a>
+            <span class="title">{{title}}</span>
+            <a  md-button class="md-fab md-mini" 
+                style="cursor:pointer" 
+                (click)="back()" 
+                *ngIf="showBackButton">
+                <md-icon class="md-24" style="color:#921919;">keyboard_arrow_left</md-icon>
+            </a>
+        </md-toolbar>
+
+        <ng-content select="mates-content"></ng-content>
+
+    </md-sidenav-layout>
+
+
+    
   `,
     viewProviders: [MdIconRegistry],
     styles: [`
     
     span.title{
-        width: 100% 
+        width: 100%;
+    }
+
+    a.side-button {
+        min-width: 200px;
+        display: block;   
+        text-align: left;
     }
 
     md-button{
+        width: 100%;
         text-align: right;
     }
 
@@ -84,3 +111,8 @@ export class MenuHeaderComponent {
   }
 
 }
+
+@Directive({
+  selector: 'mates-content'
+})
+export class MatesContent {}
